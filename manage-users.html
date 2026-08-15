@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>College Notes Hub - Manage Users</title>
+
+    <link
+        rel="stylesheet"
+        href="admin-style.css"
+    >
+
+    <style>
+
+        /* =================================================
+           USERS PAGE
+           ================================================= */
+
+        .users-page {
+            max-width: 1100px;
+            margin: auto;
+            padding: 55px 20px 80px;
+        }
+
+
+        .users-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+
+        .users-title h1 {
+            font-size: 38px;
+            color: #111827;
+            margin: 12px 0 10px;
+        }
+
+
+        .users-title p {
+            color: #6b7280;
+        }
+
+
+        .users-list {
+            display: grid;
+            gap: 18px;
+        }
+
+
+        .user-card {
+            background: white;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 14px;
+
+            padding: 22px;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.06);
+        }
+
+
+        .user-card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+
+        .user-avatar {
+            width: 55px;
+            height: 55px;
+
+            border-radius: 50%;
+
+            background: #4f46e5;
+
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            flex-shrink: 0;
+        }
+
+
+        .user-card-header h3 {
+            color: #111827;
+            margin-bottom: 3px;
+        }
+
+
+        .user-card-header p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+
+        .user-info {
+            margin-top: 18px;
+
+            display: grid;
+
+            gap: 8px;
+        }
+
+
+        .user-info p {
+            color: #4b5563;
+
+            font-size: 14px;
+        }
+
+
+        .user-info strong {
+            color: #111827;
+        }
+
+
+        .user-actions {
+            margin-top: 18px;
+
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .delete-user-button {
+            background: #dc2626;
+
+            color: white;
+
+            border: none;
+
+            padding: 10px 15px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+        }
+
+
+        .delete-user-button:hover {
+            background: #b91c1c;
+        }
+
+
+        .user-status {
+            display: inline-block;
+
+            background: #dcfce7;
+
+            color: #15803d;
+
+            padding: 5px 10px;
+
+            border-radius: 15px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+        }
+
+
+        .empty-users {
+            background: white;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 14px;
+
+            padding: 40px 20px;
+
+            text-align: center;
+
+            color: #6b7280;
+        }
+
+
+        .user-summary {
+            background: #eef2ff;
+
+            color: #4338ca;
+
+            border-radius: 10px;
+
+            padding: 12px 15px;
+
+            margin-bottom: 20px;
+
+            font-weight: bold;
+
+            text-align: center;
+        }
+
+
+        /* =================================================
+           MOBILE
+           ================================================= */
+
+        @media (max-width: 600px) {
+
+            .users-title h1 {
+                font-size: 30px;
+            }
+
+
+            .user-card-header {
+                align-items: flex-start;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         HEADER
+         ================================================= -->
+
+    <header class="admin-header">
+
+        <div class="admin-navbar">
+
+
+            <div class="admin-logo">
+                🛠️ College Notes Hub
+            </div>
+
+
+            <div class="admin-nav-right">
+
+                <span id="adminWelcome">
+                    👤 Administrator
+                </span>
+
+
+                <a
+                    href="admin.html"
+                    class="home-button"
+                >
+                    🛠️ Admin Dashboard
+                </a>
+
+
+                <a
+                    href="index.html"
+                    class="home-button"
+                >
+                    🏠 Home
+                </a>
+
+
+                <button
+                    id="userLogoutBtn"
+                    class="logout-button"
+                    type="button"
+                >
+                    🚪 Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =================================================
+         MAIN
+         ================================================= -->
+
+    <main class="users-page">
+
+
+        <div class="users-title">
+
+            <span class="admin-badge">
+                👥 User Management
+            </span>
+
+
+            <h1>
+                Manage Users
+            </h1>
+
+
+            <p>
+                View and manage registered student accounts.
+            </p>
+
+        </div>
+
+
+
+        <div
+            id="userSummary"
+            class="user-summary"
+        >
+            Loading users...
+        </div>
+
+
+
+        <div
+            id="usersList"
+            class="users-list"
+        >
+
+            Loading users...
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =================================================
+         FOOTER
+         ================================================= -->
+
+    <footer>
+
+        <p>
+            © 2026 College Notes Hub |
+            User Management
+        </p>
+
+    </footer>
+
+
+
+    <!-- =================================================
+         JAVASCRIPT
+         ================================================= -->
+
+    <script>
+
+
+        // =================================================
+        // STORAGE
+        // =================================================
+
+        const ACTIVITY_KEY =
+            "college_activity_history";
+
+
+
+        // =================================================
+        // ADMIN ACCESS
+        // =================================================
+
+        function checkAdminAccess() {
+
+            const sessionUser =
+                localStorage.getItem(
+                    "login_auth_session"
+                );
+
+
+            const storedUsers =
+                localStorage.getItem(
+                    "login_auth_users"
+                );
+
+
+            if (
+                !sessionUser ||
+                !storedUsers
+            ) {
+
+                window.location.href =
+                    "login.html";
+
+                return false;
+
+            }
+
+
+            try {
+
+                const users =
+                    JSON.parse(
+                        storedUsers
+                    );
+
+
+                const loggedUser =
+                    users.find(
+                        function(user) {
+
+                            return (
+                                user.name ===
+                                sessionUser
+                            );
+
+                        }
+                    );
+
+
+                if (!loggedUser) {
+
+                    window.location.href =
+                        "index.html";
+
+                    return false;
+
+                }
+
+
+                if (
+                    (
+                        loggedUser.username ||
+                        ""
+                    )
+                    .toLowerCase() !==
+                    "admin"
+                ) {
+
+                    alert(
+                        "Access denied. Only the administrator can access this page."
+                    );
+
+
+                    window.location.href =
+                        "index.html";
+
+                    return false;
+
+                }
+
+
+                document.getElementById(
+                    "adminWelcome"
+                ).textContent =
+                    "👤 " +
+                    loggedUser.name;
+
+
+                return true;
+
+            }
+
+            catch (error) {
+
+                window.location.href =
+                    "index.html";
+
+                return false;
+
+            }
+
+        }
+
+
+
+        // =================================================
+        // LOG ACTIVITY
+        // =================================================
+
+        function logActivity(
+            icon,
+            action,
+            details
+        ) {
+
+            let history = [];
+
+
+            const storedHistory =
+                localStorage.getItem(
+                    ACTIVITY_KEY
+                );
+
+
+            if (storedHistory) {
+
+                try {
+
+                    history =
+                        JSON.parse(
+                            storedHistory
+                        );
+
+                }
+
+                catch (error) {
+
+                    history = [];
+
+                }
+
+            }
+
+
+            history.unshift({
+
+                id:
+                    Date.now(),
+
+                icon:
+                    icon,
+
+                action:
+                    action,
+
+                details:
+                    details,
+
+                time:
+                    new Date().toLocaleString()
+
+            });
+
+
+            history =
+                history.slice(
+                    0,
+                    50
+                );
+
+
+            localStorage.setItem(
+                ACTIVITY_KEY,
+                JSON.stringify(
+                    history
+                )
+            );
+
+        }
+
+
+
+        // =================================================
+        // ESCAPE HTML
+        // =================================================
+
+        function escapeHTML(
+            value
+        ) {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.textContent =
+                value || "";
+
+
+            return div.innerHTML;
+
+        }
+
+
+
+        // =================================================
+        // LOAD USERS
+        // =================================================
+
+        function loadUsers() {
+
+            const usersList =
+                document.getElementById(
+                    "usersList"
+                );
+
+
+            const summary =
+                document.getElementById(
+                    "userSummary"
+                );
+
+
+            const storedUsers =
+                localStorage.getItem(
+                    "login_auth_users"
+                );
+
+
+            if (!storedUsers) {
+
+                summary.textContent =
+                    "👥 0 registered users";
+
+
+                usersList.innerHTML = `
+
+                    <div class="empty-users">
+
+                        👥 No registered users found.
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            let users = [];
+
+
+            try {
+
+                users =
+                    JSON.parse(
+                        storedUsers
+                    );
+
+            }
+
+            catch (error) {
+
+                users = [];
+
+            }
+
+
+            if (
+                !Array.isArray(users) ||
+                users.length === 0
+            ) {
+
+                summary.textContent =
+                    "👥 0 registered users";
+
+
+                usersList.innerHTML = `
+
+                    <div class="empty-users">
+
+                        👥 No registered users found.
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            summary.textContent =
+                "👥 " +
+                users.length +
+                " registered user" +
+                (
+                    users.length === 1
+                    ? ""
+                    : "s"
+                );
+
+
+            usersList.innerHTML =
+                "";
+
+
+            users.forEach(
+                function(user, index) {
+
+                    const item =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    item.className =
+                        "user-card";
+
+
+                    const initial =
+                        (
+                            user.name ||
+                            "U"
+                        )
+                        .charAt(0)
+                        .toUpperCase();
+
+
+                    const isAdmin =
+                        (
+                            user.username ||
+                            ""
+                        )
+                        .toLowerCase() ===
+                        "admin";
+
+
+                    item.innerHTML = `
+
+                        <div class="user-card-header">
+
+                            <div class="user-avatar">
+
+                                ${escapeHTML(
+                                    initial
+                                )}
+
+                            </div>
+
+
+                            <div>
+
+                                <h3>
+
+                                    ${escapeHTML(
+                                        user.name
+                                    )}
+
+                                </h3>
+
+
+                                <p>
+
+                                    @${escapeHTML(
+                                        user.username
+                                    )}
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="user-info">
+
+                            <p>
+
+                                <strong>
+                                    Email:
+                                </strong>
+
+                                ${escapeHTML(
+                                    user.email ||
+                                    "No email"
+                                )}
+
+                            </p>
+
+
+                            <p>
+
+                                <strong>
+                                    Status:
+                                </strong>
+
+                                <span class="user-status">
+                                    🟢 Active
+                                </span>
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="user-actions">
+
+
+                            ${
+                                isAdmin
+
+                                ?
+
+                                `
+                                <span class="user-status">
+                                    🛡️ Administrator
+                                </span>
+                                `
+
+                                :
+
+                                `
+                                <button
+                                    type="button"
+                                    class="delete-user-button"
+                                    onclick="deleteUser(${index})"
+                                >
+                                    🗑️ Delete User
+                                </button>
+                                `
+
+                            }
+
+
+                        </div>
+
+                    `;
+
+
+                    usersList.appendChild(
+                        item
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        // =================================================
+        // DELETE USER
+        // =================================================
+
+        function deleteUser(
+            index
+        ) {
+
+            const data =
+                localStorage.getItem(
+                    "login_auth_users"
+                );
+
+
+            if (!data) {
+
+                return;
+
+            }
+
+
+            let users;
+
+
+            try {
+
+                users =
+                    JSON.parse(
+                        data
+                    );
+
+            }
+
+            catch (error) {
+
+                return;
+
+            }
+
+
+            const user =
+                users[index];
+
+
+            if (!user) {
+
+                return;
+
+            }
+
+
+            const username =
+                (
+                    user.username ||
+                    ""
+                )
+                .toLowerCase();
+
+
+            // NEVER DELETE ADMIN
+
+            if (
+                username ===
+                "admin"
+            ) {
+
+                alert(
+                    "The Administrator account cannot be deleted."
+                );
+
+                return;
+
+            }
+
+
+            const answer =
+                confirm(
+                    "Delete user \"" +
+                    user.name +
+                    "\"?"
+                );
+
+
+            if (!answer) {
+
+                return;
+
+            }
+
+
+            const deletedName =
+                user.name;
+
+
+            const deletedUsername =
+                user.username;
+
+
+            users.splice(
+                index,
+                1
+            );
+
+
+            localStorage.setItem(
+                "login_auth_users",
+                JSON.stringify(
+                    users
+                )
+            );
+
+
+            // -----------------------------------------
+            // ACTIVITY HISTORY
+            // -----------------------------------------
+
+            logActivity(
+
+                "🗑️",
+
+                "User Deleted",
+
+                deletedName +
+                " (@" +
+                deletedUsername +
+                ")"
+
+            );
+
+
+            loadUsers();
+
+
+            alert(
+                "✅ User deleted successfully!"
+            );
+
+        }
+
+
+
+        // =================================================
+        // LOGOUT
+        // =================================================
+
+        document
+            .getElementById(
+                "userLogoutBtn"
+            )
+            .addEventListener(
+                "click",
+                function() {
+
+                    localStorage.removeItem(
+                        "login_auth_session"
+                    );
+
+
+                    localStorage.removeItem(
+                        "remembered_user"
+                    );
+
+
+                    window.location.href =
+                        "login.html";
+
+                }
+            );
+
+
+
+        // =================================================
+        // START
+        // =================================================
+
+        if (
+            checkAdminAccess()
+        ) {
+
+            loadUsers();
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

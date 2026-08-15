@@ -1,0 +1,532 @@
+/* =====================================================
+   COLLEGE NOTES HUB
+   ADD RESOURCE PAGE
+   ===================================================== */
+
+
+/* ===============================
+   RESET
+   =============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ===============================
+   BODY
+   =============================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+
+    background: #f5f7fb;
+
+    color: #1f2937;
+
+    line-height: 1.6;
+
+    min-height: 100vh;
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.resource-header {
+    background: white;
+
+    box-shadow:
+        0 2px 15px rgba(0, 0, 0, 0.08);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+}
+
+
+.resource-navbar {
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 17px 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+/* ===============================
+   LOGO
+   =============================== */
+
+.resource-logo {
+    font-size: 22px;
+
+    font-weight: bold;
+
+    color: #111827;
+}
+
+
+/* ===============================
+   NAV LINKS
+   =============================== */
+
+.resource-nav-links {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.resource-nav-links a {
+    text-decoration: none;
+
+    background: #eef2ff;
+
+    color: #4f46e5;
+
+    padding: 9px 15px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+
+.resource-nav-links a:hover {
+    background: #e0e7ff;
+
+    color: #3730a3;
+
+    transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   MAIN CONTAINER
+   ===================================================== */
+
+.resource-container {
+    max-width: 800px;
+
+    margin: auto;
+
+    padding: 60px 20px 80px;
+}
+
+
+/* =====================================================
+   TITLE
+   ===================================================== */
+
+.resource-title {
+    text-align: center;
+
+    margin-bottom: 40px;
+}
+
+
+.resource-badge {
+    display: inline-block;
+
+    background: #e0e7ff;
+
+    color: #4338ca;
+
+    padding: 7px 15px;
+
+    border-radius: 30px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+
+.resource-title h1 {
+    font-size: 40px;
+
+    color: #111827;
+
+    margin-bottom: 10px;
+}
+
+
+.resource-title p {
+    color: #6b7280;
+
+    font-size: 16px;
+}
+
+
+/* =====================================================
+   FORM CARD
+   ===================================================== */
+
+.resource-form-card {
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 16px;
+
+    border: 1px solid #e5e7eb;
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =====================================================
+   FORM GROUP
+   ===================================================== */
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+
+.form-group label {
+    display: block;
+
+    font-weight: bold;
+
+    color: #374151;
+
+    margin-bottom: 8px;
+}
+
+
+/* =====================================================
+   INPUTS
+   ===================================================== */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 9px;
+
+    background: #f9fafb;
+
+    color: #111827;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #4f46e5;
+
+    background: white;
+
+    box-shadow:
+        0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+
+/* ===============================
+   DISABLED SELECT
+   =============================== */
+
+.form-group select:disabled {
+    background: #e5e7eb;
+
+    color: #9ca3af;
+
+    cursor: not-allowed;
+}
+
+
+/* ===============================
+   TEXTAREA
+   =============================== */
+
+.form-group textarea {
+    resize: vertical;
+
+    min-height: 100px;
+}
+
+
+/* ===============================
+   FILE INPUT
+   =============================== */
+
+.form-group input[type="file"] {
+    padding: 10px;
+
+    background: white;
+
+    cursor: pointer;
+}
+
+
+/* ===============================
+   SMALL TEXT
+   =============================== */
+
+.form-group small {
+    display: block;
+
+    margin-top: 6px;
+
+    color: #6b7280;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   FORM BUTTONS
+   ===================================================== */
+
+.form-buttons {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 30px;
+
+    flex-wrap: wrap;
+}
+
+
+/* ===============================
+   ADD BUTTON
+   =============================== */
+
+.add-button {
+    border: none;
+
+    background: #4f46e5;
+
+    color: white;
+
+    padding: 12px 22px;
+
+    border-radius: 9px;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.add-button:hover {
+    background: #3730a3;
+
+    transform: translateY(-1px);
+}
+
+
+/* ===============================
+   CANCEL BUTTON
+   =============================== */
+
+.cancel-button {
+    display: inline-block;
+
+    background: #f3f4f6;
+
+    color: #374151;
+
+    padding: 12px 22px;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+
+.cancel-button:hover {
+    background: #e5e7eb;
+}
+
+
+/* =====================================================
+   MESSAGE
+   ===================================================== */
+
+.resource-message {
+    margin-top: 20px;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    display: none;
+}
+
+
+.resource-message.success {
+    display: block;
+
+    background: #dcfce7;
+
+    color: #166534;
+
+    border: 1px solid #bbf7d0;
+}
+
+
+.resource-message.error {
+    display: block;
+
+    background: #fee2e2;
+
+    color: #991b1b;
+
+    border: 1px solid #fecaca;
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+footer {
+    background: #111827;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 25px 20px;
+}
+
+
+footer p {
+    color: #d1d5db;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (max-width: 700px) {
+
+    .resource-navbar {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+
+    .resource-nav-links {
+        justify-content: center;
+
+        flex-wrap: wrap;
+    }
+
+
+    .resource-container {
+        padding: 45px 15px 60px;
+    }
+
+
+    .resource-title h1 {
+        font-size: 32px;
+    }
+
+
+    .resource-form-card {
+        padding: 25px 20px;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 500px) {
+
+    .resource-logo {
+        font-size: 19px;
+    }
+
+
+    .resource-nav-links {
+        width: 100%;
+    }
+
+
+    .resource-nav-links a {
+        flex: 1;
+
+        text-align: center;
+    }
+
+
+    .form-buttons {
+        flex-direction: column;
+    }
+
+
+    .add-button,
+    .cancel-button {
+        width: 100%;
+
+        text-align: center;
+    }
+
+}

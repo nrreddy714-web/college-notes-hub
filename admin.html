@@ -1,0 +1,2375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>College Notes Hub - Admin Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="admin-style.css"
+    >
+
+    <style>
+
+        /* =================================================
+           RESOURCE BUTTONS
+           ================================================= */
+
+        .resource-admin-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .edit-resource-button,
+        .delete-resource-button {
+            border: none;
+            padding: 9px 14px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .edit-resource-button {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .edit-resource-button:hover {
+            background: #3730a3;
+        }
+
+        .delete-resource-button {
+            background: #dc2626;
+            color: white;
+        }
+
+        .delete-resource-button:hover {
+            background: #b91c1c;
+        }
+
+
+        /* =================================================
+           EDIT RESOURCE MODAL
+           ================================================= */
+
+        .edit-resource-modal {
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.55);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+
+            z-index: 9999;
+        }
+
+        .edit-resource-box {
+            width: 100%;
+            max-width: 520px;
+
+            background: white;
+
+            padding: 28px;
+
+            border-radius: 16px;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.25);
+
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .edit-resource-box h2 {
+            color: #111827;
+            margin-bottom: 20px;
+        }
+
+        .edit-resource-box label {
+            display: block;
+            margin-top: 14px;
+            margin-bottom: 6px;
+            color: #374151;
+            font-weight: bold;
+        }
+
+        .edit-resource-box input,
+        .edit-resource-box textarea,
+        .edit-resource-box select {
+            width: 100%;
+
+            padding: 11px 12px;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 8px;
+
+            background: #f9fafb;
+
+            font-size: 15px;
+
+            font-family: Arial, sans-serif;
+
+            outline: none;
+
+            box-sizing: border-box;
+        }
+
+        .edit-resource-box input:focus,
+        .edit-resource-box textarea:focus,
+        .edit-resource-box select:focus {
+            border-color: #4f46e5;
+
+            background: white;
+
+            box-shadow:
+                0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        .edit-resource-actions {
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 10px;
+
+            margin-top: 25px;
+
+            flex-wrap: wrap;
+        }
+
+        .edit-resource-actions button {
+            border: none;
+
+            padding: 11px 17px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            font-size: 14px;
+        }
+
+        .cancel-edit-button {
+            background: #e5e7eb;
+            color: #111827;
+        }
+
+        .save-edit-button {
+            background: #4f46e5;
+            color: white;
+        }
+
+
+        /* =================================================
+           ACTIVITY HISTORY
+           ================================================= */
+
+        .activity-history {
+            display: grid;
+            gap: 15px;
+        }
+
+        .history-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+
+            padding: 16px 18px;
+
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .history-item:last-child {
+            border-bottom: none;
+        }
+
+        .history-icon {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #eef2ff;
+
+            flex-shrink: 0;
+
+            font-size: 20px;
+        }
+
+        .history-content {
+            flex: 1;
+        }
+
+        .history-content strong {
+            display: block;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+
+        .history-content p {
+            color: #6b7280;
+            font-size: 14px;
+            margin: 0 0 4px;
+        }
+
+        .history-time {
+            color: #9ca3af;
+            font-size: 12px;
+        }
+
+        .clear-history-button {
+            border: none;
+
+            background: #6b7280;
+
+            color: white;
+
+            padding: 9px 14px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+        }
+
+        .clear-history-button:hover {
+            background: #4b5563;
+        }
+
+        .history-empty {
+            text-align: center;
+
+            padding: 30px 20px;
+
+            color: #6b7280;
+        }
+
+
+        /* =================================================
+           MOBILE
+           ================================================= */
+
+        @media (max-width: 600px) {
+
+            .edit-resource-actions {
+                flex-direction: column;
+            }
+
+            .edit-resource-actions button {
+                width: 100%;
+            }
+
+            .history-item {
+                padding: 14px 10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         HEADER
+         ================================================= -->
+
+    <header class="admin-header">
+
+        <div class="admin-navbar">
+
+
+            <div class="admin-logo">
+                🛠️ College Notes Hub
+            </div>
+
+
+            <div class="admin-nav-right">
+
+                <span id="adminWelcome">
+                    👤 Administrator
+                </span>
+
+
+                <a
+                    href="index.html"
+                    class="home-button"
+                >
+                    🏠 Home
+                </a>
+
+
+                <button
+                    id="adminLogoutBtn"
+                    class="logout-button"
+                    type="button"
+                >
+                    🚪 Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =================================================
+         MAIN
+         ================================================= -->
+
+    <main class="admin-container">
+
+
+        <!-- TITLE -->
+
+        <div class="admin-title">
+
+            <span class="admin-badge">
+                🔐 Administrator
+            </span>
+
+            <h1>
+                Admin Dashboard
+            </h1>
+
+            <p>
+                Manage College Notes Hub resources,
+                subjects and users.
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             STATISTICS
+             ================================================= -->
+
+        <section class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    👥
+                </div>
+
+                <div>
+
+                    <h3>
+                        Users
+                    </h3>
+
+                    <strong id="userCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📚
+                </div>
+
+                <div>
+
+                    <h3>
+                        Subjects
+                    </h3>
+
+                    <strong id="subjectCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📖
+                </div>
+
+                <div>
+
+                    <h3>
+                        Notes
+                    </h3>
+
+                    <strong id="notesCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    💻
+                </div>
+
+                <div>
+
+                    <h3>
+                        Lab Programs
+                    </h3>
+
+                    <strong id="labCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📄
+                </div>
+
+                <div>
+
+                    <h3>
+                        Question Papers
+                    </h3>
+
+                    <strong id="paperCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MANAGEMENT
+             ================================================= -->
+
+        <section class="admin-actions">
+
+
+            <div class="section-title">
+
+                <h2>
+                    ⚙️ Management
+                </h2>
+
+                <p>
+                    Manage your College Notes Hub.
+                </p>
+
+            </div>
+
+
+            <div class="action-grid">
+
+
+                <!-- ADD RESOURCE -->
+
+                <div class="action-card">
+
+                    <div class="action-icon">
+                        ➕
+                    </div>
+
+                    <h3>
+                        Add Resource
+                    </h3>
+
+                    <p>
+                        Add notes, lab programs and
+                        question papers.
+                    </p>
+
+                    <a
+                        href="add-resource.html"
+                        class="admin-add-resource-button"
+                    >
+                        ➕ Add Resource
+                    </a>
+
+                </div>
+
+
+
+                <!-- MANAGE SUBJECTS -->
+
+                <div class="action-card">
+
+                    <div class="action-icon">
+                        📚
+                    </div>
+
+                    <h3>
+                        Manage Subjects
+                    </h3>
+
+                    <p>
+                        Add or manage semester subjects.
+                    </p>
+
+                    <a
+                        href="manage-subjects.html"
+                        class="admin-add-resource-button"
+                    >
+                        📚 Manage Subjects
+                    </a>
+
+                </div>
+
+
+
+                <!-- MANAGE USERS -->
+
+                <div class="action-card">
+
+                    <div class="action-icon">
+                        👥
+                    </div>
+
+                    <h3>
+                        Manage Users
+                    </h3>
+
+                    <p>
+                        View registered student accounts.
+                    </p>
+
+                    <a
+                        href="manage-users.html"
+                        class="admin-add-resource-button"
+                    >
+                        👥 Manage Users
+                    </a>
+
+                </div>
+
+
+
+                <!-- STATISTICS -->
+
+                <div class="action-card">
+
+                    <div class="action-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        Statistics
+                    </h3>
+
+                    <p>
+                        View platform usage information.
+                    </p>
+
+                    <button
+                        type="button"
+                        onclick="showStatistics()"
+                    >
+                        View Statistics
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ADDED RESOURCES
+             ================================================= -->
+
+        <section class="activity-section">
+
+            <div class="section-title">
+
+                <h2>
+                    📚 Added Resources
+                </h2>
+
+                <p>
+                    Resources added through the Admin Panel.
+                </p>
+
+            </div>
+
+
+            <div
+                id="adminResourceList"
+                class="activity-card"
+            >
+                Loading resources...
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ACTIVITY HISTORY
+             ================================================= -->
+
+        <section class="activity-section">
+
+            <div class="section-title">
+
+                <h2>
+                    🕒 Activity History
+                </h2>
+
+                <p>
+                    Recent actions performed on the platform.
+                </p>
+
+            </div>
+
+
+            <div class="activity-card">
+
+                <div
+                    style="
+                        display:flex;
+                        justify-content:flex-end;
+                        margin-bottom:10px;
+                    "
+                >
+
+                    <button
+                        type="button"
+                        class="clear-history-button"
+                        onclick="clearActivityHistory()"
+                    >
+                        🗑️ Clear History
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="activityHistoryList"
+                    class="activity-history"
+                >
+                    Loading activity...
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             RECENT ACTIVITY
+             ================================================= -->
+
+        <section class="activity-section">
+
+            <div class="section-title">
+
+                <h2>
+                    📝 Platform Information
+                </h2>
+
+                <p>
+                    General information about your platform.
+                </p>
+
+            </div>
+
+
+            <div class="activity-card">
+
+
+                <div class="activity-item">
+
+                    <span class="activity-icon">
+                        👤
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            User registration
+                        </strong>
+
+                        <p>
+                            Students can register through
+                            the login page.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                    <span class="activity-icon">
+                        📚
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Resources
+                        </strong>
+
+                        <p>
+                            Admin-added resources are stored
+                            for the current website.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                    <span class="activity-icon">
+                        🔐
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Authentication
+                        </strong>
+
+                        <p>
+                            Login and administrator protection
+                            are enabled.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =================================================
+         EDIT RESOURCE MODAL
+         ================================================= -->
+
+    <div
+        id="editResourceModal"
+        class="edit-resource-modal"
+        style="display:none;"
+    >
+
+        <div class="edit-resource-box">
+
+
+            <h2>
+                ✏️ Edit Resource
+            </h2>
+
+
+            <label for="editResourceName">
+                Resource Name
+            </label>
+
+            <input
+                id="editResourceName"
+                type="text"
+                placeholder="Enter resource name"
+            >
+
+
+            <label for="editResourceDescription">
+                Description
+            </label>
+
+            <textarea
+                id="editResourceDescription"
+                rows="4"
+                placeholder="Enter description"
+            ></textarea>
+
+
+            <label for="editResourceSemester">
+                Semester
+            </label>
+
+            <select
+                id="editResourceSemester"
+            >
+
+                <option value="1">
+                    1st Semester
+                </option>
+
+                <option value="2">
+                    2nd Semester
+                </option>
+
+                <option value="3">
+                    3rd Semester
+                </option>
+
+                <option value="4">
+                    4th Semester
+                </option>
+
+                <option value="5">
+                    5th Semester
+                </option>
+
+                <option value="6">
+                    6th Semester
+                </option>
+
+            </select>
+
+
+            <label for="editResourceSubject">
+                Subject
+            </label>
+
+            <input
+                id="editResourceSubject"
+                type="text"
+                placeholder="Enter subject"
+            >
+
+
+            <label for="editResourceType">
+                Resource Type
+            </label>
+
+            <select
+                id="editResourceType"
+            >
+
+                <option value="materials">
+                    📚 Study Materials
+                </option>
+
+                <option value="notes">
+                    📖 Study Notes
+                </option>
+
+                <option value="lab">
+                    💻 Lab Programs
+                </option>
+
+                <option value="papers">
+                    📄 Question Papers
+                </option>
+
+            </select>
+
+
+            <div class="edit-resource-actions">
+
+
+                <button
+                    type="button"
+                    class="cancel-edit-button"
+                    onclick="closeEditResource()"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    type="button"
+                    class="save-edit-button"
+                    onclick="saveEditedResource()"
+                >
+                    💾 Save Changes
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         FOOTER
+         ================================================= -->
+
+    <footer>
+
+        <p>
+            © 2026 College Notes Hub |
+            Admin Panel
+        </p>
+
+    </footer>
+
+
+
+    <!-- =================================================
+         JAVASCRIPT
+         ================================================= -->
+
+    <script>
+
+
+        // =================================================
+        // EDIT INDEX
+        // =================================================
+
+        let editingResourceIndex = null;
+
+
+
+        // =================================================
+        // ACTIVITY STORAGE KEY
+        // =================================================
+
+        const ACTIVITY_KEY =
+            "college_activity_history";
+
+
+
+        // =================================================
+        // CHECK ADMIN
+        // =================================================
+
+        function checkAdminAccess() {
+
+            const sessionUser =
+                localStorage.getItem(
+                    "login_auth_session"
+                );
+
+
+            const storedUsers =
+                localStorage.getItem(
+                    "login_auth_users"
+                );
+
+
+            if (
+                !sessionUser ||
+                !storedUsers
+            ) {
+
+                window.location.href =
+                    "login.html";
+
+                return false;
+
+            }
+
+
+            try {
+
+                const users =
+                    JSON.parse(
+                        storedUsers
+                    );
+
+
+                const loggedUser =
+                    users.find(
+                        function(user) {
+
+                            return (
+                                user.name ===
+                                sessionUser
+                            );
+
+                        }
+                    );
+
+
+                if (!loggedUser) {
+
+                    window.location.href =
+                        "index.html";
+
+                    return false;
+
+                }
+
+
+                if (
+                    (
+                        loggedUser.username ||
+                        ""
+                    )
+                    .toLowerCase() !==
+                    "admin"
+                ) {
+
+                    alert(
+                        "Access denied. Only the administrator can access this page."
+                    );
+
+
+                    window.location.href =
+                        "index.html";
+
+                    return false;
+
+                }
+
+
+                document.getElementById(
+                    "adminWelcome"
+                ).textContent =
+                    "👤 " +
+                    loggedUser.name;
+
+
+                return true;
+
+            }
+
+            catch (error) {
+
+                window.location.href =
+                    "index.html";
+
+                return false;
+
+            }
+
+        }
+
+
+
+        // =================================================
+        // LOG ACTIVITY
+        // =================================================
+
+        function logActivity(
+            icon,
+            action,
+            details
+        ) {
+
+            let history = [];
+
+
+            const storedHistory =
+                localStorage.getItem(
+                    ACTIVITY_KEY
+                );
+
+
+            if (storedHistory) {
+
+                try {
+
+                    history =
+                        JSON.parse(
+                            storedHistory
+                        );
+
+                }
+
+                catch (error) {
+
+                    history = [];
+
+                }
+
+            }
+
+
+            history.unshift({
+
+                id:
+                    Date.now(),
+
+                icon:
+                    icon,
+
+                action:
+                    action,
+
+                details:
+                    details,
+
+                time:
+                    new Date().toLocaleString()
+
+            });
+
+
+            // Keep latest 50 actions
+
+            history =
+                history.slice(
+                    0,
+                    50
+                );
+
+
+            localStorage.setItem(
+                ACTIVITY_KEY,
+                JSON.stringify(
+                    history
+                )
+            );
+
+
+            loadActivityHistory();
+
+        }
+
+
+
+        // =================================================
+        // LOAD ACTIVITY HISTORY
+        // =================================================
+
+        function loadActivityHistory() {
+
+            const container =
+                document.getElementById(
+                    "activityHistoryList"
+                );
+
+
+            const storedHistory =
+                localStorage.getItem(
+                    ACTIVITY_KEY
+                );
+
+
+            if (!storedHistory) {
+
+                container.innerHTML = `
+
+                    <div class="history-empty">
+
+                        🕒
+
+                        <br><br>
+
+                        <strong>
+                            No activity recorded yet.
+                        </strong>
+
+                        <p>
+                            Admin actions will appear here.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            let history = [];
+
+
+            try {
+
+                history =
+                    JSON.parse(
+                        storedHistory
+                    );
+
+            }
+
+            catch (error) {
+
+                history = [];
+
+            }
+
+
+            if (
+                !Array.isArray(history) ||
+                history.length === 0
+            ) {
+
+                container.innerHTML = `
+
+                    <div class="history-empty">
+
+                        🕒 No activity yet.
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            container.innerHTML =
+                "";
+
+
+            history.forEach(
+                function(item) {
+
+                    const row =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    row.className =
+                        "history-item";
+
+
+                    row.innerHTML = `
+
+                        <div class="history-icon">
+
+                            ${escapeHTML(
+                                item.icon
+                            )}
+
+                        </div>
+
+
+                        <div class="history-content">
+
+                            <strong>
+
+                                ${escapeHTML(
+                                    item.action
+                                )}
+
+                            </strong>
+
+
+                            <p>
+
+                                ${escapeHTML(
+                                    item.details
+                                )}
+
+                            </p>
+
+
+                            <span class="history-time">
+
+                                🕒
+                                ${escapeHTML(
+                                    item.time
+                                )}
+
+                            </span>
+
+                        </div>
+
+                    `;
+
+
+                    container.appendChild(
+                        row
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        // =================================================
+        // CLEAR HISTORY
+        // =================================================
+
+        function clearActivityHistory() {
+
+            const answer =
+                confirm(
+                    "Clear all activity history?"
+                );
+
+
+            if (!answer) {
+
+                return;
+
+            }
+
+
+            localStorage.removeItem(
+                ACTIVITY_KEY
+            );
+
+
+            loadActivityHistory();
+
+
+            alert(
+                "✅ Activity history cleared."
+            );
+
+        }
+
+
+
+        // =================================================
+        // UPDATE STATISTICS
+        // =================================================
+
+        function updateStatistics() {
+
+            let users = [];
+
+
+            const storedUsers =
+                localStorage.getItem(
+                    "login_auth_users"
+                );
+
+
+            if (storedUsers) {
+
+                try {
+
+                    users =
+                        JSON.parse(
+                            storedUsers
+                        );
+
+                }
+
+                catch (error) {
+
+                    users = [];
+
+                }
+
+            }
+
+
+            document.getElementById(
+                "userCount"
+            ).textContent =
+                users.length;
+
+
+            let resources = [];
+
+
+            const storedResources =
+                localStorage.getItem(
+                    "college_resources"
+                );
+
+
+            if (storedResources) {
+
+                try {
+
+                    resources =
+                        JSON.parse(
+                            storedResources
+                        );
+
+                }
+
+                catch (error) {
+
+                    resources = [];
+
+                }
+
+            }
+
+
+            const subjectSet =
+                new Set();
+
+
+            [
+                "DBMS",
+                "Artificial Intelligence",
+                "Probability and Statistics",
+                "Feature Engineering"
+            ]
+            .forEach(
+                function(subject) {
+
+                    subjectSet.add(
+                        subject
+                    );
+
+                }
+            );
+
+
+            const customSubjects =
+                localStorage.getItem(
+                    "college_custom_subjects"
+                );
+
+
+            if (customSubjects) {
+
+                try {
+
+                    const custom =
+                        JSON.parse(
+                            customSubjects
+                        );
+
+
+                    Object.values(
+                        custom
+                    )
+                    .flat()
+                    .forEach(
+                        function(subject) {
+
+                            subjectSet.add(
+                                subject
+                            );
+
+                        }
+                    );
+
+                }
+
+                catch (error) {
+                }
+
+            }
+
+
+            resources.forEach(
+                function(resource) {
+
+                    if (
+                        resource.subject
+                    ) {
+
+                        subjectSet.add(
+                            resource.subject
+                        );
+
+                    }
+
+                }
+            );
+
+
+            document.getElementById(
+                "subjectCount"
+            ).textContent =
+                subjectSet.size;
+
+
+            document.getElementById(
+                "notesCount"
+            ).textContent =
+                resources.filter(
+                    function(resource) {
+
+                        return (
+                            resource.type ===
+                            "notes"
+                        );
+
+                    }
+                ).length;
+
+
+            document.getElementById(
+                "labCount"
+            ).textContent =
+                resources.filter(
+                    function(resource) {
+
+                        return (
+                            resource.type ===
+                            "lab"
+                        );
+
+                    }
+                ).length;
+
+
+            document.getElementById(
+                "paperCount"
+            ).textContent =
+                resources.filter(
+                    function(resource) {
+
+                        return (
+                            resource.type ===
+                            "papers"
+                        );
+
+                    }
+                ).length;
+
+        }
+
+
+
+        // =================================================
+        // LOAD RESOURCES
+        // =================================================
+
+        function loadAdminResources() {
+
+            const container =
+                document.getElementById(
+                    "adminResourceList"
+                );
+
+
+            const data =
+                localStorage.getItem(
+                    "college_resources"
+                );
+
+
+            if (!data) {
+
+                container.innerHTML = `
+
+                    <div class="activity-item">
+
+                        <span class="activity-icon">
+                            📭
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                No resources added yet
+                            </strong>
+
+                            <p>
+                                Use Add Resource to
+                                add your first resource.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            let resources = [];
+
+
+            try {
+
+                resources =
+                    JSON.parse(
+                        data
+                    );
+
+            }
+
+            catch (error) {
+
+                resources = [];
+
+            }
+
+
+            if (
+                !Array.isArray(resources) ||
+                resources.length === 0
+            ) {
+
+                container.innerHTML = `
+
+                    <div class="activity-item">
+
+                        <span class="activity-icon">
+                            📭
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                No resources added yet
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            container.innerHTML =
+                "";
+
+
+            resources.forEach(
+                function(
+                    resource,
+                    index
+                ) {
+
+                    let icon =
+                        "📚";
+
+
+                    if (
+                        resource.type ===
+                        "notes"
+                    ) {
+
+                        icon =
+                            "📖";
+
+                    }
+
+                    else if (
+                        resource.type ===
+                        "lab"
+                    ) {
+
+                        icon =
+                            "💻";
+
+                    }
+
+                    else if (
+                        resource.type ===
+                        "papers"
+                    ) {
+
+                        icon =
+                            "📄";
+
+                    }
+
+
+                    const item =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    item.className =
+                        "activity-item";
+
+
+                    item.style.alignItems =
+                        "flex-start";
+
+
+                    item.innerHTML = `
+
+                        <span class="activity-icon">
+
+                            ${icon}
+
+                        </span>
+
+
+                        <div style="flex:1;">
+
+                            <strong>
+
+                                ${escapeHTML(
+                                    resource.name
+                                )}
+
+                            </strong>
+
+
+                            <p>
+
+                                📚
+
+                                ${getSemesterName(
+                                    resource.semester
+                                )}
+
+                                •
+
+                                ${escapeHTML(
+                                    resource.subject
+                                )}
+
+                            </p>
+
+
+                            <p>
+
+                                📁
+
+                                ${escapeHTML(
+                                    resource.fileName
+                                )}
+
+                            </p>
+
+
+                            <div
+                                class="resource-admin-buttons"
+                            >
+
+                                <button
+                                    type="button"
+                                    class="edit-resource-button"
+                                    onclick="editResource(${index})"
+                                >
+                                    ✏️ Edit
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="delete-resource-button"
+                                    onclick="deleteResource(${index})"
+                                >
+                                    🗑️ Delete
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+
+                    container.appendChild(
+                        item
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        // =================================================
+        // SEMESTER NAME
+        // =================================================
+
+        function getSemesterName(
+            semester
+        ) {
+
+            const names = {
+
+                "1":
+                    "1st Semester",
+
+                "2":
+                    "2nd Semester",
+
+                "3":
+                    "3rd Semester",
+
+                "4":
+                    "4th Semester",
+
+                "5":
+                    "5th Semester",
+
+                "6":
+                    "6th Semester"
+
+            };
+
+
+            return (
+                names[semester] ||
+                semester
+            );
+
+        }
+
+
+
+        // =================================================
+        // EDIT RESOURCE
+        // =================================================
+
+        function editResource(
+            index
+        ) {
+
+            const data =
+                localStorage.getItem(
+                    "college_resources"
+                );
+
+
+            if (!data) {
+
+                return;
+
+            }
+
+
+            let resources;
+
+
+            try {
+
+                resources =
+                    JSON.parse(
+                        data
+                    );
+
+            }
+
+            catch (error) {
+
+                return;
+
+            }
+
+
+            const resource =
+                resources[index];
+
+
+            if (!resource) {
+
+                return;
+
+            }
+
+
+            editingResourceIndex =
+                index;
+
+
+            document.getElementById(
+                "editResourceName"
+            ).value =
+                resource.name || "";
+
+
+            document.getElementById(
+                "editResourceDescription"
+            ).value =
+                resource.description || "";
+
+
+            document.getElementById(
+                "editResourceSemester"
+            ).value =
+                resource.semester || "3";
+
+
+            document.getElementById(
+                "editResourceSubject"
+            ).value =
+                resource.subject || "";
+
+
+            document.getElementById(
+                "editResourceType"
+            ).value =
+                resource.type || "materials";
+
+
+            document.getElementById(
+                "editResourceModal"
+            ).style.display =
+                "flex";
+
+        }
+
+
+
+        // =================================================
+        // CLOSE EDIT
+        // =================================================
+
+        function closeEditResource() {
+
+            editingResourceIndex =
+                null;
+
+
+            document.getElementById(
+                "editResourceModal"
+            ).style.display =
+                "none";
+
+        }
+
+
+
+        // =================================================
+        // SAVE EDIT
+        // =================================================
+
+        function saveEditedResource() {
+
+            if (
+                editingResourceIndex ===
+                null
+            ) {
+
+                return;
+
+            }
+
+
+            const data =
+                localStorage.getItem(
+                    "college_resources"
+                );
+
+
+            if (!data) {
+
+                return;
+
+            }
+
+
+            let resources;
+
+
+            try {
+
+                resources =
+                    JSON.parse(
+                        data
+                    );
+
+            }
+
+            catch (error) {
+
+                return;
+
+            }
+
+
+            const resource =
+                resources[
+                    editingResourceIndex
+                ];
+
+
+            if (!resource) {
+
+                return;
+
+            }
+
+
+            const name =
+                document.getElementById(
+                    "editResourceName"
+                ).value.trim();
+
+
+            const description =
+                document.getElementById(
+                    "editResourceDescription"
+                ).value.trim();
+
+
+            const semester =
+                document.getElementById(
+                    "editResourceSemester"
+                ).value;
+
+
+            const subject =
+                document.getElementById(
+                    "editResourceSubject"
+                ).value.trim();
+
+
+            const type =
+                document.getElementById(
+                    "editResourceType"
+                ).value;
+
+
+            if (
+                !name ||
+                !subject
+            ) {
+
+                alert(
+                    "Please enter the resource name and subject."
+                );
+
+                return;
+
+            }
+
+
+            const oldName =
+                resource.name;
+
+
+            resource.name =
+                name;
+
+
+            resource.description =
+                description;
+
+
+            resource.semester =
+                semester;
+
+
+            resource.subject =
+                subject;
+
+
+            resource.type =
+                type;
+
+
+            localStorage.setItem(
+                "college_resources",
+                JSON.stringify(
+                    resources
+                )
+            );
+
+
+            logActivity(
+                "✏️",
+                "Resource Edited",
+                oldName +
+                " → " +
+                name
+            );
+
+
+            closeEditResource();
+
+
+            loadAdminResources();
+
+            updateStatistics();
+
+
+            alert(
+                "✅ Resource updated successfully!"
+            );
+
+        }
+
+
+
+        // =================================================
+        // DELETE RESOURCE
+        // =================================================
+
+        function deleteResource(
+            index
+        ) {
+
+            const data =
+                localStorage.getItem(
+                    "college_resources"
+                );
+
+
+            if (!data) {
+
+                return;
+
+            }
+
+
+            let resources;
+
+
+            try {
+
+                resources =
+                    JSON.parse(
+                        data
+                    );
+
+            }
+
+            catch (error) {
+
+                return;
+
+            }
+
+
+            const resource =
+                resources[index];
+
+
+            if (!resource) {
+
+                return;
+
+            }
+
+
+            const answer =
+                confirm(
+                    "Delete \"" +
+                    resource.name +
+                    "\"?"
+                );
+
+
+            if (!answer) {
+
+                return;
+
+            }
+
+
+            const deletedName =
+                resource.name;
+
+
+            resources.splice(
+                index,
+                1
+            );
+
+
+            localStorage.setItem(
+                "college_resources",
+                JSON.stringify(
+                    resources
+                )
+            );
+
+
+            logActivity(
+                "🗑️",
+                "Resource Deleted",
+                deletedName
+            );
+
+
+            loadAdminResources();
+
+            updateStatistics();
+
+
+            alert(
+                "✅ Resource deleted successfully!"
+            );
+
+        }
+
+
+
+        // =================================================
+        // STATISTICS POPUP
+        // =================================================
+
+        function showStatistics() {
+
+            alert(
+
+                "📊 College Notes Hub Statistics\n\n" +
+
+                "👥 Users: " +
+                document.getElementById(
+                    "userCount"
+                ).textContent +
+
+                "\n\n📚 Subjects: " +
+                document.getElementById(
+                    "subjectCount"
+                ).textContent +
+
+                "\n\n📖 Notes: " +
+                document.getElementById(
+                    "notesCount"
+                ).textContent +
+
+                "\n\n💻 Lab Programs: " +
+                document.getElementById(
+                    "labCount"
+                ).textContent +
+
+                "\n\n📄 Question Papers: " +
+                document.getElementById(
+                    "paperCount"
+                ).textContent
+
+            );
+
+        }
+
+
+
+        // =================================================
+        // ESCAPE HTML
+        // =================================================
+
+        function escapeHTML(
+            value
+        ) {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.textContent =
+                value || "";
+
+
+            return div.innerHTML;
+
+        }
+
+
+
+        // =================================================
+        // LOGOUT
+        // =================================================
+
+        document
+            .getElementById(
+                "adminLogoutBtn"
+            )
+            .addEventListener(
+                "click",
+                function() {
+
+                    localStorage.removeItem(
+                        "login_auth_session"
+                    );
+
+
+                    localStorage.removeItem(
+                        "remembered_user"
+                    );
+
+
+                    window.location.href =
+                        "login.html";
+
+                }
+            );
+
+
+
+        // =================================================
+        // MODAL OUTSIDE CLICK
+        // =================================================
+
+        document
+            .getElementById(
+                "editResourceModal"
+            )
+            .addEventListener(
+                "click",
+                function(event) {
+
+                    if (
+                        event.target ===
+                        this
+                    ) {
+
+                        closeEditResource();
+
+                    }
+
+                }
+            );
+
+
+
+        // =================================================
+        // START
+        // =================================================
+
+        if (
+            checkAdminAccess()
+        ) {
+
+            updateStatistics();
+
+            loadAdminResources();
+
+            loadActivityHistory();
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

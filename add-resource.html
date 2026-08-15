@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>College Notes Hub - Add Resource</title>
+
+    <link
+        rel="stylesheet"
+        href="admin-style.css"
+    >
+
+    <style>
+
+        /* =================================================
+           ADD RESOURCE PAGE
+           ================================================= */
+
+        .add-resource-page {
+            max-width: 850px;
+            margin: auto;
+            padding: 55px 20px 80px;
+        }
+
+
+        .add-resource-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+
+        .add-resource-title h1 {
+            font-size: 38px;
+            color: #111827;
+            margin: 12px 0;
+        }
+
+
+        .add-resource-title p {
+            color: #6b7280;
+        }
+
+
+        /* =================================================
+           FORM CARD
+           ================================================= */
+
+        .resource-form-card {
+            background: white;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 16px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 7px 25px rgba(0, 0, 0, 0.07);
+        }
+
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-weight: bold;
+
+            color: #374151;
+        }
+
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+
+            padding: 12px 13px;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 8px;
+
+            background: #f9fafb;
+
+            font-size: 15px;
+
+            font-family: Arial, sans-serif;
+
+            box-sizing: border-box;
+
+            outline: none;
+        }
+
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #4f46e5;
+
+            background: white;
+
+            box-shadow:
+                0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+
+        .form-group textarea {
+            resize: vertical;
+
+            min-height: 100px;
+        }
+
+
+        .file-note {
+            margin-top: 7px;
+
+            color: #6b7280;
+
+            font-size: 13px;
+        }
+
+
+        /* =================================================
+           BUTTONS
+           ================================================= */
+
+        .form-actions {
+            display: flex;
+
+            gap: 10px;
+
+            justify-content: flex-end;
+
+            margin-top: 25px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .add-resource-submit,
+        .cancel-resource-button {
+            border: none;
+
+            padding: 12px 18px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            font-size: 14px;
+        }
+
+
+        .add-resource-submit {
+            background: #4f46e5;
+
+            color: white;
+        }
+
+
+        .add-resource-submit:hover {
+            background: #3730a3;
+        }
+
+
+        .cancel-resource-button {
+            background: #e5e7eb;
+
+            color: #111827;
+        }
+
+
+        .cancel-resource-button:hover {
+            background: #d1d5db;
+        }
+
+
+        /* =================================================
+           MESSAGE
+           ================================================= */
+
+        .resource-message {
+            margin-top: 18px;
+
+            padding: 12px;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            display: none;
+        }
+
+
+        .resource-message.show {
+            display: block;
+        }
+
+
+        .resource-message.success {
+            background: #dcfce7;
+
+            color: #166534;
+        }
+
+
+        .resource-message.error {
+            background: #fee2e2;
+
+            color: #991b1b;
+        }
+
+
+        /* =================================================
+           MOBILE
+           ================================================= */
+
+        @media (max-width: 600px) {
+
+            .add-resource-page {
+                padding:
+                    45px 15px 60px;
+            }
+
+
+            .add-resource-title h1 {
+                font-size: 30px;
+            }
+
+
+            .resource-form-card {
+                padding: 22px;
+            }
+
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+
+            .form-actions button {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         HEADER
+         ================================================= -->
+
+    <header class="admin-header">
+
+        <div class="admin-navbar">
+
+
+            <div class="admin-logo">
+                🛠️ College Notes Hub
+            </div>
+
+
+            <div class="admin-nav-right">
+
+                <span id="adminWelcome">
+                    👤 Administrator
+                </span>
+
+
+                <a
+                    href="admin.html"
+                    class="home-button"
+                >
+                    🛠️ Admin Dashboard
+                </a>
+
+
+                <a
+                    href="index.html"
+                    class="home-button"
+                >
+                    🏠 Home
+                </a>
+
+
+                <button
+                    id="resourceLogoutBtn"
+                    class="logout-button"
+                    type="button"
+                >
+                    🚪 Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =================================================
+         MAIN
+         ================================================= -->
+
+    <main class="add-resource-page">
+
+
+        <div class="add-resource-title">
+
+            <span class="admin-badge">
+                ➕ Resource Management
+            </span>
+
+
+            <h1>
+                Add New Resource
+            </h1>
+
+
+            <p>
+                Add notes, lab programs, question papers
+                and study materials.
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             FORM
+             ================================================= -->
+
+        <section class="resource-form-card">
+
+
+            <form
+                id="resourceForm"
+            >
+
+
+                <!-- SEMESTER -->
+
+                <div class="form-group">
+
+                    <label for="resourceSemester">
+                        Select Semester
+                    </label>
+
+
+                    <select
+                        id="resourceSemester"
+                        required
+                    >
+
+                        <option value="">
+                            -- Select Semester --
+                        </option>
+
+                        <option value="1">
+                            1st Semester
+                        </option>
+
+                        <option value="2">
+                            2nd Semester
+                        </option>
+
+                        <option value="3">
+                            3rd Semester
+                        </option>
+
+                        <option value="4">
+                            4th Semester
+                        </option>
+
+                        <option value="5">
+                            5th Semester
+                        </option>
+
+                        <option value="6">
+                            6th Semester
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- SUBJECT -->
+
+                <div class="form-group">
+
+                    <label for="resourceSubject">
+                        Subject
+                    </label>
+
+
+                    <select
+                        id="resourceSubject"
+                        required
+                    >
+
+                        <option value="">
+                            -- Select Subject --
+                        </option>
+
+
+                        <option value="DBMS">
+                            DBMS
+                        </option>
+
+
+                        <option value="Artificial Intelligence">
+                            Artificial Intelligence
+                        </option>
+
+
+                        <option value="Probability and Statistics">
+                            Probability and Statistics
+                        </option>
+
+
+                        <option value="Feature Engineering">
+                            Feature Engineering
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- RESOURCE TYPE -->
+
+                <div class="form-group">
+
+                    <label for="resourceType">
+                        Resource Type
+                    </label>
+
+
+                    <select
+                        id="resourceType"
+                        required
+                    >
+
+                        <option value="">
+                            -- Select Resource Type --
+                        </option>
+
+
+                        <option value="notes">
+                            📖 Study Notes
+                        </option>
+
+
+                        <option value="lab">
+                            💻 Lab Programs
+                        </option>
+
+
+                        <option value="papers">
+                            📄 Question Papers
+                        </option>
+
+
+                        <option value="materials">
+                            📚 Study Materials
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- RESOURCE NAME -->
+
+                <div class="form-group">
+
+                    <label for="resourceName">
+                        Resource Name
+                    </label>
+
+
+                    <input
+                        id="resourceName"
+                        type="text"
+                        placeholder="Example: DBMS Unit 2 Notes"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="form-group">
+
+                    <label for="resourceDescription">
+                        Description
+                    </label>
+
+
+                    <textarea
+                        id="resourceDescription"
+                        placeholder="Enter resource description..."
+                    ></textarea>
+
+                </div>
+
+
+
+                <!-- FILE -->
+
+                <div class="form-group">
+
+                    <label for="resourceFile">
+                        Select PDF File
+                    </label>
+
+
+                    <input
+                        id="resourceFile"
+                        type="file"
+                        accept=".pdf,application/pdf"
+                        required
+                    >
+
+
+                    <p class="file-note">
+                        Select the PDF file you want to associate
+                        with this resource.
+                    </p>
+
+                </div>
+
+
+
+                <!-- MESSAGE -->
+
+                <div
+                    id="resourceMessage"
+                    class="resource-message"
+                ></div>
+
+
+
+                <!-- ACTIONS -->
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-resource-button"
+                        onclick="window.location.href='admin.html'"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="add-resource-submit"
+                    >
+                        ➕ Add Resource
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =================================================
+         FOOTER
+         ================================================= -->
+
+    <footer>
+
+        <p>
+            © 2026 College Notes Hub |
+            Admin Panel
+        </p>
+
+    </footer>
+
+
+
+    <!-- =================================================
+         JAVASCRIPT
+         ================================================= -->
+
+    <script>
+
+
+        // =================================================
+        // STORAGE KEYS
+        // =================================================
+
+        const RESOURCE_KEY =
+            "college_resources";
+
+
+        const ACTIVITY_KEY =
+            "college_activity_history";
+
+
+
+        // =================================================
+        // ADMIN ACCESS
+        // =================================================
+
+        function checkAdminAccess() {
+
+            const sessionUser =
+                localStorage.getItem(
+                    "login_auth_session"
+                );
+
+
+            const storedUsers =
+                localStorage.getItem(
+                    "login_auth_users"
+                );
+
+
+            if (
+                !sessionUser ||
+                !storedUsers
+            ) {
+
+                window.location.href =
+                    "login.html";
+
+                return false;
+
+            }
+
+
+            try {
+
+                const users =
+                    JSON.parse(
+                        storedUsers
+                    );
+
+
+                const loggedUser =
+                    users.find(
+                        function(user) {
+
+                            return (
+                                user.name ===
+                                sessionUser
+                            );
+
+                        }
+                    );
+
+
+                if (!loggedUser) {
+
+                    window.location.href =
+                        "index.html";
+
+                    return false;
+
+                }
+
+
+                if (
+                    (
+                        loggedUser.username ||
+                        ""
+                    )
+                    .toLowerCase() !==
+                    "admin"
+                ) {
+
+                    alert(
+                        "Access denied. Only the administrator can access this page."
+                    );
+
+
+                    window.location.href =
+                        "index.html";
+
+                    return false;
+
+                }
+
+
+                document.getElementById(
+                    "adminWelcome"
+                ).textContent =
+                    "👤 " +
+                    loggedUser.name;
+
+
+                return true;
+
+            }
+
+            catch (error) {
+
+                window.location.href =
+                    "index.html";
+
+                return false;
+
+            }
+
+        }
+
+
+
+        // =================================================
+        // LOG ACTIVITY
+        // =================================================
+
+        function logActivity(
+            icon,
+            action,
+            details
+        ) {
+
+            let history = [];
+
+
+            const storedHistory =
+                localStorage.getItem(
+                    ACTIVITY_KEY
+                );
+
+
+            if (storedHistory) {
+
+                try {
+
+                    history =
+                        JSON.parse(
+                            storedHistory
+                        );
+
+                }
+
+                catch (error) {
+
+                    history = [];
+
+                }
+
+            }
+
+
+            history.unshift({
+
+                id:
+                    Date.now(),
+
+                icon:
+                    icon,
+
+                action:
+                    action,
+
+                details:
+                    details,
+
+                time:
+                    new Date().toLocaleString()
+
+            });
+
+
+            history =
+                history.slice(
+                    0,
+                    50
+                );
+
+
+            localStorage.setItem(
+                ACTIVITY_KEY,
+                JSON.stringify(
+                    history
+                )
+            );
+
+        }
+
+
+
+        // =================================================
+        // LOAD SUBJECTS
+        // =================================================
+
+        function loadAvailableSubjects() {
+
+            const semester =
+                document.getElementById(
+                    "resourceSemester"
+                ).value;
+
+
+            const subjectSelect =
+                document.getElementById(
+                    "resourceSubject"
+                );
+
+
+            subjectSelect.innerHTML =
+                '<option value="">-- Select Subject --</option>';
+
+
+            if (!semester) {
+
+                return;
+
+            }
+
+
+            const defaultSubjects = {
+
+                "1": [],
+
+                "2": [],
+
+                "3": [
+                    "DBMS",
+                    "Artificial Intelligence",
+                    "Probability and Statistics",
+                    "Feature Engineering"
+                ],
+
+                "4": [],
+
+                "5": [],
+
+                "6": []
+
+            };
+
+
+            let availableSubjects =
+                [
+                    ...(defaultSubjects[
+                        semester
+                    ] || [])
+                ];
+
+
+            // Custom subjects
+
+            const customData =
+                localStorage.getItem(
+                    "college_custom_subjects"
+                );
+
+
+            if (customData) {
+
+                try {
+
+                    const customSubjects =
+                        JSON.parse(
+                            customData
+                        );
+
+
+                    (
+                        customSubjects[
+                            semester
+                        ] || []
+                    )
+                    .forEach(
+                        function(subject) {
+
+                            if (
+                                !availableSubjects.includes(
+                                    subject
+                                )
+                            ) {
+
+                                availableSubjects.push(
+                                    subject
+                                );
+
+                            }
+
+                        }
+                    );
+
+                }
+
+                catch (error) {
+                }
+
+            }
+
+
+            // Subjects from existing resources
+
+            const resourcesData =
+                localStorage.getItem(
+                    RESOURCE_KEY
+                );
+
+
+            if (resourcesData) {
+
+                try {
+
+                    const resources =
+                        JSON.parse(
+                            resourcesData
+                        );
+
+
+                    resources.forEach(
+                        function(resource) {
+
+                            if (
+                                resource.semester ===
+                                semester &&
+                                resource.subject &&
+                                !availableSubjects.includes(
+                                    resource.subject
+                                )
+                            ) {
+
+                                availableSubjects.push(
+                                    resource.subject
+                                );
+
+                            }
+
+                        }
+                    );
+
+                }
+
+                catch (error) {
+                }
+
+            }
+
+
+            availableSubjects.forEach(
+                function(subject) {
+
+                    const option =
+                        document.createElement(
+                            "option"
+                        );
+
+
+                    option.value =
+                        subject;
+
+
+                    option.textContent =
+                        subject;
+
+
+                    subjectSelect.appendChild(
+                        option
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        // =================================================
+        // MESSAGE
+        // =================================================
+
+        function showMessage(
+            text,
+            type
+        ) {
+
+            const message =
+                document.getElementById(
+                    "resourceMessage"
+                );
+
+
+            message.textContent =
+                text;
+
+
+            message.className =
+                "resource-message show " +
+                type;
+
+        }
+
+
+
+        // =================================================
+        // ADD RESOURCE
+        // =================================================
+
+        document
+            .getElementById(
+                "resourceForm"
+            )
+            .addEventListener(
+                "submit",
+                function(event) {
+
+                    event.preventDefault();
+
+
+                    const semester =
+                        document.getElementById(
+                            "resourceSemester"
+                        ).value;
+
+
+                    const subject =
+                        document.getElementById(
+                            "resourceSubject"
+                        ).value;
+
+
+                    const type =
+                        document.getElementById(
+                            "resourceType"
+                        ).value;
+
+
+                    const name =
+                        document.getElementById(
+                            "resourceName"
+                        ).value.trim();
+
+
+                    const description =
+                        document.getElementById(
+                            "resourceDescription"
+                        ).value.trim();
+
+
+                    const fileInput =
+                        document.getElementById(
+                            "resourceFile"
+                        );
+
+
+                    const file =
+                        fileInput.files[0];
+
+
+                    if (
+                        !semester ||
+                        !subject ||
+                        !type ||
+                        !name ||
+                        !file
+                    ) {
+
+                        showMessage(
+                            "Please fill in all required fields.",
+                            "error"
+                        );
+
+                        return;
+
+                    }
+
+
+                    // PDF check
+
+                    if (
+                        file.type !==
+                        "application/pdf"
+                    ) {
+
+                        showMessage(
+                            "Please select a PDF file.",
+                            "error"
+                        );
+
+                        return;
+
+                    }
+
+
+                    // -----------------------------------------
+                    // GET EXISTING RESOURCES
+                    // -----------------------------------------
+
+                    let resources = [];
+
+
+                    const storedResources =
+                        localStorage.getItem(
+                            RESOURCE_KEY
+                        );
+
+
+                    if (storedResources) {
+
+                        try {
+
+                            resources =
+                                JSON.parse(
+                                    storedResources
+                                );
+
+                        }
+
+                        catch (error) {
+
+                            resources = [];
+
+                        }
+
+                    }
+
+
+                    // -----------------------------------------
+                    // CREATE RESOURCE
+                    // -----------------------------------------
+
+                    const resource = {
+
+                        id:
+                            Date.now(),
+
+                        semester:
+                            semester,
+
+                        subject:
+                            subject,
+
+                        type:
+                            type,
+
+                        name:
+                            name,
+
+                        description:
+                            description,
+
+                        fileName:
+                            file.name,
+
+                        addedBy:
+                            "admin",
+
+                        addedAt:
+                            new Date()
+                            .toLocaleString()
+
+                    };
+
+
+                    resources.push(
+                        resource
+                    );
+
+
+                    // -----------------------------------------
+                    // SAVE RESOURCE
+                    // -----------------------------------------
+
+                    localStorage.setItem(
+                        RESOURCE_KEY,
+                        JSON.stringify(
+                            resources
+                        )
+                    );
+
+
+                    // -----------------------------------------
+                    // ACTIVITY HISTORY
+                    // -----------------------------------------
+
+                    logActivity(
+
+                        "➕",
+
+                        "Resource Added",
+
+                        name +
+                        " • " +
+                        subject +
+                        " • " +
+                        getSemesterName(
+                            semester
+                        )
+
+                    );
+
+
+                    // -----------------------------------------
+                    // SUCCESS
+                    // -----------------------------------------
+
+                    showMessage(
+                        "✅ Resource added successfully!",
+                        "success"
+                    );
+
+
+                    document
+                        .getElementById(
+                            "resourceForm"
+                        )
+                        .reset();
+
+
+                    // Keep success message visible
+
+                }
+            );
+
+
+
+        // =================================================
+        // SEMESTER CHANGE
+        // =================================================
+
+        document
+            .getElementById(
+                "resourceSemester"
+            )
+            .addEventListener(
+                "change",
+                loadAvailableSubjects
+            );
+
+
+
+        // =================================================
+        // SEMESTER NAME
+        // =================================================
+
+        function getSemesterName(
+            semester
+        ) {
+
+            const names = {
+
+                "1":
+                    "1st Semester",
+
+                "2":
+                    "2nd Semester",
+
+                "3":
+                    "3rd Semester",
+
+                "4":
+                    "4th Semester",
+
+                "5":
+                    "5th Semester",
+
+                "6":
+                    "6th Semester"
+
+            };
+
+
+            return (
+                names[semester] ||
+                semester
+            );
+
+        }
+
+
+
+        // =================================================
+        // LOGOUT
+        // =================================================
+
+        document
+            .getElementById(
+                "resourceLogoutBtn"
+            )
+            .addEventListener(
+                "click",
+                function() {
+
+                    localStorage.removeItem(
+                        "login_auth_session"
+                    );
+
+
+                    localStorage.removeItem(
+                        "remembered_user"
+                    );
+
+
+                    window.location.href =
+                        "login.html";
+
+                }
+            );
+
+
+
+        // =================================================
+        // START
+        // =================================================
+
+        if (
+            checkAdminAccess()
+        ) {
+
+            loadAvailableSubjects();
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

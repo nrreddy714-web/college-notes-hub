@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        College Notes Hub - Login
+    </title>
+
+    <link rel="stylesheet" href="login-style.css">
+    
+
+    <style>
+
+        /* =================================================
+           WELCOME ANIMATION
+           ================================================= */
+
+        .welcome-overlay {
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef2ff,
+                    #f8fafc,
+                    #e0e7ff
+                );
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            z-index: 99999;
+
+            opacity: 1;
+        }
+
+
+        .welcome-box {
+            width: min(
+                90%,
+                600px
+            );
+
+            padding: 45px 30px;
+
+            text-align: center;
+
+            background: white;
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 20px 60px
+                rgba(0, 0, 0, 0.15);
+
+            animation:
+                welcomeZoom
+                0.7s ease;
+        }
+
+
+        .welcome-icon {
+            font-size: 60px;
+
+            margin-bottom: 15px;
+
+            animation:
+                welcomeBounce
+                1s ease
+                infinite alternate;
+        }
+
+
+        .welcome-box h1 {
+            font-size: 36px;
+
+            color: #111827;
+
+            margin-bottom: 15px;
+
+            line-height: 1.2;
+        }
+
+
+        .welcome-box h1 span {
+            display: block;
+
+            color: #4f46e5;
+
+            margin-top: 5px;
+        }
+
+
+        .welcome-message {
+            font-size: 18px;
+
+            color: #6b7280;
+
+            margin-bottom: 20px;
+        }
+
+
+        .welcome-divider {
+            width: 80px;
+
+            height: 4px;
+
+            margin: 20px auto;
+
+            border-radius: 20px;
+
+            background: #4f46e5;
+        }
+
+
+        .welcome-developer {
+            font-size: 14px;
+
+            color: #6b7280;
+
+            margin: 0;
+        }
+
+
+        .welcome-developer strong {
+            color: #4f46e5;
+        }
+
+
+        @keyframes welcomeZoom {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    scale(0.8)
+                    translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    scale(1)
+                    translateY(0);
+            }
+
+        }
+
+
+        @keyframes welcomeBounce {
+
+            from {
+                transform:
+                    translateY(0);
+            }
+
+            to {
+                transform:
+                    translateY(-10px);
+            }
+
+        }
+
+
+        /* =================================================
+           MOBILE
+           ================================================= */
+
+        @media (max-width: 600px) {
+
+            .welcome-box {
+                padding:
+                    35px 20px;
+            }
+
+
+            .welcome-icon {
+                font-size: 48px;
+            }
+
+
+            .welcome-box h1 {
+                font-size: 28px;
+            }
+
+
+            .welcome-message {
+                font-size: 16px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         MAIN LOGIN CONTAINER
+         ================================================= -->
+
+    <main class="login-container">
+
+
+        <!-- =================================================
+             LOGIN CARD
+             ================================================= -->
+
+        <section class="login-card">
+
+
+            <div class="login-header">
+
+                <div class="login-logo">
+                    📚
+                </div>
+
+
+                <h1>
+                    College Notes Hub
+                </h1>
+
+
+                <p>
+                    Login to access your
+                    college resources.
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 LOGIN FORM
+                 ================================================= -->
+
+            <form
+                id="loginForm"
+                autocomplete="off"
+            >
+
+                <div class="form-group">
+
+                    <label for="loginUsername">
+                        Username
+                    </label>
+
+                    <input
+                        id="loginUsername"
+                        type="text"
+                        placeholder="Enter your username"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="loginPassword">
+                        Password
+                    </label>
+
+                    <input
+                        id="loginPassword"
+                        type="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="login-submit-button"
+                >
+                    🔐 Login
+                </button>
+
+
+                <p
+                    id="loginMessage"
+                    class="login-message"
+                ></p>
+
+            </form>
+
+
+
+            <!-- =================================================
+                 REGISTER LINK
+                 ================================================= -->
+
+            <div class="register-area">
+
+                <p>
+                    Don't have an account?
+                </p>
+
+
+                <button
+                    id="showRegisterButton"
+                    type="button"
+                    class="register-link-button"
+                >
+                    Create Account
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             REGISTER CARD
+             ================================================= -->
+
+        <section
+            id="registerCard"
+            class="login-card"
+            style="display:none;"
+        >
+
+
+            <div class="login-header">
+
+                <div class="login-logo">
+                    📝
+                </div>
+
+
+                <h1>
+                    Create Account
+                </h1>
+
+
+                <p>
+                    Register for College Notes Hub.
+                </p>
+
+            </div>
+
+
+
+            <form
+                id="registerForm"
+                autocomplete="off"
+            >
+
+
+                <div class="form-group">
+
+                    <label for="registerName">
+                        Full Name
+                    </label>
+
+                    <input
+                        id="registerName"
+                        type="text"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="registerUsername">
+                        Username
+                    </label>
+
+                    <input
+                        id="registerUsername"
+                        type="text"
+                        placeholder="Choose a username"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="registerEmail">
+                        Email
+                    </label>
+
+                    <input
+                        id="registerEmail"
+                        type="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="registerPassword">
+                        Password
+                    </label>
+
+                    <input
+                        id="registerPassword"
+                        type="password"
+                        placeholder="Create a password"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="registerConfirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        id="registerConfirmPassword"
+                        type="password"
+                        placeholder="Confirm your password"
+                        required
+                    >
+
+                </div>
+
+
+
+                <button
+                    type="submit"
+                    class="login-submit-button"
+                >
+                    📝 Create Account
+                </button>
+
+
+                <p
+                    id="registerMessage"
+                    class="login-message"
+                ></p>
+
+
+            </form>
+
+
+
+            <div class="register-area">
+
+                <button
+                    id="backToLoginButton"
+                    type="button"
+                    class="register-link-button"
+                >
+                    ← Back to Login
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             OTP CARD
+             ================================================= -->
+
+        <section
+            id="otpCard"
+            class="login-card"
+            style="display:none;"
+        >
+
+
+            <div class="login-header">
+
+                <div class="login-logo">
+                    🔐
+                </div>
+
+
+                <h1>
+                    Verify OTP
+                </h1>
+
+
+                <p>
+                    Enter the OTP shown below.
+                </p>
+
+            </div>
+
+
+
+            <div
+                id="otpDisplay"
+                style="
+                    text-align:center;
+                    font-size:32px;
+                    font-weight:bold;
+                    letter-spacing:8px;
+                    color:#4f46e5;
+                    margin:20px 0;
+                "
+            >
+                ------
+            </div>
+
+
+
+            <form
+                id="otpForm"
+                autocomplete="off"
+            >
+
+                <div class="form-group">
+
+                    <label for="otpInput">
+                        Enter OTP
+                    </label>
+
+                    <input
+                        id="otpInput"
+                        type="text"
+                        inputmode="numeric"
+                        maxlength="6"
+                        placeholder="Enter 6 digit OTP"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="login-submit-button"
+                >
+                    ✅ Verify OTP
+                </button>
+
+
+                <p
+                    id="otpMessage"
+                    class="login-message"
+                ></p>
+
+            </form>
+
+
+
+            <div class="register-area">
+
+                <button
+                    id="cancelOtpButton"
+                    type="button"
+                    class="register-link-button"
+                >
+                    ← Back
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =================================================
+         WELCOME OVERLAY
+         ================================================= -->
+
+    <div
+        id="welcomeOverlay"
+        class="welcome-overlay"
+    >
+
+        <div class="welcome-box">
+
+
+            <div class="welcome-icon">
+                🎉
+            </div>
+
+
+            <h1>
+
+                Welcome to
+
+                <span>
+                    College Notes Hub
+                </span>
+
+            </h1>
+
+
+            <p class="welcome-message">
+                Thanks for using our website! ❤️
+            </p>
+
+
+            <div class="welcome-divider"></div>
+
+
+            <p class="welcome-developer">
+
+                👨‍💻 Created & Developed by
+
+                <strong>
+                    Narendra Reddy
+                </strong>
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         FOOTER
+         ================================================= -->
+
+    <footer>
+
+        <p>
+            © 2026 College Notes Hub
+        </p>
+
+        <p>
+            Created & Developed by
+            <strong>
+                Narendra Reddy
+            </strong>
+        </p>
+
+    </footer>
+
+
+
+    <!-- =================================================
+         JAVASCRIPT
+         ================================================= -->
+
+    <script>
+
+
+        // =================================================
+        // STORAGE KEYS
+        // =================================================
+
+        const USERS_KEY =
+            "login_auth_users";
+
+
+        const SESSION_KEY =
+            "login_auth_session";
+
+
+        const REMEMBER_KEY =
+            "remembered_user";
+
+
+
+        // =================================================
+        // VARIABLES
+        // =================================================
+
+        let generatedOtp =
+            null;
+
+
+        let otpUser =
+            null;
+
+
+
+        // =================================================
+        // GET USERS
+        // =================================================
+
+        function getUsers() {
+
+            const storedUsers =
+                localStorage.getItem(
+                    USERS_KEY
+                );
+
+
+            if (!storedUsers) {
+
+                return [];
+
+            }
+
+
+            try {
+
+                const users =
+                    JSON.parse(
+                        storedUsers
+                    );
+
+
+                return Array.isArray(
+                    users
+                )
+                ? users
+                : [];
+
+            }
+
+            catch (error) {
+
+                return [];
+
+            }
+
+        }
+
+
+
+        // =================================================
+        // SAVE USERS
+        // =================================================
+
+        function saveUsers(
+            users
+        ) {
+
+            localStorage.setItem(
+                USERS_KEY,
+                JSON.stringify(
+                    users
+                )
+            );
+
+        }
+
+
+
+        // =================================================
+        // MESSAGE
+        // =================================================
+
+        function setMessage(
+            element,
+            text,
+            type
+        ) {
+
+            element.textContent =
+                text;
+
+
+            element.className =
+                "login-message " +
+                type;
+
+        }
+
+
+
+        // =================================================
+        // SHOW / HIDE CARDS
+        // =================================================
+
+        function showCard(
+            card
+        ) {
+
+            document.getElementById(
+                "loginForm"
+            ).closest(
+                ".login-card"
+            ).style.display =
+                "none";
+
+
+            document.getElementById(
+                "registerCard"
+            ).style.display =
+                "none";
+
+
+            document.getElementById(
+                "otpCard"
+            ).style.display =
+                "none";
+
+
+            card.style.display =
+                "block";
+
+        }
+
+
+
+        // =================================================
+        // LOGIN
+        // =================================================
+
+        document
+            .getElementById(
+                "loginForm"
+            )
+            .addEventListener(
+                "submit",
+                function(event) {
+
+                    event.preventDefault();
+
+
+                    const username =
+                        document
+                        .getElementById(
+                            "loginUsername"
+                        )
+                        .value
+                        .trim();
+
+
+                    const password =
+                        document
+                        .getElementById(
+                            "loginPassword"
+                        )
+                        .value;
+
+
+                    const message =
+                        document.getElementById(
+                            "loginMessage"
+                        );
+
+
+                    const users =
+                        getUsers();
+
+
+                    const user =
+                        users.find(
+                            function(item) {
+
+                                return (
+
+                                    (
+                                        item.username ||
+                                        ""
+                                    )
+                                    .toLowerCase() ===
+                                    username.toLowerCase()
+
+                                    &&
+
+                                    item.password ===
+                                    password
+
+                                );
+
+                            }
+                        );
+
+
+                    if (!user) {
+
+                        setMessage(
+
+                            message,
+
+                            "Invalid username or password.",
+
+                            "error"
+
+                        );
+
+                        return;
+
+                    }
+
+
+                    // -----------------------------------------
+                    // GENERATE OTP
+                    // -----------------------------------------
+
+                    generatedOtp =
+                        String(
+                            Math.floor(
+                                100000 +
+                                Math.random() *
+                                900000
+                            )
+                        );
+
+
+                    otpUser =
+                        user;
+
+
+                    document.getElementById(
+                        "otpDisplay"
+                    ).textContent =
+                        generatedOtp;
+
+
+                    document.getElementById(
+                        "otpInput"
+                    ).value =
+                        "";
+
+
+                    document.getElementById(
+                        "otpMessage"
+                    ).textContent =
+                        "";
+
+
+                    // -----------------------------------------
+                    // SHOW OTP
+                    // -----------------------------------------
+
+                    document
+                        .getElementById(
+                            "loginForm"
+                        )
+                        .closest(
+                            ".login-card"
+                        )
+                        .style.display =
+                        "none";
+
+
+                    document.getElementById(
+                        "otpCard"
+                    ).style.display =
+                        "block";
+
+                }
+            );
+
+
+
+        // =================================================
+        // REGISTER
+        // =================================================
+
+        document
+            .getElementById(
+                "registerForm"
+            )
+            .addEventListener(
+                "submit",
+                function(event) {
+
+                    event.preventDefault();
+
+
+                    const name =
+                        document
+                        .getElementById(
+                            "registerName"
+                        )
+                        .value
+                        .trim();
+
+
+                    const username =
+                        document
+                        .getElementById(
+                            "registerUsername"
+                        )
+                        .value
+                        .trim();
+
+
+                    const email =
+                        document
+                        .getElementById(
+                            "registerEmail"
+                        )
+                        .value
+                        .trim();
+
+
+                    const password =
+                        document
+                        .getElementById(
+                            "registerPassword"
+                        )
+                        .value;
+
+
+                    const confirmPassword =
+                        document
+                        .getElementById(
+                            "registerConfirmPassword"
+                        )
+                        .value;
+
+
+                    const message =
+                        document.getElementById(
+                            "registerMessage"
+                        );
+
+
+                    if (
+                        password !==
+                        confirmPassword
+                    ) {
+
+                        setMessage(
+
+                            message,
+
+                            "Passwords do not match.",
+
+                            "error"
+
+                        );
+
+                        return;
+
+                    }
+
+
+                    if (
+                        password.length <
+                        4
+                    ) {
+
+                        setMessage(
+
+                            message,
+
+                            "Password must contain at least 4 characters.",
+
+                            "error"
+
+                        );
+
+                        return;
+
+                    }
+
+
+                    const users =
+                        getUsers();
+
+
+                    const usernameExists =
+                        users.some(
+                            function(user) {
+
+                                return (
+
+                                    (
+                                        user.username ||
+                                        ""
+                                    )
+                                    .toLowerCase() ===
+                                    username.toLowerCase()
+
+                                );
+
+                            }
+                        );
+
+
+                    if (
+                        usernameExists
+                    ) {
+
+                        setMessage(
+
+                            message,
+
+                            "Username already exists.",
+
+                            "error"
+
+                        );
+
+                        return;
+
+                    }
+
+
+                    const emailExists =
+                        users.some(
+                            function(user) {
+
+                                return (
+
+                                    (
+                                        user.email ||
+                                        ""
+                                    )
+                                    .toLowerCase() ===
+                                    email.toLowerCase()
+
+                                );
+
+                            }
+                        );
+
+
+                    if (
+                        emailExists
+                    ) {
+
+                        setMessage(
+
+                            message,
+
+                            "Email already exists.",
+
+                            "error"
+
+                        );
+
+                        return;
+
+                    }
+
+
+                    // -----------------------------------------
+                    // CREATE USER
+                    // -----------------------------------------
+
+                    const newUser = {
+
+                        id:
+                            Date.now(),
+
+                        name:
+                            name,
+
+                        username:
+                            username,
+
+                        email:
+                            email,
+
+                        password:
+                            password
+
+                    };
+
+
+                    users.push(
+                        newUser
+                    );
+
+
+                    saveUsers(
+                        users
+                    );
+
+
+                    setMessage(
+
+                        message,
+
+                        "✅ Account created successfully. You can now login.",
+
+                        "success"
+
+                    );
+
+
+                    document
+                        .getElementById(
+                            "registerForm"
+                        )
+                        .reset();
+
+
+                    setTimeout(
+                        function() {
+
+                            showLoginCard();
+
+                        },
+                        1200
+                    );
+
+                }
+            );
+
+
+
+        // =================================================
+        // VERIFY OTP
+        // =================================================
+
+        document
+            .getElementById(
+                "otpForm"
+            )
+            .addEventListener(
+                "submit",
+                function(event) {
+
+                    event.preventDefault();
+
+
+                    const input =
+                        document
+                        .getElementById(
+                            "otpInput"
+                        )
+                        .value
+                        .trim();
+
+
+                    const message =
+                        document.getElementById(
+                            "otpMessage"
+                        );
+
+
+                    if (
+                        !otpUser
+                    ) {
+
+                        setMessage(
+
+                            message,
+
+                            "Login session expired. Please try again.",
+
+                            "error"
+
+                        );
+
+                        return;
+
+                    }
+
+
+                    if (
+                        input !==
+                        generatedOtp
+                    ) {
+
+                        setMessage(
+
+                            message,
+
+                            "Incorrect OTP. Please try again.",
+
+                            "error"
+
+                        );
+
+                        return;
+
+                    }
+
+
+                    // -----------------------------------------
+                    // LOGIN SUCCESS
+                    // -----------------------------------------
+
+                    localStorage.setItem(
+                        SESSION_KEY,
+                        otpUser.name
+                    );
+
+
+                    localStorage.setItem(
+                        REMEMBER_KEY,
+                        otpUser.username
+                    );
+
+
+                    setMessage(
+
+                        message,
+
+                        "✅ Login successful!",
+
+                        "success"
+
+                    );
+
+
+                    // -----------------------------------------
+                    // SHOW WELCOME ANIMATION
+                    // -----------------------------------------
+
+                    const welcomeOverlay =
+                        document.getElementById(
+                            "welcomeOverlay"
+                        );
+
+
+                    welcomeOverlay.style.display =
+                        "flex";
+
+
+                    welcomeOverlay.style.opacity =
+                        "1";
+
+
+                    // -----------------------------------------
+                    // REDIRECT AFTER ANIMATION
+                    // -----------------------------------------
+
+                    setTimeout(
+                        function() {
+
+                            welcomeOverlay.style.opacity =
+                                "0";
+
+
+                            setTimeout(
+                                function() {
+
+                                    if (
+                                        (
+                                            otpUser.username ||
+                                            ""
+                                        )
+                                        .toLowerCase() ===
+                                        "admin"
+                                    ) {
+
+                                        window.location.href =
+                                            "admin.html";
+
+                                    }
+
+                                    else {
+
+                                        window.location.href =
+                                            "student-dashboard.html";
+
+                                    }
+
+                                },
+                                400
+                            );
+
+                        },
+                        2300
+                    );
+
+                }
+            );
+
+
+
+        // =================================================
+        // SHOW REGISTER
+        // =================================================
+
+        document
+            .getElementById(
+                "showRegisterButton"
+            )
+            .addEventListener(
+                "click",
+                function() {
+
+                    showRegisterCard();
+
+                }
+            );
+
+
+
+        // =================================================
+        // BACK TO LOGIN
+        // =================================================
+
+        document
+            .getElementById(
+                "backToLoginButton"
+            )
+            .addEventListener(
+                "click",
+                function() {
+
+                    showLoginCard();
+
+                }
+            );
+
+
+
+        // =================================================
+        // CANCEL OTP
+        // =================================================
+
+        document
+            .getElementById(
+                "cancelOtpButton"
+            )
+            .addEventListener(
+                "click",
+                function() {
+
+                    generatedOtp =
+                        null;
+
+
+                    otpUser =
+                        null;
+
+
+                    showLoginCard();
+
+                }
+            );
+
+
+
+        // =================================================
+        // SHOW LOGIN
+        // =================================================
+
+        function showLoginCard() {
+
+            const loginCard =
+                document
+                .getElementById(
+                    "loginForm"
+                )
+                .closest(
+                    ".login-card"
+                );
+
+
+            loginCard.style.display =
+                "block";
+
+
+            document.getElementById(
+                "registerCard"
+            ).style.display =
+                "none";
+
+
+            document.getElementById(
+                "otpCard"
+            ).style.display =
+                "none";
+
+        }
+
+
+
+        // =================================================
+        // SHOW REGISTER
+        // =================================================
+
+        function showRegisterCard() {
+
+            document
+                .getElementById(
+                    "loginForm"
+                )
+                .closest(
+                    ".login-card"
+                )
+                .style.display =
+                "none";
+
+
+            document.getElementById(
+                "registerCard"
+            ).style.display =
+                "block";
+
+
+            document.getElementById(
+                "otpCard"
+            ).style.display =
+                "none";
+
+        }
+
+
+
+        // =================================================
+        // START
+        // =================================================
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function() {
+
+                showLoginCard();
+
+            }
+        );
+
+    </script>
+    <script src="login-script.js"></script>
+
+
+</body>
+
+</html>

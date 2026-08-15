@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>College Notes Hub - Manage Subjects</title>
+
+    <link
+        rel="stylesheet"
+        href="admin-style.css"
+    >
+
+    <style>
+
+        .subjects-page {
+            max-width: 1000px;
+            margin: auto;
+            padding: 55px 20px 80px;
+        }
+
+        .subjects-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .subjects-title h1 {
+            font-size: 38px;
+            color: #111827;
+            margin: 12px 0 10px;
+        }
+
+        .subjects-title p {
+            color: #6b7280;
+        }
+
+
+        /* ================= FORM ================= */
+
+        .subject-form-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 28px;
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.06);
+            margin-bottom: 35px;
+        }
+
+        .subject-form-card h2 {
+            color: #111827;
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 12px;
+            align-items: end;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #374151;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background: #f9fafb;
+            font-size: 15px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            border-color: #4f46e5;
+            background: white;
+            box-shadow:
+                0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        .add-subject-button {
+            border: none;
+            background: #4f46e5;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .add-subject-button:hover {
+            background: #3730a3;
+        }
+
+
+        /* ================= SUBJECT LIST ================= */
+
+        .subjects-section {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+        }
+
+        .subjects-section-header {
+            padding: 22px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .subjects-section-header h2 {
+            color: #111827;
+        }
+
+        .selected-semester {
+            color: #4f46e5;
+            font-weight: bold;
+        }
+
+        .subject-list {
+            display: grid;
+        }
+
+        .subject-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 22px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .subject-item:last-child {
+            border-bottom: none;
+        }
+
+        .subject-name {
+            color: #111827;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .subject-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .delete-subject-button {
+            border: none;
+            background: #dc2626;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .delete-subject-button:hover {
+            background: #b91c1c;
+        }
+
+        .default-badge {
+            display: inline-block;
+            background: #dcfce7;
+            color: #15803d;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .empty-subjects {
+            padding: 35px 20px;
+            text-align: center;
+            color: #6b7280;
+        }
+
+
+        /* ================= MESSAGE ================= */
+
+        .subject-message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .subject-message.show {
+            display: block;
+        }
+
+        .subject-message.success {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .subject-message.error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 700px) {
+
+            .subjects-title h1 {
+                font-size: 30px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .add-subject-button {
+                width: 100%;
+            }
+
+            .subjects-section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .subject-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         HEADER
+         ================================================= -->
+
+    <header class="admin-header">
+
+        <div class="admin-navbar">
+
+            <div class="admin-logo">
+                🛠️ College Notes Hub
+            </div>
+
+
+            <div class="admin-nav-right">
+
+                <span id="adminWelcome">
+                    👤 Administrator
+                </span>
+
+
+                <a
+                    href="admin.html"
+                    class="home-button"
+                >
+                    🛠️ Admin Dashboard
+                </a>
+
+
+                <a
+                    href="index.html"
+                    class="home-button"
+                >
+                    🏠 Home
+                </a>
+
+
+                <button
+                    id="subjectLogoutBtn"
+                    class="logout-button"
+                    type="button"
+                >
+                    🚪 Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =================================================
+         MAIN
+         ================================================= -->
+
+    <main class="subjects-page">
+
+
+        <div class="subjects-title">
+
+            <span class="admin-badge">
+                📚 Subject Management
+            </span>
+
+
+            <h1>
+                Manage Subjects
+            </h1>
+
+
+            <p>
+                Add or remove subjects for each semester.
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             ADD SUBJECT
+             ================================================= -->
+
+        <section class="subject-form-card">
+
+            <h2>
+                ➕ Add New Subject
+            </h2>
+
+
+            <div class="form-row">
+
+
+                <div class="form-group">
+
+                    <label for="subjectSemester">
+                        Semester
+                    </label>
+
+
+                    <select
+                        id="subjectSemester"
+                    >
+
+                        <option value="">
+                            -- Select Semester --
+                        </option>
+
+                        <option value="1">
+                            1st Semester
+                        </option>
+
+                        <option value="2">
+                            2nd Semester
+                        </option>
+
+                        <option value="3">
+                            3rd Semester
+                        </option>
+
+                        <option value="4">
+                            4th Semester
+                        </option>
+
+                        <option value="5">
+                            5th Semester
+                        </option>
+
+                        <option value="6">
+                            6th Semester
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="subjectName">
+                        Subject Name
+                    </label>
+
+
+                    <input
+                        id="subjectName"
+                        type="text"
+                        placeholder="Example: Operating System"
+                    >
+
+                </div>
+
+
+                <button
+                    id="addSubjectButton"
+                    class="add-subject-button"
+                    type="button"
+                >
+                    ➕ Add Subject
+                </button>
+
+            </div>
+
+
+            <div
+                id="subjectMessage"
+                class="subject-message"
+            ></div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SUBJECT LIST
+             ================================================= -->
+
+        <section class="subjects-section">
+
+
+            <div class="subjects-section-header">
+
+                <h2>
+                    📋 Current Subjects
+                </h2>
+
+
+                <span
+                    id="selectedSemesterText"
+                    class="selected-semester"
+                >
+                    All Semesters
+                </span>
+
+            </div>
+
+
+            <div
+                id="subjectList"
+                class="subject-list"
+            >
+
+                Loading subjects...
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =================================================
+         FOOTER
+         ================================================= -->
+
+    <footer>
+
+        <p>
+            © 2026 College Notes Hub |
+            Subject Management
+        </p>
+
+    </footer>
+
+
+
+    <!-- =================================================
+         JAVASCRIPT
+         ================================================= -->
+
+    <script>
+
+        // =================================================
+        // DEFAULT SUBJECTS
+        // =================================================
+
+        const defaultSubjects = {
+
+            "1": [],
+
+            "2": [],
+
+            "3": [
+                "DBMS",
+                "Artificial Intelligence",
+                "Probability and Statistics",
+                "Feature Engineering"
+            ],
+
+            "4": [],
+            "5": [],
+            "6": []
+
+        };
+
+
+        // =================================================
+        // ACTIVITY STORAGE
+        // =================================================
+
+        const ACTIVITY_KEY =
+            "college_activity_history";
+
+
+        // =================================================
+        // ADMIN ACCESS
+        // =================================================
+
+        function checkAdminAccess() {
+
+            const sessionUser =
+                localStorage.getItem(
+                    "login_auth_session"
+                );
+
+
+            const storedUsers =
+                localStorage.getItem(
+                    "login_auth_users"
+                );
+
+
+            if (
+                !sessionUser ||
+                !storedUsers
+            ) {
+
+                window.location.href =
+                    "login.html";
+
+                return false;
+
+            }
+
+
+            try {
+
+                const users =
+                    JSON.parse(
+                        storedUsers
+                    );
+
+
+                const loggedUser =
+                    users.find(
+                        function(user) {
+
+                            return (
+                                user.name ===
+                                sessionUser
+                            );
+
+                        }
+                    );
+
+
+                if (!loggedUser) {
+
+                    window.location.href =
+                        "index.html";
+
+                    return false;
+
+                }
+
+
+                if (
+                    (
+                        loggedUser.username ||
+                        ""
+                    )
+                    .toLowerCase() !==
+                    "admin"
+                ) {
+
+                    alert(
+                        "Access denied. Only the administrator can access this page."
+                    );
+
+
+                    window.location.href =
+                        "index.html";
+
+                    return false;
+
+                }
+
+
+                document.getElementById(
+                    "adminWelcome"
+                ).textContent =
+                    "👤 " +
+                    loggedUser.name;
+
+
+                return true;
+
+            }
+
+            catch (error) {
+
+                window.location.href =
+                    "index.html";
+
+                return false;
+
+            }
+
+        }
+
+
+        // =================================================
+        // ACTIVITY LOGGER
+        // =================================================
+
+        function logActivity(
+            icon,
+            action,
+            details
+        ) {
+
+            let history = [];
+
+
+            const storedHistory =
+                localStorage.getItem(
+                    ACTIVITY_KEY
+                );
+
+
+            if (storedHistory) {
+
+                try {
+
+                    history =
+                        JSON.parse(
+                            storedHistory
+                        );
+
+                }
+
+                catch (error) {
+
+                    history = [];
+
+                }
+
+            }
+
+
+            history.unshift({
+
+                id:
+                    Date.now(),
+
+                icon:
+                    icon,
+
+                action:
+                    action,
+
+                details:
+                    details,
+
+                time:
+                    new Date().toLocaleString()
+
+            });
+
+
+            history =
+                history.slice(
+                    0,
+                    50
+                );
+
+
+            localStorage.setItem(
+                ACTIVITY_KEY,
+                JSON.stringify(
+                    history
+                )
+            );
+
+        }
+
+
+        // =================================================
+        // GET CUSTOM SUBJECTS
+        // =================================================
+
+        function getCustomSubjects() {
+
+            const stored =
+                localStorage.getItem(
+                    "college_custom_subjects"
+                );
+
+
+            if (!stored) {
+
+                return {};
+
+            }
+
+
+            try {
+
+                return JSON.parse(
+                    stored
+                );
+
+            }
+
+            catch (error) {
+
+                return {};
+
+            }
+
+        }
+
+
+        // =================================================
+        // SAVE CUSTOM SUBJECTS
+        // =================================================
+
+        function saveCustomSubjects(
+            subjects
+        ) {
+
+            localStorage.setItem(
+                "college_custom_subjects",
+                JSON.stringify(
+                    subjects
+                )
+            );
+
+        }
+
+
+        // =================================================
+        // GET ALL SUBJECTS FOR SEMESTER
+        // =================================================
+
+        function getSubjectsForSemester(
+            semester
+        ) {
+
+            const customSubjects =
+                getCustomSubjects();
+
+
+            const result =
+                [
+                    ...(defaultSubjects[
+                        semester
+                    ] || [])
+                ];
+
+
+            (
+                customSubjects[
+                    semester
+                ] || []
+            )
+            .forEach(
+                function(subject) {
+
+                    if (
+                        !result.includes(
+                            subject
+                        )
+                    ) {
+
+                        result.push(
+                            subject
+                        );
+
+                    }
+
+                }
+            );
+
+
+            return result;
+
+        }
+
+
+        // =================================================
+        // MESSAGE
+        // =================================================
+
+        function showMessage(
+            text,
+            type
+        ) {
+
+            const message =
+                document.getElementById(
+                    "subjectMessage"
+                );
+
+
+            message.textContent =
+                text;
+
+
+            message.className =
+                "subject-message show " +
+                type;
+
+
+            setTimeout(
+                function() {
+
+                    message.className =
+                        "subject-message";
+
+                },
+                2500
+            );
+
+        }
+
+
+        // =================================================
+        // LOAD SUBJECTS
+        // =================================================
+
+        function loadSubjects() {
+
+            const semester =
+                document.getElementById(
+                    "subjectSemester"
+                ).value;
+
+
+            const list =
+                document.getElementById(
+                    "subjectList"
+                );
+
+
+            const semesterText =
+                document.getElementById(
+                    "selectedSemesterText"
+                );
+
+
+            const semesterNames = {
+
+                "1": "1st Semester",
+                "2": "2nd Semester",
+                "3": "3rd Semester",
+                "4": "4th Semester",
+                "5": "5th Semester",
+                "6": "6th Semester"
+
+            };
+
+
+            semesterText.textContent =
+                semester
+                ? semesterNames[semester]
+                : "All Semesters";
+
+
+            const semesters =
+                semester
+                ? [semester]
+                : [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6"
+                ];
+
+
+            let html = "";
+
+
+            semesters.forEach(
+                function(currentSemester) {
+
+                    const subjects =
+                        getSubjectsForSemester(
+                            currentSemester
+                        );
+
+
+                    if (
+                        subjects.length ===
+                        0
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    subjects.forEach(
+                        function(subject) {
+
+                            const isDefault =
+                                (
+                                    defaultSubjects[
+                                        currentSemester
+                                    ] || []
+                                )
+                                .includes(
+                                    subject
+                                );
+
+
+                            html += `
+
+                                <div
+                                    class="subject-item"
+                                >
+
+                                    <div>
+
+                                        <span
+                                            class="subject-name"
+                                        >
+
+                                            📚
+                                            ${escapeHTML(
+                                                subject
+                                            )}
+
+                                        </span>
+
+                                    </div>
+
+
+                                    <div
+                                        class="subject-actions"
+                                    >
+
+                                        ${
+                                            isDefault
+                                            ?
+
+                                            `
+                                            <span
+                                                class="default-badge"
+                                            >
+                                                Default
+                                            </span>
+                                            `
+
+                                            :
+
+                                            `
+                                            <button
+                                                type="button"
+                                                class="delete-subject-button"
+                                                onclick="deleteSubject(
+                                                    '${currentSemester}',
+                                                    '${escapeAttribute(
+                                                        subject
+                                                    )}'
+                                                )"
+                                            >
+                                                🗑️ Delete
+                                            </button>
+                                            `
+
+                                        }
+
+                                    </div>
+
+                                </div>
+
+                            `;
+
+                        }
+                    );
+
+                }
+            );
+
+
+            if (!html) {
+
+                html = `
+
+                    <div
+                        class="empty-subjects"
+                    >
+                        📚 No subjects added yet.
+                    </div>
+
+                `;
+
+            }
+
+
+            list.innerHTML =
+                html;
+
+        }
+
+
+        // =================================================
+        // ADD SUBJECT
+        // =================================================
+
+        function addSubject() {
+
+            const semester =
+                document.getElementById(
+                    "subjectSemester"
+                ).value;
+
+
+            const subjectName =
+                document.getElementById(
+                    "subjectName"
+                ).value.trim();
+
+
+            if (!semester) {
+
+                showMessage(
+                    "Please select a semester.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            if (!subjectName) {
+
+                showMessage(
+                    "Please enter a subject name.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            const existingSubjects =
+                getSubjectsForSemester(
+                    semester
+                );
+
+
+            const exists =
+                existingSubjects.some(
+                    function(subject) {
+
+                        return (
+                            subject.toLowerCase() ===
+                            subjectName.toLowerCase()
+                        );
+
+                    }
+                );
+
+
+            if (exists) {
+
+                showMessage(
+                    "This subject already exists.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            const customSubjects =
+                getCustomSubjects();
+
+
+            if (
+                !customSubjects[semester]
+            ) {
+
+                customSubjects[semester] =
+                    [];
+
+            }
+
+
+            customSubjects[semester].push(
+                subjectName
+            );
+
+
+            saveCustomSubjects(
+                customSubjects
+            );
+
+
+            // -----------------------------------------
+            // ACTIVITY HISTORY
+            // -----------------------------------------
+
+            logActivity(
+
+                "📚",
+
+                "Subject Added",
+
+                subjectName +
+                " • " +
+                getSemesterName(
+                    semester
+                )
+
+            );
+
+
+            document.getElementById(
+                "subjectName"
+            ).value =
+                "";
+
+
+            document.getElementById(
+                "subjectSemester"
+            ).value =
+                semester;
+
+
+            loadSubjects();
+
+
+            showMessage(
+                "✅ Subject added successfully!",
+                "success"
+            );
+
+        }
+
+
+        // =================================================
+        // DELETE SUBJECT
+        // =================================================
+
+        function deleteSubject(
+            semester,
+            subjectName
+        ) {
+
+            const customSubjects =
+                getCustomSubjects();
+
+
+            if (
+                !customSubjects[semester]
+            ) {
+
+                return;
+
+            }
+
+
+            const answer =
+                confirm(
+                    "Delete subject \"" +
+                    subjectName +
+                    "\"?"
+                );
+
+
+            if (!answer) {
+
+                return;
+
+            }
+
+
+            customSubjects[semester] =
+                customSubjects[
+                    semester
+                ].filter(
+                    function(subject) {
+
+                        return (
+                            subject !==
+                            subjectName
+                        );
+
+                    }
+                );
+
+
+            saveCustomSubjects(
+                customSubjects
+            );
+
+
+            // -----------------------------------------
+            // ACTIVITY HISTORY
+            // -----------------------------------------
+
+            logActivity(
+
+                "🗑️",
+
+                "Subject Deleted",
+
+                subjectName +
+                " • " +
+                getSemesterName(
+                    semester
+                )
+
+            );
+
+
+            loadSubjects();
+
+
+            showMessage(
+                "✅ Subject deleted successfully!",
+                "success"
+            );
+
+        }
+
+
+        // =================================================
+        // SEMESTER NAME
+        // =================================================
+
+        function getSemesterName(
+            semester
+        ) {
+
+            const names = {
+
+                "1": "1st Semester",
+                "2": "2nd Semester",
+                "3": "3rd Semester",
+                "4": "4th Semester",
+                "5": "5th Semester",
+                "6": "6th Semester"
+
+            };
+
+
+            return (
+                names[semester] ||
+                semester
+            );
+
+        }
+
+
+        // =================================================
+        // HTML ESCAPE
+        // =================================================
+
+        function escapeHTML(
+            value
+        ) {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.textContent =
+                value || "";
+
+
+            return div.innerHTML;
+
+        }
+
+
+        // =================================================
+        // ATTRIBUTE ESCAPE
+        // =================================================
+
+        function escapeAttribute(
+            value
+        ) {
+
+            return String(
+                value
+            )
+            .replace(
+                /\\/g,
+                "\\\\"
+            )
+            .replace(
+                /'/g,
+                "\\'"
+            );
+
+        }
+
+
+        // =================================================
+        // LOGOUT
+        // =================================================
+
+        document
+            .getElementById(
+                "subjectLogoutBtn"
+            )
+            .addEventListener(
+                "click",
+                function() {
+
+                    localStorage.removeItem(
+                        "login_auth_session"
+                    );
+
+
+                    localStorage.removeItem(
+                        "remembered_user"
+                    );
+
+
+                    window.location.href =
+                        "login.html";
+
+                }
+            );
+
+
+        // =================================================
+        // EVENTS
+        // =================================================
+
+        document
+            .getElementById(
+                "subjectSemester"
+            )
+            .addEventListener(
+                "change",
+                loadSubjects
+            );
+
+
+        document
+            .getElementById(
+                "addSubjectButton"
+            )
+            .addEventListener(
+                "click",
+                addSubject
+            );
+
+
+        // =================================================
+        // START
+        // =================================================
+
+        if (
+            checkAdminAccess()
+        ) {
+
+            loadSubjects();
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

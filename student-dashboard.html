@@ -1,0 +1,2324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>College Notes Hub - Student Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        /* =================================================
+           STUDENT DASHBOARD
+           ================================================= */
+
+        .student-dashboard {
+            max-width: 1100px;
+            margin: auto;
+            padding: 60px 20px 80px;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .dashboard-header h1 {
+            font-size: 40px;
+            color: #111827;
+            margin: 12px 0;
+        }
+
+        .dashboard-header h1 span {
+            color: #4f46e5;
+        }
+
+        .dashboard-header p {
+            color: #6b7280;
+            font-size: 17px;
+        }
+
+        /* =================================================
+           PROFILE
+           ================================================= */
+
+        .student-profile-card {
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef2ff,
+                    #f8fafc
+                );
+
+            border: 1px solid #dbe4ff;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 45px;
+
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .student-avatar {
+            width: 75px;
+            height: 75px;
+
+            border-radius: 50%;
+            background: #4f46e5;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 30px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .student-profile-card h2 {
+            color: #111827;
+            margin-bottom: 5px;
+        }
+
+        .student-profile-card p {
+            color: #6b7280;
+            margin-bottom: 5px;
+        }
+
+        .online-status {
+            color: #16a34a !important;
+            font-weight: bold;
+        }
+
+        /* =================================================
+           SECTIONS
+           ================================================= */
+
+        .student-section {
+            margin-bottom: 50px;
+        }
+
+        .student-section-title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .student-section-title h2 {
+            font-size: 30px;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .student-section-title p {
+            color: #6b7280;
+        }
+
+        /* =================================================
+           QUICK RESOURCES
+           ================================================= */
+
+        .quick-resource-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .quick-resource-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 25px 20px;
+            text-align: center;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.06);
+
+            transition: 0.3s;
+        }
+
+        .quick-resource-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.09);
+        }
+
+        .quick-icon {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .quick-resource-card h3 {
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .quick-resource-card p {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .quick-button {
+            display: inline-block;
+            background: #4f46e5;
+            color: white;
+
+            padding: 10px 16px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .quick-button:hover {
+            background: #3730a3;
+        }
+
+        /* =================================================
+           NEW RESOURCE FILTERS
+           ================================================= */
+
+        .new-resource-filters {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 10px;
+            flex-wrap: wrap;
+
+            margin-bottom: 25px;
+        }
+
+        .new-resource-filter-button {
+            border: 1px solid #c7d2fe;
+            background: white;
+            color: #4f46e5;
+
+            padding: 9px 15px;
+
+            border-radius: 20px;
+
+            cursor: pointer;
+
+            font-size: 14px;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .new-resource-filter-button:hover {
+            background: #eef2ff;
+        }
+
+        .new-resource-filter-button.active {
+            background: #4f46e5;
+            color: white;
+            border-color: #4f46e5;
+        }
+
+        /* =================================================
+           NEW RESOURCES
+           ================================================= */
+
+        .new-resources-list {
+            display: grid;
+            gap: 18px;
+        }
+
+        .new-resource-card {
+            background: white;
+
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+
+            padding: 22px;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.06);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 20px;
+        }
+
+        .new-resource-info {
+            flex: 1;
+        }
+
+        .new-resource-info h3 {
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .new-resource-info p {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .new-resource-badge {
+            display: inline-block;
+
+            margin-bottom: 8px;
+
+            padding: 5px 9px;
+
+            border-radius: 20px;
+
+            background: #dcfce7;
+            color: #15803d;
+
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .new-resource-button {
+            display: inline-block;
+
+            background: #4f46e5;
+            color: white;
+
+            padding: 9px 14px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            font-size: 14px;
+            font-weight: bold;
+
+            white-space: nowrap;
+        }
+
+        .new-resource-button:hover {
+            background: #3730a3;
+        }
+
+        .empty-new-resources {
+            background: white;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 14px;
+
+            padding: 40px 20px;
+
+            text-align: center;
+
+            color: #6b7280;
+        }
+
+        /* =================================================
+           SAVED RESOURCES
+           ================================================= */
+
+        .saved-resources-list {
+            display: grid;
+            gap: 18px;
+        }
+
+        .saved-resource-card {
+            background: white;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 14px;
+
+            padding: 22px;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.06);
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+        }
+
+        .saved-resource-info {
+            flex: 1;
+        }
+
+        .saved-resource-info h3 {
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .saved-resource-info p {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .saved-resource-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .saved-view-button,
+        .saved-remove-button {
+            display: inline-block;
+
+            border: none;
+
+            padding: 9px 14px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+        .saved-view-button {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .saved-remove-button {
+            background: #dc2626;
+            color: white;
+        }
+
+        .saved-view-button:hover {
+            background: #3730a3;
+        }
+
+        .saved-remove-button:hover {
+            background: #b91c1c;
+        }
+
+        /* =================================================
+           ACCOUNT
+           ================================================= */
+
+        .account-card {
+            background: white;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .account-row {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 18px 22px;
+
+            border-bottom:
+                1px solid #e5e7eb;
+        }
+
+        .account-row:last-child {
+            border-bottom: none;
+        }
+
+        .account-label {
+            color: #6b7280;
+        }
+
+        .account-value {
+            color: #111827;
+
+            font-weight: bold;
+
+            text-align: right;
+        }
+
+        /* =================================================
+           DASHBOARD BUTTONS
+           ================================================= */
+
+        .dashboard-buttons {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            margin-top: 30px;
+
+            flex-wrap: wrap;
+        }
+
+        .dashboard-button {
+            display: inline-block;
+
+            padding: 12px 20px;
+
+            border-radius: 9px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .primary-dashboard-button {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .secondary-dashboard-button {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .primary-dashboard-button:hover {
+            background: #3730a3;
+        }
+
+        .secondary-dashboard-button:hover {
+            background: #e5e7eb;
+        }
+
+        /* =================================================
+           DARK THEME OVERRIDES
+           ================================================= */
+
+        body.dark-theme .student-dashboard {
+            background: #111827;
+        }
+
+        body.dark-theme .dashboard-header h1 {
+            color: #f9fafb;
+        }
+
+        body.dark-theme .dashboard-header h1 span {
+            color: #818cf8;
+        }
+
+        body.dark-theme .dashboard-header p {
+            color: #d1d5db;
+        }
+
+        body.dark-theme .student-profile-card {
+            background:
+                linear-gradient(
+                    135deg,
+                    #1f2937,
+                    #111827
+                );
+
+            border-color: #374151;
+        }
+
+        body.dark-theme .student-profile-card h2 {
+            color: #f9fafb;
+        }
+
+        body.dark-theme .student-profile-card p {
+            color: #d1d5db;
+        }
+
+        body.dark-theme .student-section-title h2 {
+            color: #f9fafb;
+        }
+
+        body.dark-theme .student-section-title p {
+            color: #d1d5db;
+        }
+
+        body.dark-theme .quick-resource-card,
+        body.dark-theme .new-resource-card,
+        body.dark-theme .saved-resource-card,
+        body.dark-theme .account-card {
+            background: #1f2937;
+
+            border-color: #374151;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-theme .quick-resource-card h3,
+        body.dark-theme .new-resource-info h3,
+        body.dark-theme .saved-resource-info h3 {
+            color: #f9fafb;
+        }
+
+        body.dark-theme .quick-resource-card p,
+        body.dark-theme .new-resource-info p,
+        body.dark-theme .saved-resource-info p {
+            color: #d1d5db;
+        }
+
+        body.dark-theme .new-resource-filter-button {
+            background: #1f2937;
+
+            color: #c7d2fe;
+
+            border-color: #4b5563;
+        }
+
+        body.dark-theme
+        .new-resource-filter-button:hover {
+            background: #374151;
+        }
+
+        body.dark-theme
+        .new-resource-filter-button.active {
+            background: #4f46e5;
+            color: white;
+            border-color: #4f46e5;
+        }
+
+        body.dark-theme .empty-new-resources {
+            background: #1f2937;
+
+            border-color: #374151;
+
+            color: #d1d5db;
+        }
+
+        body.dark-theme .account-label {
+            color: #9ca3af;
+        }
+
+        body.dark-theme .account-value {
+            color: #f9fafb;
+        }
+
+        /* =================================================
+           MOBILE
+           ================================================= */
+
+        @media (max-width: 900px) {
+
+            .quick-resource-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 650px) {
+
+            .student-dashboard {
+                padding:
+                    45px 15px 60px;
+            }
+
+            .student-profile-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .quick-resource-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .new-resource-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .new-resource-button {
+                width: 100%;
+                text-align: center;
+            }
+
+            .saved-resource-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .saved-resource-actions {
+                width: 100%;
+            }
+
+            .saved-view-button,
+            .saved-remove-button {
+                flex: 1;
+                text-align: center;
+            }
+
+            .account-row {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .account-value {
+                text-align: left;
+            }
+
+            .dashboard-button {
+                width: 100%;
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         HEADER
+         ================================================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+                📚 College Notes Hub
+            </div>
+
+
+            <div class="nav-links">
+
+                <a href="index.html">
+                    🏠 Home
+                </a>
+
+
+                <a href="index.html#resources">
+                    📚 Resources
+                </a>
+
+
+                <a href="student-dashboard.html">
+                    👤 Dashboard
+                </a>
+
+
+                <!-- THEME BUTTON -->
+
+                <button
+                    id="themeToggle"
+                    class="theme-toggle"
+                    type="button"
+                >
+                    🌙 Dark
+                </button>
+
+
+                <button
+                    id="studentLogoutBtn"
+                    class="main-logout-button"
+                    type="button"
+                >
+                    🚪 Logout
+                </button>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =================================================
+         MAIN
+         ================================================= -->
+
+    <main class="student-dashboard">
+
+
+        <!-- HEADER -->
+
+        <div class="dashboard-header">
+
+            <span class="hero-badge">
+                🎓 Student Dashboard
+            </span>
+
+
+            <h1>
+
+                Welcome,
+
+                <span id="studentNameTitle">
+                    Student
+                </span>!
+
+            </h1>
+
+
+            <p>
+                Access your college resources
+                quickly and easily.
+            </p>
+
+        </div>
+
+
+
+        <!-- PROFILE -->
+
+        <section class="student-profile-card">
+
+            <div
+                id="studentAvatar"
+                class="student-avatar"
+            >
+                S
+            </div>
+
+
+            <div>
+
+                <h2 id="studentFullName">
+                    Student
+                </h2>
+
+
+                <p>
+                    Username:
+
+                    <strong id="studentUsername">
+                        -
+                    </strong>
+                </p>
+
+
+                <p>
+                    Email:
+
+                    <strong id="studentEmail">
+                        -
+                    </strong>
+                </p>
+
+
+                <p class="online-status">
+                    🟢 Account Active
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             QUICK RESOURCES
+             ================================================= -->
+
+        <section class="student-section">
+
+            <div class="student-section-title">
+
+                <h2>
+                    📚 Quick Resources
+                </h2>
+
+
+                <p>
+                    Find your study materials quickly.
+                </p>
+
+            </div>
+
+
+            <div class="quick-resource-grid">
+
+
+                <div class="quick-resource-card">
+
+                    <div class="quick-icon">
+                        📖
+                    </div>
+
+                    <h3>
+                        Study Notes
+                    </h3>
+
+                    <p>
+                        Access subject-wise notes
+                        for exam preparation.
+                    </p>
+
+                    <a
+                        href="index.html#resources"
+                        class="quick-button"
+                    >
+                        View Notes
+                    </a>
+
+                </div>
+
+
+                <div class="quick-resource-card">
+
+                    <div class="quick-icon">
+                        💻
+                    </div>
+
+                    <h3>
+                        Lab Programs
+                    </h3>
+
+                    <p>
+                        Find programming and
+                        practical lab resources.
+                    </p>
+
+                    <a
+                        href="index.html#resources"
+                        class="quick-button"
+                    >
+                        View Programs
+                    </a>
+
+                </div>
+
+
+                <div class="quick-resource-card">
+
+                    <div class="quick-icon">
+                        📄
+                    </div>
+
+                    <h3>
+                        Question Papers
+                    </h3>
+
+                    <p>
+                        Practice previous examination
+                        question papers.
+                    </p>
+
+                    <a
+                        href="index.html#resources"
+                        class="quick-button"
+                    >
+                        View Papers
+                    </a>
+
+                </div>
+
+
+                <div class="quick-resource-card">
+
+                    <div class="quick-icon">
+                        📚
+                    </div>
+
+                    <h3>
+                        Study Materials
+                    </h3>
+
+                    <p>
+                        Access useful learning
+                        resources.
+                    </p>
+
+                    <a
+                        href="index.html#resources"
+                        class="quick-button"
+                    >
+                        View Materials
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             NEW RESOURCES
+             ================================================= -->
+
+        <section class="student-section">
+
+            <div class="student-section-title">
+
+                <h2>
+                    🔔 New Resources
+                </h2>
+
+
+                <p>
+                    Recently added resources from the Admin Panel.
+                </p>
+
+            </div>
+
+
+            <!-- FILTERS -->
+
+            <div class="new-resource-filters">
+
+                <button
+                    type="button"
+                    class="new-resource-filter-button active"
+                    data-filter="all"
+                    onclick="filterNewResources('all')"
+                >
+                    All
+                </button>
+
+
+                <button
+                    type="button"
+                    class="new-resource-filter-button"
+                    data-filter="3"
+                    onclick="filterNewResources('3')"
+                >
+                    3rd Semester
+                </button>
+
+
+                <button
+                    type="button"
+                    class="new-resource-filter-button"
+                    data-filter="DBMS"
+                    onclick="filterNewResources('DBMS')"
+                >
+                    DBMS
+                </button>
+
+
+                <button
+                    type="button"
+                    class="new-resource-filter-button"
+                    data-filter="Artificial Intelligence"
+                    onclick="filterNewResources('Artificial Intelligence')"
+                >
+                    Artificial Intelligence
+                </button>
+
+            </div>
+
+
+            <div
+                id="newResourcesList"
+                class="new-resources-list"
+            >
+                Loading new resources...
+            </div>
+
+
+            <div class="dashboard-buttons">
+
+                <a
+                    href="index.html#resources"
+                    class="dashboard-button primary-dashboard-button"
+                >
+                    🔍 View All Resources
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SAVED RESOURCES
+             ================================================= -->
+
+        <section class="student-section">
+
+            <div class="student-section-title">
+
+                <h2>
+                    ⭐ My Saved Resources
+                </h2>
+
+
+                <p>
+                    Resources you bookmarked for quick access.
+                </p>
+
+            </div>
+
+
+            <div
+                id="savedResourcesList"
+                class="saved-resources-list"
+            >
+                Loading saved resources...
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ACCOUNT INFORMATION
+             ================================================= -->
+
+        <section class="student-section">
+
+            <div class="student-section-title">
+
+                <h2>
+                    👤 Account Information
+                </h2>
+
+
+                <p>
+                    Your registered account details.
+                </p>
+
+            </div>
+
+
+            <div class="account-card">
+
+
+                <div class="account-row">
+
+                    <span class="account-label">
+                        Full Name
+                    </span>
+
+
+                    <strong
+                        id="accountName"
+                        class="account-value"
+                    >
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="account-row">
+
+                    <span class="account-label">
+                        Username
+                    </span>
+
+
+                    <strong
+                        id="accountUsername"
+                        class="account-value"
+                    >
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="account-row">
+
+                    <span class="account-label">
+                        Email
+                    </span>
+
+
+                    <strong
+                        id="accountEmail"
+                        class="account-value"
+                    >
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="account-row">
+
+                    <span class="account-label">
+                        Account Status
+                    </span>
+
+
+                    <strong class="account-value">
+                        🟢 Active
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-buttons">
+
+                <a
+                    href="index.html"
+                    class="dashboard-button primary-dashboard-button"
+                >
+                    📚 Explore Resources
+                </a>
+
+
+                <a
+                    href="index.html"
+                    class="dashboard-button secondary-dashboard-button"
+                >
+                    🏠 Back to Home
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =================================================
+         FOOTER
+         ================================================= -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <h3>
+                📚 College Notes Hub
+            </h3>
+
+
+            <p>
+                Making college resources easier to access.
+            </p>
+
+
+            <p class="copyright">
+                © 2026 College Notes Hub |
+                Built for Students
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =================================================
+         JAVASCRIPT
+         ================================================= -->
+
+    <script>
+
+        // =================================================
+        // THEME
+        // =================================================
+
+        function applyTheme() {
+
+            const savedTheme =
+                localStorage.getItem(
+                    "college_theme"
+                );
+
+
+            const button =
+                document.getElementById(
+                    "themeToggle"
+                );
+
+
+            if (
+                savedTheme ===
+                "dark"
+            ) {
+
+                document.body.classList.add(
+                    "dark-theme"
+                );
+
+
+                if (button) {
+
+                    button.textContent =
+                        "☀️ Light";
+
+                }
+
+            }
+
+            else {
+
+                document.body.classList.remove(
+                    "dark-theme"
+                );
+
+
+                if (button) {
+
+                    button.textContent =
+                        "🌙 Dark";
+
+                }
+
+            }
+
+        }
+
+
+        function toggleTheme() {
+
+            const isDark =
+                document.body.classList.toggle(
+                    "dark-theme"
+                );
+
+
+            localStorage.setItem(
+                "college_theme",
+                isDark
+                ? "dark"
+                : "light"
+            );
+
+
+            const button =
+                document.getElementById(
+                    "themeToggle"
+                );
+
+
+            if (button) {
+
+                button.textContent =
+                    isDark
+                    ? "☀️ Light"
+                    : "🌙 Dark";
+
+            }
+
+        }
+
+
+        // =================================================
+        // NEW RESOURCE FILTER
+        // =================================================
+
+        let currentNewResourceFilter =
+            "all";
+
+
+        function filterNewResources(
+            filter
+        ) {
+
+            currentNewResourceFilter =
+                filter;
+
+
+            document
+                .querySelectorAll(
+                    ".new-resource-filter-button"
+                )
+                .forEach(
+                    function(button) {
+
+                        button.classList.toggle(
+                            "active",
+                            button.dataset.filter ===
+                            filter
+                        );
+
+                    }
+                );
+
+
+            loadNewResources();
+
+        }
+
+
+        // =================================================
+        // LOGIN USER
+        // =================================================
+
+        function getLoggedInUser() {
+
+            const sessionUser =
+                localStorage.getItem(
+                    "login_auth_session"
+                );
+
+
+            const storedUsers =
+                localStorage.getItem(
+                    "login_auth_users"
+                );
+
+
+            if (
+                !sessionUser ||
+                !storedUsers
+            ) {
+
+                window.location.href =
+                    "login.html";
+
+                return null;
+
+            }
+
+
+            try {
+
+                const users =
+                    JSON.parse(
+                        storedUsers
+                    );
+
+
+                const user =
+                    users.find(
+                        function(item) {
+
+                            return (
+                                item.name ===
+                                sessionUser
+                            );
+
+                        }
+                    );
+
+
+                if (!user) {
+
+                    window.location.href =
+                        "login.html";
+
+                    return null;
+
+                }
+
+
+                return user;
+
+            }
+
+            catch (error) {
+
+                window.location.href =
+                    "login.html";
+
+                return null;
+
+            }
+
+        }
+
+
+        // =================================================
+        // ESCAPE HTML
+        // =================================================
+
+        function escapeHTML(
+            value
+        ) {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.textContent =
+                value || "";
+
+
+            return div.innerHTML;
+
+        }
+
+
+        // =================================================
+        // SEMESTER NAME
+        // =================================================
+
+        function getSemesterName(
+            semester
+        ) {
+
+            const names = {
+
+                "1": "1st Semester",
+                "2": "2nd Semester",
+                "3": "3rd Semester",
+                "4": "4th Semester",
+                "5": "5th Semester",
+                "6": "6th Semester"
+
+            };
+
+
+            return (
+                names[semester] ||
+                semester
+            );
+
+        }
+
+
+        // =================================================
+        // RESOURCE ICON
+        // =================================================
+
+        function getResourceIcon(
+            type
+        ) {
+
+            if (
+                type ===
+                "notes"
+            ) {
+
+                return "📖";
+
+            }
+
+
+            if (
+                type ===
+                "lab"
+            ) {
+
+                return "💻";
+
+            }
+
+
+            if (
+                type ===
+                "papers"
+            ) {
+
+                return "📄";
+
+            }
+
+
+            return "📚";
+
+        }
+
+
+        // =================================================
+        // LOAD NEW RESOURCES
+        // =================================================
+
+        function loadNewResources() {
+
+            const container =
+                document.getElementById(
+                    "newResourcesList"
+                );
+
+
+            const storedResources =
+                localStorage.getItem(
+                    "college_resources"
+                );
+
+
+            if (!storedResources) {
+
+                container.innerHTML = `
+
+                    <div
+                        class="empty-new-resources"
+                    >
+
+                        🔔
+
+                        <br><br>
+
+                        <strong>
+                            No new resources yet.
+                        </strong>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            let resources = [];
+
+
+            try {
+
+                resources =
+                    JSON.parse(
+                        storedResources
+                    );
+
+            }
+
+            catch (error) {
+
+                resources = [];
+
+            }
+
+
+            let recentResources =
+                [
+                    ...resources
+                ]
+                .reverse()
+                .slice(
+                    0,
+                    10
+                );
+
+
+            if (
+                currentNewResourceFilter !==
+                "all"
+            ) {
+
+                recentResources =
+                    recentResources.filter(
+                        function(resource) {
+
+                            if (
+                                currentNewResourceFilter ===
+                                "3"
+                            ) {
+
+                                return (
+                                    resource.semester ===
+                                    "3"
+                                );
+
+                            }
+
+
+                            return (
+                                resource.subject ===
+                                currentNewResourceFilter
+                            );
+
+                        }
+                    );
+
+            }
+
+
+            if (
+                recentResources.length ===
+                0
+            ) {
+
+                container.innerHTML = `
+
+                    <div
+                        class="empty-new-resources"
+                    >
+
+                        🔍
+
+                        <br><br>
+
+                        <strong>
+                            No resources found.
+                        </strong>
+
+                        <p>
+                            Try another filter.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            container.innerHTML =
+                "";
+
+
+            recentResources.forEach(
+                function(resource) {
+
+                    const card =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    card.className =
+                        "new-resource-card";
+
+
+                    card.innerHTML = `
+
+                        <div
+                            class="new-resource-info"
+                        >
+
+                            <span
+                                class="new-resource-badge"
+                            >
+                                ✨ New
+                            </span>
+
+
+                            <h3>
+
+                                ${getResourceIcon(
+                                    resource.type
+                                )}
+
+                                ${escapeHTML(
+                                    resource.name
+                                )}
+
+                            </h3>
+
+
+                            <p>
+
+                                📚
+
+                                ${getSemesterName(
+                                    resource.semester
+                                )}
+
+                                •
+
+                                ${escapeHTML(
+                                    resource.subject
+                                )}
+
+                            </p>
+
+
+                            <p>
+
+                                📁
+
+                                ${escapeHTML(
+                                    resource.fileName
+                                )}
+
+                            </p>
+
+
+                            <p>
+
+                                🕒
+
+                                ${escapeHTML(
+                                    resource.addedAt ||
+                                    "Recently added"
+                                )}
+
+                            </p>
+
+                        </div>
+
+
+                        <a
+                            href="index.html#resources"
+                            class="new-resource-button"
+                        >
+                            📚 View Resource
+                        </a>
+
+                    `;
+
+
+                    container.appendChild(
+                        card
+                    );
+
+                }
+            );
+
+        }
+
+
+        // =================================================
+        // FAVORITES
+        // =================================================
+
+        function getFavoritesKey(
+            username
+        ) {
+
+            return (
+                "favorite_resources_" +
+                username
+            );
+
+        }
+
+
+        function getFavorites(
+            username
+        ) {
+
+            const stored =
+                localStorage.getItem(
+                    getFavoritesKey(
+                        username
+                    )
+                );
+
+
+            if (!stored) {
+
+                return [];
+
+            }
+
+
+            try {
+
+                return JSON.parse(
+                    stored
+                );
+
+            }
+
+            catch (error) {
+
+                return [];
+
+            }
+
+        }
+
+
+        function saveFavorites(
+            username,
+            favorites
+        ) {
+
+            localStorage.setItem(
+                getFavoritesKey(
+                    username
+                ),
+
+                JSON.stringify(
+                    favorites
+                )
+
+            );
+
+        }
+
+
+        // =================================================
+        // LOAD SAVED RESOURCES
+        // =================================================
+
+        function loadSavedResources(
+            user
+        ) {
+
+            const container =
+                document.getElementById(
+                    "savedResourcesList"
+                );
+
+
+            const favorites =
+                getFavorites(
+                    user.username
+                );
+
+
+            if (
+                favorites.length ===
+                0
+            ) {
+
+                container.innerHTML = `
+
+                    <div
+                        class="empty-new-resources"
+                    >
+
+                        ⭐
+
+                        <br><br>
+
+                        <strong>
+                            No saved resources yet.
+                        </strong>
+
+                        <p>
+                            Go to Resources and click
+                            ☆ Save on an important resource.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            container.innerHTML =
+                "";
+
+
+            favorites.forEach(
+                function(resource) {
+
+                    const card =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    card.className =
+                        "saved-resource-card";
+
+
+                    card.innerHTML = `
+
+                        <div
+                            class="saved-resource-info"
+                        >
+
+                            <h3>
+
+                                ${getResourceIcon(
+                                    resource.type
+                                )}
+
+                                ${escapeHTML(
+                                    resource.name
+                                )}
+
+                            </h3>
+
+
+                            <p>
+
+                                📚
+
+                                ${escapeHTML(
+                                    resource.subject
+                                )}
+
+                            </p>
+
+
+                            <p>
+
+                                Semester:
+
+                                ${escapeHTML(
+                                    getSemesterName(
+                                        resource.semester
+                                    )
+                                )}
+
+                            </p>
+
+
+                            <p>
+
+                                📁
+
+                                ${escapeHTML(
+                                    resource.fileName ||
+                                    "Resource"
+                                )}
+
+                            </p>
+
+                        </div>
+
+
+                        <div
+                            class="saved-resource-actions"
+                        >
+
+                            ${
+                                resource.path
+                                ?
+
+                                `
+                                <a
+                                    href="${resource.path}"
+                                    target="_blank"
+                                    class="saved-view-button"
+                                >
+                                    📖 View
+                                </a>
+                                `
+
+                                :
+
+                                `
+                                <a
+                                    href="index.html#resources"
+                                    class="saved-view-button"
+                                >
+                                    📚 Resources
+                                </a>
+                                `
+                            }
+
+
+                            <button
+                                type="button"
+                                class="saved-remove-button"
+                                onclick='removeSavedResource(${JSON.stringify(
+                                    resource
+                                )})'
+                            >
+                                🗑️ Remove
+                            </button>
+
+                        </div>
+
+                    `;
+
+
+                    container.appendChild(
+                        card
+                    );
+
+                }
+            );
+
+        }
+
+
+        // =================================================
+        // REMOVE SAVED RESOURCE
+        // =================================================
+
+        function removeSavedResource(
+            resource
+        ) {
+
+            const user =
+                getLoggedInUser();
+
+
+            if (!user) {
+
+                return;
+
+            }
+
+
+            let favorites =
+                getFavorites(
+                    user.username
+                );
+
+
+            favorites =
+                favorites.filter(
+                    function(item) {
+
+                        return (
+                            item.id !==
+                            resource.id
+                        );
+
+                    }
+                );
+
+
+            saveFavorites(
+                user.username,
+                favorites
+            );
+
+
+            loadSavedResources(
+                user
+            );
+
+        }
+
+
+        // =================================================
+        // LOAD PROFILE
+        // =================================================
+
+        function loadStudentDashboard() {
+
+            const user =
+                getLoggedInUser();
+
+
+            if (!user) {
+
+                return;
+
+            }
+
+
+            document.getElementById(
+                "studentNameTitle"
+            ).textContent =
+                user.name;
+
+
+            document.getElementById(
+                "studentFullName"
+            ).textContent =
+                user.name;
+
+
+            document.getElementById(
+                "studentUsername"
+            ).textContent =
+                user.username;
+
+
+            document.getElementById(
+                "studentEmail"
+            ).textContent =
+                user.email ||
+                "No email";
+
+
+            document.getElementById(
+                "accountName"
+            ).textContent =
+                user.name;
+
+
+            document.getElementById(
+                "accountUsername"
+            ).textContent =
+                user.username;
+
+
+            document.getElementById(
+                "accountEmail"
+            ).textContent =
+                user.email ||
+                "No email";
+
+
+            document.getElementById(
+                "studentAvatar"
+            ).textContent =
+                (
+                    user.name ||
+                    "S"
+                )
+                .charAt(0)
+                .toUpperCase();
+
+
+            loadNewResources();
+
+            loadSavedResources(
+                user
+            );
+
+        }
+
+
+        // =================================================
+        // LOGOUT
+        // =================================================
+
+        document
+            .getElementById(
+                "studentLogoutBtn"
+            )
+            .addEventListener(
+                "click",
+                function() {
+
+                    localStorage.removeItem(
+                        "login_auth_session"
+                    );
+
+
+                    localStorage.removeItem(
+                        "remembered_user"
+                    );
+
+
+                    window.location.href =
+                        "login.html";
+
+                }
+            );
+
+
+        // =================================================
+        // START
+        // =================================================
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function() {
+
+                applyTheme();
+
+
+                const themeButton =
+                    document.getElementById(
+                        "themeToggle"
+                    );
+
+
+                if (
+                    themeButton
+                ) {
+
+                    themeButton.addEventListener(
+                        "click",
+                        toggleTheme
+                    );
+
+                }
+
+
+                loadStudentDashboard();
+
+            }
+        );
+
+
+        // =================================================
+        // APPLY THEME
+        // =================================================
+
+        function applyTheme() {
+
+            const savedTheme =
+                localStorage.getItem(
+                    "college_theme"
+                );
+
+
+            const button =
+                document.getElementById(
+                    "themeToggle"
+                );
+
+
+            if (
+                savedTheme ===
+                "dark"
+            ) {
+
+                document.body.classList.add(
+                    "dark-theme"
+                );
+
+
+                if (button) {
+
+                    button.textContent =
+                        "☀️ Light";
+
+                }
+
+            }
+
+            else {
+
+                document.body.classList.remove(
+                    "dark-theme"
+                );
+
+
+                if (button) {
+
+                    button.textContent =
+                        "🌙 Dark";
+
+                }
+
+            }
+
+        }
+
+
+        // =================================================
+        // TOGGLE THEME
+        // =================================================
+
+        function toggleTheme() {
+
+            const isDark =
+                document.body.classList.toggle(
+                    "dark-theme"
+                );
+
+
+            localStorage.setItem(
+                "college_theme",
+                isDark
+                ? "dark"
+                : "light"
+            );
+
+
+            const button =
+                document.getElementById(
+                    "themeToggle"
+                );
+
+
+            if (button) {
+
+                button.textContent =
+                    isDark
+                    ? "☀️ Light"
+                    : "🌙 Dark";
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
