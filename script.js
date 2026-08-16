@@ -17,7 +17,8 @@ const subjects = {
         "DBMS",
         "Artificial Intelligence",
         "Probability and Statistics",
-        "Feature Engineering"
+        "Feature Engineering",
+        "English"
     ],
 
     "4": [],
@@ -46,6 +47,7 @@ function getLoggedInUser() {
         localStorage.getItem(
             "login_auth_session"
         );
+
 
     const storedUsers =
         localStorage.getItem(
@@ -240,8 +242,10 @@ function toggleFavorite(
             "Please login to save resources."
         );
 
+
         window.location.href =
             "login.html";
+
 
         return;
 
@@ -266,8 +270,7 @@ function toggleFavorite(
 
 
     if (
-        existingIndex !==
-        -1
+        existingIndex !== -1
     ) {
 
         favorites.splice(
@@ -393,15 +396,18 @@ function loadSubjects() {
             "semester"
         );
 
+
     const subjectElement =
         document.getElementById(
             "subject"
         );
 
+
     const resourceList =
         document.getElementById(
             "resourceList"
         );
+
 
     const categoryBox =
         document.getElementById(
@@ -454,6 +460,7 @@ function loadSubjects() {
         subjectElement.disabled =
             true;
 
+
         return;
 
     }
@@ -465,9 +472,7 @@ function loadSubjects() {
         );
 
 
-    // -----------------------------------------------
-    // ADD SUBJECTS FROM ADMIN RESOURCES
-    // -----------------------------------------------
+    // Add subjects from admin resources
 
     const storedResources =
         localStorage.getItem(
@@ -489,7 +494,6 @@ function loadSubjects() {
                 function(resource) {
 
                     if (
-
                         resource.semester ===
                         semester &&
 
@@ -498,7 +502,6 @@ function loadSubjects() {
                         !semesterSubjects.includes(
                             resource.subject
                         )
-
                     ) {
 
                         semesterSubjects.push(
@@ -522,10 +525,6 @@ function loadSubjects() {
 
     }
 
-
-    // -----------------------------------------------
-    // NO SUBJECTS
-    // -----------------------------------------------
 
     if (
         semesterSubjects.length ===
@@ -559,10 +558,6 @@ function loadSubjects() {
 
     }
 
-
-    // -----------------------------------------------
-    // ADD SUBJECT OPTIONS
-    // -----------------------------------------------
 
     semesterSubjects.forEach(
         function(item) {
@@ -614,7 +609,8 @@ function createResourceCard(
 
 
     item.dataset.category =
-        resource.type || "materials";
+        resource.type ||
+        "materials";
 
 
     let icon =
@@ -651,6 +647,16 @@ function createResourceCard(
 
     }
 
+    else if (
+        resource.type ===
+        "materials"
+    ) {
+
+        icon =
+            "📚";
+
+    }
+
 
     const title =
         document.createElement(
@@ -661,7 +667,10 @@ function createResourceCard(
     title.textContent =
         icon +
         " " +
-        (resource.name || "Resource");
+        (
+            resource.name ||
+            "Resource"
+        );
 
 
     item.appendChild(
@@ -679,7 +688,10 @@ function createResourceCard(
         resource.description ||
         (
             "Study resource for " +
-            (resource.subject || "")
+            (
+                resource.subject ||
+                ""
+            )
         );
 
 
@@ -733,9 +745,9 @@ function createResourceCard(
         );
 
 
-    // -----------------------------------------------
+    // =================================================
     // VIEW / DOWNLOAD
-    // -----------------------------------------------
+    // =================================================
 
     if (
         resource.path
@@ -753,6 +765,10 @@ function createResourceCard(
 
         viewButton.target =
             "_blank";
+
+
+        viewButton.rel =
+            "noopener";
 
 
         viewButton.className =
@@ -858,9 +874,9 @@ function createResourceCard(
     }
 
 
-    // -----------------------------------------------
-    // FAVORITE BUTTON
-    // -----------------------------------------------
+    // =================================================
+    // FAVORITE
+    // =================================================
 
     const favoriteButton =
         document.createElement(
@@ -879,7 +895,9 @@ function createResourceCard(
     function updateFavoriteButton() {
 
         favoriteButton.textContent =
-            isFavorite(resource.id)
+            isFavorite(
+                resource.id
+            )
             ? "⭐ Saved"
             : "☆ Save";
 
@@ -927,15 +945,18 @@ function showResources() {
             "semester"
         );
 
+
     const subjectElement =
         document.getElementById(
             "subject"
         );
 
+
     const resourceList =
         document.getElementById(
             "resourceList"
         );
+
 
     const categoryBox =
         document.getElementById(
@@ -991,9 +1012,9 @@ function showResources() {
     }
 
 
-    // -----------------------------------------------
+    // =================================================
     // SHOW CATEGORY FILTERS
-    // -----------------------------------------------
+    // =================================================
 
     if (categoryBox) {
 
@@ -1010,11 +1031,12 @@ function showResources() {
     resetCategoryButtons();
 
 
-    // -----------------------------------------------
+    // =================================================
     // ADMIN RESOURCES
-    // -----------------------------------------------
+    // =================================================
 
-    let adminResources = [];
+    let adminResources =
+        [];
 
 
     const storedResources =
@@ -1073,6 +1095,7 @@ function showResources() {
                         id:
                             "admin_" +
                             resource.id
+
                     }
                 );
 
@@ -1242,6 +1265,35 @@ function showResources() {
         };
 
 
+        const aiChapter3And4Notes = {
+
+            id:
+                "ai_chapter_3_and_4_notes",
+
+            name:
+                "AI Chapter 3 and 4 Notes",
+
+            semester:
+                "3",
+
+            subject:
+                "Artificial Intelligence",
+
+            type:
+                "notes",
+
+            description:
+                "Artificial Intelligence notes covering Chapter 3 and Chapter 4.",
+
+            fileName:
+                "ai-chapter-3-and-4-notes.pdf",
+
+            path:
+                "resources/3rd-semester/ai/ai-chapter-3-and-4-notes.pdf"
+
+        };
+
+
         const aiLab = {
 
             id:
@@ -1266,7 +1318,7 @@ function showResources() {
                 "ai-programs.pdf",
 
             path:
-                "resources/3rd-semesters/ai%20programs/ai-programs.pdf"
+                "resources/3rd-semester/ai%20programs/ai-programs.pdf"
 
         };
 
@@ -1295,7 +1347,7 @@ function showResources() {
                 "ai-question-papers.pdf",
 
             path:
-                "resources/3rd-semesters/question%20papers/ai-question-papers.pdf"
+                "resources/3rd-semester/question%20papers/ai-question-papers.pdf"
 
         };
 
@@ -1303,6 +1355,13 @@ function showResources() {
         resourceList.appendChild(
             createResourceCard(
                 aiNotes
+            )
+        );
+
+
+        resourceList.appendChild(
+            createResourceCard(
+                aiChapter3And4Notes
             )
         );
 
@@ -1321,56 +1380,105 @@ function showResources() {
         );
 
     }
+
+
     // =================================================
-// PROBABILITY AND STATISTICS
-// =================================================
+    // PROBABILITY AND STATISTICS
+    // =================================================
 
-if (
-    subject ===
-    "Probability and Statistics"
-) {
+    if (
+        subject ===
+        "Probability and Statistics"
+    ) {
 
-    const probabilityStatisticsAssignment = {
+        const probabilityAssignment = {
 
-        id:
-            "probability_statistics_assignment",
+            id:
+                "probability_statistics_assignment",
 
-        name:
-            "Probability and Statistics Assignment",
+            name:
+                "Probability and Statistics Assignment",
 
-        semester:
-            "3",
+            semester:
+                "3",
 
-        subject:
-            "Probability and Statistics",
+            subject:
+                "Probability and Statistics",
 
-        type:
-            "notes",
+            type:
+                "notes",
 
-        description:
-            "3rd Semester Probability and Statistics Assignment.",
+            description:
+                "3rd Semester Probability and Statistics Assignment.",
 
-        fileName:
-            "probability-statistics-assignment.pdf",
+            fileName:
+                "probability-statistics-assignment.pdf",
 
-        path:
-            "resources/3rd-semester/probability-statistics/probability-statistics-assignment.pdf"
+            path:
+                "resources/3rd-semester/probability-statistics/probability-statistics-assignment.pdf"
 
-    };
-
-
-    resourceList.appendChild(
-        createResourceCard(
-            probabilityStatisticsAssignment
-        )
-    );
-
-}
+        };
 
 
-    // -----------------------------------------------
-    // APPLY CURRENT CATEGORY
-    // -----------------------------------------------
+        resourceList.appendChild(
+            createResourceCard(
+                probabilityAssignment
+            )
+        );
+
+    }
+
+
+    // =================================================
+    // ENGLISH
+    // =================================================
+
+    if (
+        subject ===
+        "English"
+    ) {
+
+        const englishNotes = {
+
+            id:
+                "english_notes",
+
+            name:
+                "English Notes",
+
+            semester:
+                "3",
+
+            subject:
+                "English",
+
+            type:
+                "notes",
+
+            description:
+                "3rd Semester English Study Notes.",
+
+            fileName:
+                "english-notes.pdf",
+
+            path:
+                "resources/3rd-semester/english/english-notes.pdf"
+
+        };
+
+
+        resourceList.appendChild(
+            createResourceCard(
+                englishNotes
+            )
+        );
+
+    }
+
+
+    // =================================================
+    // APPLY CATEGORY
+    // =================================================
 
     applyCategoryFilter();
 
@@ -1529,6 +1637,7 @@ function searchResources() {
                 (
                     currentResourceCategory ===
                     "all" ||
+
                     category ===
                     currentResourceCategory
                 );
@@ -1564,7 +1673,7 @@ function searchResources() {
 function showFileMessage() {
 
     alert(
-        "The resource information is available. The actual PDF link is used when a file is stored in the resources folder."
+        "The resource information is available. Please make sure the PDF is stored in the resources folder."
     );
 
 }
@@ -1801,7 +1910,7 @@ function updateLoginStatus() {
 
 
 // =====================================================
-// LOGOUT
+// MAIN LOGOUT
 // =====================================================
 
 function mainLogout() {
@@ -1818,6 +1927,102 @@ function mainLogout() {
 
     window.location.href =
         "login.html";
+
+}
+
+
+// =====================================================
+// DARK / LIGHT THEME
+// =====================================================
+
+function applyTheme() {
+
+    const savedTheme =
+        localStorage.getItem(
+            "college_theme"
+        );
+
+
+    const button =
+        document.getElementById(
+            "themeToggle"
+        );
+
+
+    if (
+        savedTheme ===
+        "dark"
+    ) {
+
+        document.body.classList.add(
+            "dark-theme"
+        );
+
+
+        if (button) {
+
+            button.textContent =
+                "☀️ Light";
+
+        }
+
+    }
+
+    else {
+
+        document.body.classList.remove(
+            "dark-theme"
+        );
+
+
+        if (button) {
+
+            button.textContent =
+                "🌙 Dark";
+
+        }
+
+    }
+
+}
+
+
+// =====================================================
+// TOGGLE THEME
+// =====================================================
+
+function toggleTheme() {
+
+    const isDark =
+        document.body.classList.toggle(
+            "dark-theme"
+        );
+
+
+    localStorage.setItem(
+        "college_theme",
+
+        isDark
+        ? "dark"
+        : "light"
+
+    );
+
+
+    const button =
+        document.getElementById(
+            "themeToggle"
+        );
+
+
+    if (button) {
+
+        button.textContent =
+            isDark
+            ? "☀️ Light"
+            : "🌙 Dark";
+
+    }
 
 }
 
@@ -1910,98 +2115,6 @@ document.addEventListener(
 
         }
 
-    }
-);
-// =====================================================
-// DARK / LIGHT THEME
-// =====================================================
-
-function applyTheme() {
-
-    const savedTheme =
-        localStorage.getItem(
-            "college_theme"
-        );
-
-    const button =
-        document.getElementById(
-            "themeToggle"
-        );
-
-
-    if (
-        savedTheme ===
-        "dark"
-    ) {
-
-        document.body.classList.add(
-            "dark-theme"
-        );
-
-        if (button) {
-
-            button.textContent =
-                "☀️ Light";
-
-        }
-
-    }
-
-    else {
-
-        document.body.classList.remove(
-            "dark-theme"
-        );
-
-        if (button) {
-
-            button.textContent =
-                "🌙 Dark";
-
-        }
-
-    }
-
-}
-
-
-function toggleTheme() {
-
-    const isDark =
-        document.body.classList.toggle(
-            "dark-theme"
-        );
-
-
-    localStorage.setItem(
-        "college_theme",
-        isDark
-        ? "dark"
-        : "light"
-    );
-
-
-    const button =
-        document.getElementById(
-            "themeToggle"
-        );
-
-
-    if (button) {
-
-        button.textContent =
-            isDark
-            ? "☀️ Light"
-            : "🌙 Dark";
-
-    }
-
-}
-
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function() {
 
         applyTheme();
 
@@ -2012,7 +2125,9 @@ document.addEventListener(
             );
 
 
-        if (themeButton) {
+        if (
+            themeButton
+        ) {
 
             themeButton.addEventListener(
                 "click",
@@ -2023,113 +2138,3 @@ document.addEventListener(
 
     }
 );
-// =====================================================
-// PERMANENT 3RD SEMESTER ENGLISH RESOURCE
-// =====================================================
-
-if (!subjects["3"].includes("English")) {
-
-    subjects["3"].push("English");
-
-}
-
-
-// =====================================================
-// ENGLISH NOTES RESOURCE
-// =====================================================
-
-const originalShowResources =
-    showResources;
-
-
-showResources = function () {
-
-    originalShowResources();
-
-
-    const semesterElement =
-        document.getElementById(
-            "semester"
-        );
-
-
-    const subjectElement =
-        document.getElementById(
-            "subject"
-        );
-
-
-    const resourceList =
-        document.getElementById(
-            "resourceList"
-        );
-
-
-    if (
-        !semesterElement ||
-        !subjectElement ||
-        !resourceList
-    ) {
-
-        return;
-
-    }
-
-
-    const semester =
-        semesterElement.value;
-
-
-    const subject =
-        subjectElement.value;
-
-
-    if (
-        semester !== "3" ||
-        subject !== "English"
-    ) {
-
-        return;
-
-    }
-
-
-    const englishNotes = {
-
-        id:
-            "english_notes",
-
-        name:
-            "English Notes",
-
-        semester:
-            "3",
-
-        subject:
-            "English",
-
-        type:
-            "notes",
-
-        description:
-            "3rd Semester English Study Notes.",
-
-        fileName:
-            "english-notes.pdf",
-
-        path:
-            "resources/3rd-semester/english/english-notes.pdf"
-
-    };
-
-
-    resourceList.appendChild(
-        createResourceCard(
-            englishNotes
-        )
-    );
-
-
-    applyCategoryFilter();
-
-};
