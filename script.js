@@ -1321,6 +1321,51 @@ function showResources() {
         );
 
     }
+    // =================================================
+// PROBABILITY AND STATISTICS
+// =================================================
+
+if (
+    subject ===
+    "Probability and Statistics"
+) {
+
+    const probabilityStatisticsAssignment = {
+
+        id:
+            "probability_statistics_assignment",
+
+        name:
+            "Probability and Statistics Assignment",
+
+        semester:
+            "3",
+
+        subject:
+            "Probability and Statistics",
+
+        type:
+            "notes",
+
+        description:
+            "3rd Semester Probability and Statistics Assignment.",
+
+        fileName:
+            "probability-statistics-assignment.pdf",
+
+        path:
+            "resources/3rd-semester/probability-statistics/probability-statistics-assignment.pdf"
+
+    };
+
+
+    resourceList.appendChild(
+        createResourceCard(
+            probabilityStatisticsAssignment
+        )
+    );
+
+}
 
 
     // -----------------------------------------------
