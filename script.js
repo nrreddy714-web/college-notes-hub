@@ -1978,3 +1978,113 @@ document.addEventListener(
 
     }
 );
+// =====================================================
+// PERMANENT 3RD SEMESTER ENGLISH RESOURCE
+// =====================================================
+
+if (!subjects["3"].includes("English")) {
+
+    subjects["3"].push("English");
+
+}
+
+
+// =====================================================
+// ENGLISH NOTES RESOURCE
+// =====================================================
+
+const originalShowResources =
+    showResources;
+
+
+showResources = function () {
+
+    originalShowResources();
+
+
+    const semesterElement =
+        document.getElementById(
+            "semester"
+        );
+
+
+    const subjectElement =
+        document.getElementById(
+            "subject"
+        );
+
+
+    const resourceList =
+        document.getElementById(
+            "resourceList"
+        );
+
+
+    if (
+        !semesterElement ||
+        !subjectElement ||
+        !resourceList
+    ) {
+
+        return;
+
+    }
+
+
+    const semester =
+        semesterElement.value;
+
+
+    const subject =
+        subjectElement.value;
+
+
+    if (
+        semester !== "3" ||
+        subject !== "English"
+    ) {
+
+        return;
+
+    }
+
+
+    const englishNotes = {
+
+        id:
+            "english_notes",
+
+        name:
+            "English Notes",
+
+        semester:
+            "3",
+
+        subject:
+            "English",
+
+        type:
+            "notes",
+
+        description:
+            "3rd Semester English Study Notes.",
+
+        fileName:
+            "english-notes.pdf",
+
+        path:
+            "resources/3rd-semester/english/english-notes.pdf"
+
+    };
+
+
+    resourceList.appendChild(
+        createResourceCard(
+            englishNotes
+        )
+    );
+
+
+    applyCategoryFilter();
+
+};
