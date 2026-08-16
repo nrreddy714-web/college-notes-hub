@@ -18,7 +18,8 @@ const subjects = {
         "Artificial Intelligence",
         "Probability and Statistics",
         "Feature Engineering",
-        "English"
+        "English",
+        "indian constitution value 1"
     ],
 
     "4": [],
@@ -48,12 +49,10 @@ function getLoggedInUser() {
             "login_auth_session"
         );
 
-
     const storedUsers =
         localStorage.getItem(
             "login_auth_users"
         );
-
 
     if (
         !sessionUser ||
@@ -64,14 +63,12 @@ function getLoggedInUser() {
 
     }
 
-
     try {
 
         const users =
             JSON.parse(
                 storedUsers
             );
-
 
         return (
             users.find(
@@ -98,7 +95,7 @@ function getLoggedInUser() {
 
 
 // =====================================================
-// FAVORITES KEY
+// FAVORITES
 // =====================================================
 
 function getFavoritesKey() {
@@ -106,13 +103,11 @@ function getFavoritesKey() {
     const user =
         getLoggedInUser();
 
-
     if (!user) {
 
         return null;
 
     }
-
 
     return (
         "favorite_resources_" +
@@ -122,15 +117,10 @@ function getFavoritesKey() {
 }
 
 
-// =====================================================
-// GET FAVORITES
-// =====================================================
-
 function getFavorites() {
 
     const key =
         getFavoritesKey();
-
 
     if (!key) {
 
@@ -138,19 +128,16 @@ function getFavorites() {
 
     }
 
-
     const stored =
         localStorage.getItem(
             key
         );
-
 
     if (!stored) {
 
         return [];
 
     }
-
 
     try {
 
@@ -169,10 +156,6 @@ function getFavorites() {
 }
 
 
-// =====================================================
-// SAVE FAVORITES
-// =====================================================
-
 function saveFavorites(
     favorites
 ) {
@@ -180,13 +163,11 @@ function saveFavorites(
     const key =
         getFavoritesKey();
 
-
     if (!key) {
 
         return;
 
     }
-
 
     localStorage.setItem(
         key,
@@ -198,17 +179,12 @@ function saveFavorites(
 }
 
 
-// =====================================================
-// CHECK FAVORITE
-// =====================================================
-
 function isFavorite(
     resourceId
 ) {
 
     const favorites =
         getFavorites();
-
 
     return favorites.some(
         function(resource) {
@@ -224,10 +200,6 @@ function isFavorite(
 }
 
 
-// =====================================================
-// TOGGLE FAVORITE
-// =====================================================
-
 function toggleFavorite(
     resource
 ) {
@@ -235,26 +207,21 @@ function toggleFavorite(
     const user =
         getLoggedInUser();
 
-
     if (!user) {
 
         alert(
             "Please login to save resources."
         );
 
-
         window.location.href =
             "login.html";
-
 
         return;
 
     }
 
-
     const favorites =
         getFavorites();
-
 
     const existingIndex =
         favorites.findIndex(
@@ -268,7 +235,6 @@ function toggleFavorite(
             }
         );
 
-
     if (
         existingIndex !== -1
     ) {
@@ -278,11 +244,9 @@ function toggleFavorite(
             1
         );
 
-
         saveFavorites(
             favorites
         );
-
 
         alert(
             "⭐ Resource removed from saved resources."
@@ -296,18 +260,15 @@ function toggleFavorite(
             resource
         );
 
-
         saveFavorites(
             favorites
         );
-
 
         alert(
             "⭐ Resource saved successfully!"
         );
 
     }
-
 
     showResources();
 
@@ -326,12 +287,10 @@ function getAllSubjects(
         ...(subjects[semester] || [])
     ];
 
-
     const storedCustomSubjects =
         localStorage.getItem(
             "college_custom_subjects"
         );
-
 
     if (storedCustomSubjects) {
 
@@ -342,12 +301,10 @@ function getAllSubjects(
                     storedCustomSubjects
                 );
 
-
             const customList =
                 customSubjects[
                     semester
                 ] || [];
-
 
             customList.forEach(
                 function(subject) {
@@ -379,7 +336,6 @@ function getAllSubjects(
 
     }
 
-
     return result;
 
 }
@@ -396,24 +352,20 @@ function loadSubjects() {
             "semester"
         );
 
-
     const subjectElement =
         document.getElementById(
             "subject"
         );
-
 
     const resourceList =
         document.getElementById(
             "resourceList"
         );
 
-
     const categoryBox =
         document.getElementById(
             "resourceCategories"
         );
-
 
     if (
         !semesterElement ||
@@ -425,22 +377,17 @@ function loadSubjects() {
 
     }
 
-
     const semester =
         semesterElement.value;
-
 
     subjectElement.innerHTML =
         '<option value="">-- Select Subject --</option>';
 
-
     resourceList.innerHTML =
         "";
 
-
     currentResourceCategory =
         "all";
-
 
     if (categoryBox) {
 
@@ -449,9 +396,7 @@ function loadSubjects() {
 
     }
 
-
     resetCategoryButtons();
-
 
     if (
         semester === ""
@@ -460,11 +405,9 @@ function loadSubjects() {
         subjectElement.disabled =
             true;
 
-
         return;
 
     }
-
 
     let semesterSubjects =
         getAllSubjects(
@@ -479,7 +422,6 @@ function loadSubjects() {
             "college_resources"
         );
 
-
     if (storedResources) {
 
         try {
@@ -488,7 +430,6 @@ function loadSubjects() {
                 JSON.parse(
                     storedResources
                 );
-
 
             resources.forEach(
                 function(resource) {
@@ -534,25 +475,20 @@ function loadSubjects() {
         subjectElement.disabled =
             true;
 
-
         const option =
             document.createElement(
                 "option"
             );
 
-
         option.textContent =
             "No subjects available yet";
-
 
         option.disabled =
             true;
 
-
         subjectElement.appendChild(
             option
         );
-
 
         return;
 
@@ -567,14 +503,11 @@ function loadSubjects() {
                     "option"
                 );
 
-
             option.value =
                 item;
 
-
             option.textContent =
                 item;
-
 
             subjectElement.appendChild(
                 option
@@ -603,10 +536,8 @@ function createResourceCard(
             "div"
         );
 
-
     item.className =
         "resource-item";
-
 
     item.dataset.category =
         resource.type ||
@@ -647,22 +578,11 @@ function createResourceCard(
 
     }
 
-    else if (
-        resource.type ===
-        "materials"
-    ) {
-
-        icon =
-            "📚";
-
-    }
-
 
     const title =
         document.createElement(
             "h3"
         );
-
 
     title.textContent =
         icon +
@@ -671,7 +591,6 @@ function createResourceCard(
             resource.name ||
             "Resource"
         );
-
 
     item.appendChild(
         title
@@ -683,7 +602,6 @@ function createResourceCard(
             "p"
         );
 
-
     description.textContent =
         resource.description ||
         (
@@ -693,7 +611,6 @@ function createResourceCard(
                 ""
             )
         );
-
 
     item.appendChild(
         description
@@ -709,28 +626,23 @@ function createResourceCard(
                 "p"
             );
 
-
         const strong =
             document.createElement(
                 "strong"
             );
 
-
         strong.textContent =
             "📁 File: ";
-
 
         fileText.appendChild(
             strong
         );
-
 
         fileText.appendChild(
             document.createTextNode(
                 resource.fileName
             )
         );
-
 
         item.appendChild(
             fileText
@@ -745,10 +657,6 @@ function createResourceCard(
         );
 
 
-    // =================================================
-    // VIEW / DOWNLOAD
-    // =================================================
-
     if (
         resource.path
     ) {
@@ -758,26 +666,20 @@ function createResourceCard(
                 "a"
             );
 
-
         viewButton.href =
             resource.path;
-
 
         viewButton.target =
             "_blank";
 
-
         viewButton.rel =
             "noopener";
-
 
         viewButton.className =
             "resource-button";
 
-
         viewButton.textContent =
             "📖 View";
-
 
         buttonContainer.appendChild(
             viewButton
@@ -789,22 +691,17 @@ function createResourceCard(
                 "a"
             );
 
-
         downloadButton.href =
             resource.path;
-
 
         downloadButton.download =
             "";
 
-
         downloadButton.className =
             "resource-button";
 
-
         downloadButton.textContent =
             "⬇ Download";
-
 
         buttonContainer.appendChild(
             downloadButton
@@ -812,81 +709,14 @@ function createResourceCard(
 
     }
 
-    else {
-
-        const viewButton =
-            document.createElement(
-                "button"
-            );
-
-
-        viewButton.type =
-            "button";
-
-
-        viewButton.className =
-            "resource-button";
-
-
-        viewButton.textContent =
-            "📖 View Resource";
-
-
-        viewButton.addEventListener(
-            "click",
-            showFileMessage
-        );
-
-
-        buttonContainer.appendChild(
-            viewButton
-        );
-
-
-        const downloadButton =
-            document.createElement(
-                "button"
-            );
-
-
-        downloadButton.type =
-            "button";
-
-
-        downloadButton.className =
-            "resource-button";
-
-
-        downloadButton.textContent =
-            "⬇ Download";
-
-
-        downloadButton.addEventListener(
-            "click",
-            showFileMessage
-        );
-
-
-        buttonContainer.appendChild(
-            downloadButton
-        );
-
-    }
-
-
-    // =================================================
-    // FAVORITE
-    // =================================================
 
     const favoriteButton =
         document.createElement(
             "button"
         );
 
-
     favoriteButton.type =
         "button";
-
 
     favoriteButton.className =
         "favorite-button";
@@ -945,18 +775,15 @@ function showResources() {
             "semester"
         );
 
-
     const subjectElement =
         document.getElementById(
             "subject"
         );
 
-
     const resourceList =
         document.getElementById(
             "resourceList"
         );
-
 
     const categoryBox =
         document.getElementById(
@@ -978,7 +805,6 @@ function showResources() {
     const semester =
         semesterElement.value;
 
-
     const subject =
         subjectElement.value;
 
@@ -999,22 +825,15 @@ function showResources() {
 
         }
 
-
         currentResourceCategory =
             "all";
 
-
         resetCategoryButtons();
-
 
         return;
 
     }
 
-
-    // =================================================
-    // SHOW CATEGORY FILTERS
-    // =================================================
 
     if (categoryBox) {
 
@@ -1026,7 +845,6 @@ function showResources() {
 
     currentResourceCategory =
         "all";
-
 
     resetCategoryButtons();
 
@@ -1071,13 +889,11 @@ function showResources() {
             function(resource) {
 
                 return (
-
                     resource.semester ===
                     semester &&
 
                     resource.subject ===
                     subject
-
                 );
 
             }
@@ -1087,7 +903,7 @@ function showResources() {
     matchingResources.forEach(
         function(resource) {
 
-            const card =
+            resourceList.appendChild(
                 createResourceCard(
                     {
                         ...resource,
@@ -1097,11 +913,7 @@ function showResources() {
                             resource.id
 
                     }
-                );
-
-
-            resourceList.appendChild(
-                card
+                )
             );
 
         }
@@ -1141,7 +953,7 @@ function showResources() {
                 "dbms-unit-1.pdf",
 
             path:
-                "resources/3rd-semesters/dbms/dbms-unit-1.pdf"
+                "resources/3rd-semester/dbms/dbms-unit-1.pdf"
 
         };
 
@@ -1170,7 +982,7 @@ function showResources() {
                 "dbms-lab-programs.pdf",
 
             path:
-                "resources/3rd-semesters/lab%20programs/dbms-lab-programs.pdf"
+                "resources/3rd-semester/lab%20programs/dbms/dbms-lab-programs.pdf"
 
         };
 
@@ -1199,7 +1011,7 @@ function showResources() {
                 "dbms-question-papers.pdf",
 
             path:
-                "resources/3rd-semesters/question%20papers/dbms-question-papers.pdf"
+                "resources/3rd-semester/question%20papers/dbms/dbms-question-papers.pdf"
 
         };
 
@@ -1260,7 +1072,7 @@ function showResources() {
                 "ai-unit-1.pdf",
 
             path:
-                "resources/3rd-semesters/ai/ai-unit-1.pdf"
+                "resources/3rd-semester/ai/ai-unit-1.pdf"
 
         };
 
@@ -1292,6 +1104,74 @@ function showResources() {
                 "resources/3rd-semester/ai/ai-chapter-3-and-4-notes.pdf"
 
         };
+        const aiSyllabusAndContents = {
+
+    id:
+        "ai_syllabus_and_contents",
+
+    name:
+        "AI Syllabus and Contents",
+
+    semester:
+        "3",
+
+    subject:
+        "Artificial Intelligence",
+
+    type:
+        "notes",
+
+    description:
+        "Artificial Intelligence syllabus and course contents.",
+
+    fileName:
+        "ai-syllabus-and-contents.pdf",
+
+    path:
+        "resources/3rd-semester/ai/ai-syllabus-and-contents.pdf"
+
+};
+
+
+resourceList.appendChild(
+    createResourceCard(
+        aiSyllabusAndContents
+    )
+);
+const aiUnit1Questions = {
+
+    id:
+        "ai_unit_1_questions",
+
+    name:
+        "AI Unit 1 Questions",
+
+    semester:
+        "3",
+
+    subject:
+        "Artificial Intelligence",
+
+    type:
+        "notes",
+
+    description:
+        "Artificial Intelligence Unit 1 important questions.",
+
+    fileName:
+        "ai-unit-1-questions.pdf",
+
+    path:
+        "resources/3rd-semester/ai/ai-unit-1-questions.pdf"
+
+};
+
+
+resourceList.appendChild(
+    createResourceCard(
+        aiUnit1Questions
+    )
+);
 
 
         const aiLab = {
@@ -1318,12 +1198,12 @@ function showResources() {
                 "ai-programs.pdf",
 
             path:
-                "resources/3rd-semester/ai%20programs/ai-programs.pdf"
+                "resources/3rd-semester/ai%20programs/ai/ai-programs.pdf"
 
         };
 
 
-        const aiPapers = {
+        const aiQuestionPapers = {
 
             id:
                 "ai_question_papers",
@@ -1347,7 +1227,36 @@ function showResources() {
                 "ai-question-papers.pdf",
 
             path:
-                "resources/3rd-semester/question%20papers/ai-question-papers.pdf"
+                "resources/3rd-semester/question%20paper/ai/ai-question-papers.pdf"
+
+        };
+
+
+        const aiModelQuestionPapers = {
+
+            id:
+                "ai_model_question_papers",
+
+            name:
+                "AI Model Question Papers",
+
+            semester:
+                "3",
+
+            subject:
+                "Artificial Intelligence",
+
+            type:
+                "papers",
+
+            description:
+                "Artificial Intelligence model question papers for exam preparation.",
+
+            fileName:
+                "ai-model-question-papers.pdf",
+
+            path:
+                "resources/3rd-semester/question%20papers/ai/ai-model-question-papers.pdf"
 
         };
 
@@ -1375,7 +1284,14 @@ function showResources() {
 
         resourceList.appendChild(
             createResourceCard(
-                aiPapers
+                aiQuestionPapers
+            )
+        );
+
+
+        resourceList.appendChild(
+            createResourceCard(
+                aiModelQuestionPapers
             )
         );
 
@@ -1474,6 +1390,51 @@ function showResources() {
         );
 
     }
+    // =================================================
+// FEATURE ENGINEERING
+// =================================================
+
+if (
+    subject ===
+    "Feature Engineering"
+) {
+
+    const featureEngineeringQuestionPaper = {
+
+        id:
+            "feature_engineering_question_paper",
+
+        name:
+            "Feature Engineering Question Paper",
+
+        semester:
+            "3",
+
+        subject:
+            "Feature Engineering",
+
+        type:
+            "papers",
+
+        description:
+            "3rd Semester Feature Engineering question paper.",
+
+        fileName:
+            "feature-engineering-question-paper.pdf",
+
+        path:
+            "resources/3rd-semester/question%20papers/feature-engineering/feature-engineering-question-paper.pdf"
+
+    };
+
+
+    resourceList.appendChild(
+        createResourceCard(
+            featureEngineeringQuestionPaper
+        )
+    );
+
+}
 
 
     // =================================================
@@ -1496,9 +1457,7 @@ function filterResourceCategory(
     currentResourceCategory =
         category;
 
-
     resetCategoryButtons();
-
 
     applyCategoryFilter();
 
@@ -1553,13 +1512,11 @@ function applyCategoryFilter() {
 
 
             if (
-
                 currentResourceCategory ===
                 "all" ||
 
                 type ===
                 currentResourceCategory
-
             ) {
 
                 resource.style.display =
@@ -1673,7 +1630,7 @@ function searchResources() {
 function showFileMessage() {
 
     alert(
-        "The resource information is available. Please make sure the PDF is stored in the resources folder."
+        "Please make sure the PDF is stored in the resources folder."
     );
 
 }
@@ -1703,42 +1660,35 @@ function updateLoginStatus() {
             "loginLink"
         );
 
-
     const studentProfile =
         document.getElementById(
             "studentProfile"
         );
-
 
     const logoutButton =
         document.getElementById(
             "mainLogoutBtn"
         );
 
-
     const adminPanelLink =
         document.getElementById(
             "adminPanelLink"
         );
-
 
     const navStudentName =
         document.getElementById(
             "navStudentName"
         );
 
-
     const profileDisplayName =
         document.getElementById(
             "profileDisplayName"
         );
 
-
     const profileDisplayUsername =
         document.getElementById(
             "profileDisplayUsername"
         );
-
 
     const sessionUser =
         localStorage.getItem(
@@ -1757,7 +1707,6 @@ function updateLoginStatus() {
 
         }
 
-
         if (studentProfile) {
 
             studentProfile.style.display =
@@ -1765,14 +1714,12 @@ function updateLoginStatus() {
 
         }
 
-
         if (logoutButton) {
 
             logoutButton.style.display =
                 "inline-block";
 
         }
-
 
         if (adminPanelLink) {
 
@@ -1880,7 +1827,6 @@ function updateLoginStatus() {
 
         }
 
-
         if (studentProfile) {
 
             studentProfile.style.display =
@@ -1888,14 +1834,12 @@ function updateLoginStatus() {
 
         }
 
-
         if (logoutButton) {
 
             logoutButton.style.display =
                 "none";
 
         }
-
 
         if (adminPanelLink) {
 
@@ -1910,7 +1854,7 @@ function updateLoginStatus() {
 
 
 // =====================================================
-// MAIN LOGOUT
+// LOGOUT
 // =====================================================
 
 function mainLogout() {
@@ -1919,11 +1863,9 @@ function mainLogout() {
         "login_auth_session"
     );
 
-
     localStorage.removeItem(
         "remembered_user"
     );
-
 
     window.location.href =
         "login.html";
@@ -1942,7 +1884,6 @@ function applyTheme() {
             "college_theme"
         );
 
-
     const button =
         document.getElementById(
             "themeToggle"
@@ -1957,7 +1898,6 @@ function applyTheme() {
         document.body.classList.add(
             "dark-theme"
         );
-
 
         if (button) {
 
@@ -1974,7 +1914,6 @@ function applyTheme() {
             "dark-theme"
         );
 
-
         if (button) {
 
             button.textContent =
@@ -1987,10 +1926,6 @@ function applyTheme() {
 }
 
 
-// =====================================================
-// TOGGLE THEME
-// =====================================================
-
 function toggleTheme() {
 
     const isDark =
@@ -2001,11 +1936,9 @@ function toggleTheme() {
 
     localStorage.setItem(
         "college_theme",
-
         isDark
         ? "dark"
         : "light"
-
     );
 
 
