@@ -206,10 +206,173 @@
 
     </style>
 
+
+<style>
+body.login-intro-page{overflow:hidden!important;}
+#loginIntroScene{position:fixed;inset:0;z-index:999999;background:linear-gradient(135deg,#eef2ff,#ffffff,#dbeafe);display:flex;align-items:center;justify-content:center;overflow:hidden;pointer-events:none;animation:introOut .6s ease 5.2s forwards;}
+#loginIntroStage{position:relative;width:min(1100px,94vw);height:min(650px,88vh);}
+#introPerson{position:absolute;left:-220px;bottom:12%;width:210px;height:300px;z-index:5;animation:personIn 1.5s cubic-bezier(.2,.8,.25,1) .15s forwards;}
+.person-head{position:absolute;left:55px;top:0;width:88px;height:88px;border-radius:50%;background:#ffd7b5;border:4px solid #111827;box-sizing:border-box;}
+.person-hair{position:absolute;left:2px;top:-8px;width:84px;height:46px;border-radius:50px 50px 18px 18px;background:#111827;}
+.person-eye{position:absolute;top:38px;width:8px;height:8px;border-radius:50%;background:#111827;}
+.person-eye.l{left:24px}.person-eye.r{right:24px}
+.person-mouth{position:absolute;left:30px;top:55px;width:28px;height:13px;border-bottom:4px solid #111827;border-radius:0 0 20px 20px;}
+.person-body{position:absolute;left:45px;top:83px;width:110px;height:125px;border-radius:25px;background:linear-gradient(145deg,#4f46e5,#7c3aed);border:4px solid #111827;box-sizing:border-box;}
+.person-arm{position:absolute;top:98px;width:25px;height:105px;border-radius:18px;background:#ffd7b5;border:4px solid #111827;transform-origin:50% 10px;box-sizing:border-box;}
+.person-arm.l{left:27px;transform:rotate(28deg)}
+.person-arm.r{right:20px;transform:rotate(-55deg);animation:armPoint 1s ease 2.1s forwards;}
+.person-hand{position:absolute;right:-14px;bottom:-12px;width:34px;height:34px;border-radius:50%;background:#ffd7b5;border:4px solid #111827;}
+.person-leg{position:absolute;top:198px;width:29px;height:90px;border-radius:18px;background:#1f2937;border:4px solid #111827;box-sizing:border-box;}
+.person-leg.l{left:67px}.person-leg.r{left:118px}
+.person-shoe{position:absolute;bottom:-10px;left:-9px;width:52px;height:21px;border-radius:20px;background:#111827;}
+#introBubble{position:absolute;left:7%;top:8%;z-index:6;padding:18px 22px;background:#fff;color:#111827;border-radius:20px;box-shadow:0 18px 45px rgba(15,23,42,.16);font-size:clamp(16px,1.8vw,22px);font-weight:700;line-height:1.35;opacity:0;transform:translateY(16px) scale(.9);animation:bubbleIn .6s ease 1.1s forwards;}
+#introBubble:after{content:"";position:absolute;left:45px;bottom:-14px;width:26px;height:26px;background:#fff;transform:rotate(45deg);}
+#introArrow{position:absolute;left:27%;bottom:31%;z-index:7;font-size:58px;opacity:0;transform:rotate(-20deg);animation:reach .9s ease 2.1s forwards;}
+#introRope{position:absolute;left:30%;right:20%;bottom:34%;height:6px;border-radius:6px;background:linear-gradient(90deg,#4f46e5,rgba(79,70,229,.12));transform:scaleX(0);transform-origin:left center;animation:pull .9s ease 2.1s forwards;}
+.login-card.login-intro-card{position:absolute!important;left:52%!important;top:50%!important;margin:0!important;z-index:4;opacity:0!important;transform:translate(120vw,-50%) scale(.94)!important;animation:cardIn 1.7s cubic-bezier(.18,.8,.2,1) 2.1s forwards!important;}
+@keyframes personIn{0%{transform:translateX(0)}70%{transform:translateX(205px)}100%{transform:translateX(190px)}}
+@keyframes bubbleIn{to{opacity:1;transform:none}}
+@keyframes armPoint{0%{transform:rotate(-55deg)}100%{transform:rotate(-72deg)}}
+@keyframes reach{0%{opacity:0;transform:rotate(-20deg) translateX(0)}30%{opacity:1}100%{opacity:1;transform:rotate(8deg) translateX(70px)}}
+@keyframes pull{to{transform:scaleX(1)}}
+@keyframes cardIn{0%{opacity:0;transform:translate(120vw,-50%) scale(.94)!important}25%{opacity:1}72%{transform:translate(-54%,-50%) scale(1.03)!important}100%{opacity:1;transform:translate(-50%,-50%) scale(1)!important}}
+@keyframes introOut{to{opacity:0;visibility:hidden}}
+@media(max-width:700px){#introPerson{transform:scale(.8) translateX(-280px);transform-origin:bottom left;animation-name:personInMobile;}#introBubble{left:3%;top:5%;max-width:290px;font-size:15px}.login-card.login-intro-card{left:50%!important;width:min(92vw,430px)!important}.
+@keyframes personInMobile{0%{transform:scale(.8) translateX(-280px)}70%{transform:scale(.8) translateX(40px)}100%{transform:scale(.8) translateX(25px)}}}
+</style>
+
+<style>
+/* ===============================
+   BLUE LOGIN UI ENHANCEMENT
+   =============================== */
+body {
+    background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 45%, #bfdbfe 100%) !important;
+}
+
+.login-container {
+    background: radial-gradient(circle at top left, rgba(59,130,246,.18), transparent 38%),
+                radial-gradient(circle at bottom right, rgba(37,99,235,.16), transparent 35%);
+}
+
+.login-card {
+    border: 1px solid rgba(59,130,246,.20) !important;
+    box-shadow: 0 24px 70px rgba(30,64,175,.18), 0 8px 24px rgba(37,99,235,.10) !important;
+    backdrop-filter: blur(12px);
+}
+
+.login-header h1 {
+    color: #0f3d91 !important;
+}
+
+.login-header p {
+    color: #4b6694 !important;
+}
+
+.login-logo {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+    box-shadow: 0 10px 25px rgba(37,99,235,.28) !important;
+}
+
+.form-group label {
+    color: #174a9c !important;
+}
+
+.form-group input {
+    border: 2px solid #bfdbfe !important;
+    background: #f8fbff !important;
+}
+
+.form-group input:focus {
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 4px rgba(37,99,235,.12) !important;
+    background: #ffffff !important;
+}
+
+.login-submit-button {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+    box-shadow: 0 12px 25px rgba(37,99,235,.28) !important;
+}
+
+.login-submit-button:hover {
+    background: linear-gradient(135deg, #1d4ed8, #1e40af) !important;
+    transform: translateY(-2px);
+}
+
+.register-link-button {
+    color: #2563eb !important;
+}
+
+.register-link-button:hover {
+    color: #1d4ed8 !important;
+}
+
+.login-message.success {
+    color: #1d4ed8 !important;
+}
+
+.welcome-overlay {
+    background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 45%, #bfdbfe 100%) !important;
+}
+
+.welcome-box {
+    border: 1px solid rgba(37,99,235,.16);
+    box-shadow: 0 25px 70px rgba(30,64,175,.20) !important;
+}
+
+.welcome-box h1 span,
+.welcome-developer strong {
+    color: #2563eb !important;
+}
+
+.welcome-divider {
+    background: linear-gradient(90deg, #2563eb, #60a5fa) !important;
+}
+
+#otpDisplay {
+    color: #2563eb !important;
+}
+
+/* animated intro */
+#loginIntroScene {
+    background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 42%, #93c5fd 100%) !important;
+}
+
+.person-body {
+    background: linear-gradient(145deg, #2563eb, #1d4ed8) !important;
+}
+
+#introBubble {
+    border: 1px solid rgba(37,99,235,.12);
+    box-shadow: 0 18px 45px rgba(30,64,175,.18) !important;
+}
+
+#introRope {
+    background: linear-gradient(90deg, #2563eb, rgba(37,99,235,.12)) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+
 </head>
 
 
-<body>
+<body class="login-intro-page">
+<div id="loginIntroScene"><div id="loginIntroStage">
+<div id="introPerson" aria-hidden="true">
+<div class="person-head"><div class="person-hair"></div><div class="person-eye l"></div><div class="person-eye r"></div><div class="person-mouth"></div></div>
+<div class="person-body"></div><div class="person-arm l"></div><div class="person-arm r"><div class="person-hand"></div></div>
+<div class="person-leg l"><div class="person-shoe"></div></div><div class="person-leg r"><div class="person-shoe"></div></div>
+</div>
+<div id="introBubble">Hi! 👋<br>Welcome to College Notes Hub!<br>Let me bring your login. 😊</div>
+<div id="introArrow">👉</div><div id="introRope"></div>
+</div></div>
+
 
 
     <!-- =================================================
@@ -223,7 +386,7 @@
              LOGIN CARD
              ================================================= -->
 
-        <section class="login-card">
+        <section class="login-card login-intro-card">
 
 
             <div class="login-header">
@@ -1528,7 +1691,11 @@
         );
 
     </script>
-    <script src="login-script.js"></script>
+    
+<script>
+window.addEventListener("load",function(){setTimeout(function(){var s=document.getElementById("loginIntroScene");if(s)s.remove();document.body.classList.remove("login-intro-page");var c=document.querySelector(".login-intro-card");if(c)c.classList.remove("login-intro-card");},5900);});
+</script>
+<script src="login-script.js"></script>
 
 
 </body>
