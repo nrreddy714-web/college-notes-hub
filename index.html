@@ -10,7 +10,9 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>College Notes Hub</title>
+    <title>
+        College Notes Hub
+    </title>
 
     <link
         rel="stylesheet"
@@ -23,274 +25,417 @@
 <body>
 
 
-    <!-- =================================================
-         NAVIGATION
-         ================================================= -->
+<!-- =====================================================
+     NAVBAR
+     ===================================================== -->
 
-    <header>
+<header class="main-navbar">
 
-        <nav class="navbar">
-
-            <div class="logo">
-                📚 College Notes Hub
-            </div>
+    <div class="navbar-inner">
 
 
-            <div class="nav-links">
-                <a href="#developer">
-                     👨‍💻 Developer
-                </a>
+        <!-- LOGO -->
 
-                <a href="#home">
-                    Home
-                </a>
+        <a
+            href="index.html"
+            class="site-logo"
+        >
 
-                <a href="#resources">
-                    Resources
-                </a>
+            <span class="logo-icon">
+                📚
+            </span>
 
-                <a href="#features">
-                    Features
-                </a>
+            <span>
+                College Notes Hub
+            </span>
 
-                <a href="#about">
-                    About
-                </a>
+        </a>
 
 
-                <a
-                    href="admin.html"
-                    id="adminPanelLink"
-                    style="display:none;"
-                >
-                    🛠️ Admin
-                </a>
+        <!-- NAVIGATION -->
 
+        <nav class="main-nav">
 
-                <!-- THEME BUTTON -->
+            <a
+                href="#home"
+                class="nav-link active"
+            >
+                🏠 Home
+            </a>
 
-                <button
-                    id="themeToggle"
-                    class="theme-toggle"
-                    type="button"
-                >
-                    🌙 Dark
-                </button>
+            <a
+                href="#resources"
+                class="nav-link"
+            >
+                📚 Resources
+            </a>
 
+            <a
+                href="#features"
+                class="nav-link"
+            >
+                ✨ Features
+            </a>
 
-                <!-- LOGIN -->
-
-                <a
-                    href="login.html"
-                    id="loginLink"
-                    class="login-button"
-                >
-                    🔐 Login
-                </a>
-
-
-                <!-- STUDENT PROFILE -->
-
-                <div
-                    id="studentProfile"
-                    class="student-profile"
-                    style="display:none;"
-                >
-
-                    <button
-                        id="profileButton"
-                        class="profile-button"
-                        type="button"
-                    >
-
-                        👤
-
-                        <span id="navStudentName">
-                            Student
-                        </span>
-
-                    </button>
-
-
-                    <div
-                        id="profileDropdown"
-                        class="profile-dropdown"
-                    >
-
-                        <div class="profile-icon">
-                            👤
-                        </div>
-
-
-                        <h3
-                            id="profileDisplayName"
-                        >
-                            Student
-                        </h3>
-
-
-                        <p>
-
-                            Username:
-
-                            <strong
-                                id="profileDisplayUsername"
-                            >
-                                -
-                            </strong>
-
-                        </p>
-
-
-                        <p>
-
-                            Status:
-
-                            <strong class="online-text">
-                                🟢 Online
-                            </strong>
-
-                        </p>
-
-
-                        <a
-                            href="student-dashboard.html"
-                            class="profile-dashboard-link"
-                        >
-                            📊 Open Dashboard
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <!-- LOGOUT -->
-
-                <button
-                    id="mainLogoutBtn"
-                    class="main-logout-button"
-                    type="button"
-                    style="display:none;"
-                >
-                    🚪 Logout
-                </button>
-
-            </div>
+            <a
+                href="#about"
+                class="nav-link"
+            >
+                👨‍💻 About
+            </a>
 
         </nav>
 
-    </header>
+
+        <!-- RIGHT SIDE -->
+
+        <div class="navbar-actions">
+
+            <button
+                id="themeToggle"
+                class="theme-toggle"
+                type="button"
+            >
+                🌙 Dark
+            </button>
+
+
+            <a
+                id="loginLink"
+                href="login.html"
+                class="nav-login-button"
+            >
+                🔐 Login
+            </a>
+
+
+            <div
+                id="studentProfile"
+                class="profile-wrapper"
+                style="display:none;"
+            >
+
+                <button
+                    id="profileButton"
+                    class="profile-button"
+                    type="button"
+                >
+
+                    👤
+                    <span id="navStudentName">
+                        Student
+                    </span>
+
+                    ▾
+
+                </button>
+
+
+                <div
+                    id="profileDropdown"
+                    class="profile-dropdown"
+                >
+
+                    <div class="profile-dropdown-header">
+
+                        <strong>
+                            Welcome
+                        </strong>
+
+                        <span
+                            id="profileDisplayName"
+                        >
+                            Student
+                        </span>
+
+                        <small
+                            id="profileDisplayUsername"
+                        >
+                            @username
+                        </small>
+
+                    </div>
+
+
+                    <div class="profile-dropdown-divider"></div>
+
+
+                    <a
+                        href="student-dashboard.html"
+                    >
+                        🎓 Student Dashboard
+                    </a>
+
+
+                    <a
+                        href="admin.html"
+                        id="adminPanelLink"
+                        style="display:none;"
+                    >
+                        🛠️ Admin Panel
+                    </a>
+
+
+                    <button
+                        id="mainLogoutBtn"
+                        type="button"
+                    >
+                        🚪 Logout
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
 
 
 
-    <!-- =================================================
-         HERO
-         ================================================= -->
+<!-- =====================================================
+     SCROLL HERO
+     ===================================================== -->
 
-    <section
-        id="home"
-        class="hero"
-    >
+<section
+    id="home"
+    class="scroll-hero"
+>
 
-        <div class="hero-content">
+    <div class="scroll-scene">
 
-            <div class="hero-badge">
+
+        <div class="scene-glow glow-one"></div>
+
+        <div class="scene-glow glow-two"></div>
+
+
+        <!-- HERO TEXT -->
+
+        <div class="scroll-content">
+
+            <div class="scroll-badge">
                 🎓 Built for College Students
             </div>
 
 
             <h1>
 
-                Your Complete
+                Welcome to
 
                 <span>
-                    College Resource Hub
+                    College Notes Hub
                 </span>
 
             </h1>
 
 
             <p>
-
-                Find notes, lab programs, question papers
-                and useful study resources in one simple place.
-
+                Everything you need for your college studies
+                in one place.
             </p>
 
-
-            <div class="hero-buttons">
-
-                <a
-                    href="#resources"
-                    class="hero-button"
-                >
-                    Explore Resources
-                </a>
+        </div>
 
 
-                <a
-                    href="#features"
-                    class="secondary-button"
-                >
-                    Learn More
-                </a>
+        <!-- PERSON -->
+
+        <div class="scroll-person">
+
+            <div class="speech">
+                Hi! 👋
+            </div>
+
+            <div class="person-body">
+                🧑‍💻
+            </div>
+
+        </div>
+
+
+        <!-- NOTES CARD -->
+
+        <div class="scroll-resource notes-card">
+
+            <div class="resource-icon">
+                📚
+            </div>
+
+            <div>
+
+                <strong>
+                    Notes
+                </strong>
+
+                <small>
+                    Study Notes
+                </small>
 
             </div>
 
         </div>
 
-    </section>
+
+        <!-- LAB CARD -->
+
+        <div class="scroll-resource lab-card">
+
+            <div class="resource-icon">
+                💻
+            </div>
+
+            <div>
+
+                <strong>
+                    Lab Programs
+                </strong>
+
+                <small>
+                    Practical Resources
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- QUESTION PAPERS -->
+
+        <div class="scroll-resource paper-card">
+
+            <div class="resource-icon">
+                📄
+            </div>
+
+            <div>
+
+                <strong>
+                    Question Papers
+                </strong>
+
+                <small>
+                    Previous Papers
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- STUDY MATERIALS -->
+
+        <div class="scroll-resource material-card">
+
+            <div class="resource-icon">
+                📚
+            </div>
+
+            <div>
+
+                <strong>
+                    Study Materials
+                </strong>
+
+                <small>
+                    Unit-wise Resources
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- FINAL HERO -->
+
+        <div class="scroll-final">
+
+            <h2>
+                Everything you need.
+            </h2>
+
+            <p>
+                One place. One hub. Your college resources.
+            </p>
+
+
+            <a
+                href="#resources"
+                class="scroll-explore-button"
+            >
+                🚀 Explore Resources
+            </a>
+
+        </div>
+
+
+        <!-- SCROLL INDICATOR -->
+
+        <div class="scroll-indicator">
+
+            <span>
+                Scroll to explore
+            </span>
+
+            <div class="scroll-arrow">
+                ↓
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 
 
-    <!-- =================================================
-         FEATURES
-         ================================================= -->
+<!-- =====================================================
+     FEATURES
+     ===================================================== -->
 
-    <section
-        id="features"
-        class="features"
-    >
+<section
+    id="features"
+    class="features-section"
+>
+
+    <div class="section-container">
+
 
         <div class="section-heading">
 
-            <div class="section-badge">
-                📚 Study Smarter
-            </div>
-
+            <span class="section-badge">
+                ✨ Why College Notes Hub?
+            </span>
 
             <h2>
-                Everything You Need to Study
+                Everything for your studies
             </h2>
 
-
             <p>
-                Access important academic resources
-                quickly and easily.
+                A simple and organized place to find
+                useful college resources.
             </p>
 
         </div>
 
 
-
-        <div class="feature-container">
+        <div class="feature-grid">
 
 
             <div class="feature-card">
 
-                <div class="feature-icon">
+                <div class="feature-card-icon">
                     📖
                 </div>
 
                 <h3>
-                    Study Notes
+                    Notes
                 </h3>
 
                 <p>
-                    Find subject-wise notes to help you
-                    understand important topics and
-                    prepare for exams.
+                    Access subject-wise notes
+                    for your semester.
                 </p>
 
             </div>
@@ -298,7 +443,7 @@
 
             <div class="feature-card">
 
-                <div class="feature-icon">
+                <div class="feature-card-icon">
                     💻
                 </div>
 
@@ -307,9 +452,8 @@
                 </h3>
 
                 <p>
-                    Access programming and practical
-                    laboratory resources in one
-                    convenient place.
+                    Find practical programs
+                    for laboratory preparation.
                 </p>
 
             </div>
@@ -317,7 +461,7 @@
 
             <div class="feature-card">
 
-                <div class="feature-icon">
+                <div class="feature-card-icon">
                     📄
                 </div>
 
@@ -326,8 +470,8 @@
                 </h3>
 
                 <p>
-                    Practice with previous examination
-                    papers and improve your preparation.
+                    Prepare for exams using
+                    previous and model papers.
                 </p>
 
             </div>
@@ -335,172 +479,154 @@
 
             <div class="feature-card">
 
-                <div class="feature-icon">
-                    🔍
+                <div class="feature-card-icon">
+                    ⭐
                 </div>
 
                 <h3>
-                    Smart Search
+                    Save Resources
                 </h3>
 
                 <p>
-                    Quickly search through available
-                    resources and find what you need.
+                    Save useful resources
+                    for quick access later.
                 </p>
 
             </div>
 
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    ⬇️
-                </div>
-
-                <h3>
-                    Easy Downloads
-                </h3>
-
-                <p>
-                    Download available resources and
-                    keep them for offline study.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    📱
-                </div>
-
-                <h3>
-                    Student Friendly
-                </h3>
-
-                <p>
-                    Designed to work smoothly on
-                    computers, tablets and mobile devices.
-                </p>
-
-            </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
 
-    <!-- =================================================
-         RESOURCES
-         ================================================= -->
+<!-- =====================================================
+     RESOURCES
+     ===================================================== -->
 
-    <section
-        id="resources"
-        class="resources"
-    >
+<section
+    id="resources"
+    class="resources-section"
+>
 
-        <div class="section-heading">
+    <div class="section-container">
+
+
+        <div class="resources-title">
 
             <div class="section-badge">
-                📚 Study Materials
+                📚 Resource Library
             </div>
 
 
             <h2>
-                Find Your Resources
+                Explore Your Resources
             </h2>
 
 
             <p>
-                Select your semester and subject to
-                access available study materials.
+                Find notes, lab programs, question papers
+                and study materials for your semester.
             </p>
+
+        </div>
+
+
+        <!-- SELECTORS -->
+
+        <div class="resource-controls">
+
+
+            <div class="control-group">
+
+                <label
+                    for="semester"
+                >
+                    🎓 Select Semester
+                </label>
+
+                <select
+                    id="semester"
+                    onchange="loadSubjects()"
+                >
+
+                    <option value="">
+                        -- Select Semester --
+                    </option>
+
+                    <option value="1">
+                        1st Semester
+                    </option>
+
+                    <option value="2">
+                        2nd Semester
+                    </option>
+
+                    <option value="3">
+                        3rd Semester
+                    </option>
+
+                    <option value="4">
+                        4th Semester
+                    </option>
+
+                    <option value="5">
+                        5th Semester
+                    </option>
+
+                    <option value="6">
+                        6th Semester
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="control-group">
+
+                <label
+                    for="subject"
+                >
+                    📘 Select Subject
+                </label>
+
+                <select
+                    id="subject"
+                    disabled
+                    onchange="showResources()"
+                >
+
+                    <option value="">
+                        -- Select Subject --
+                    </option>
+
+                </select>
+
+            </div>
+
 
         </div>
 
 
         <!-- SEARCH -->
 
-        <div class="search-box">
+        <div class="resource-search-wrapper">
 
             <input
-                type="text"
                 id="resourceSearch"
-                placeholder="🔍 Search resources..."
-                onkeyup="searchResources()"
+                type="search"
+                placeholder="🔎 Search notes, programs, question papers..."
+                oninput="searchResources()"
             >
 
         </div>
 
 
-        <!-- FILTER -->
-
-        <div class="resource-filter">
-
-            <label for="semester">
-                Select Semester
-            </label>
-
-
-            <select
-                id="semester"
-                onchange="loadSubjects()"
-            >
-
-                <option value="">
-                    -- Select Semester --
-                </option>
-
-                <option value="1">
-                    1st Semester
-                </option>
-
-                <option value="2">
-                    2nd Semester
-                </option>
-
-                <option value="3">
-                    3rd Semester
-                </option>
-
-                <option value="4">
-                    4th Semester
-                </option>
-
-                <option value="5">
-                    5th Semester
-                </option>
-
-                <option value="6">
-                    6th Semester
-                </option>
-
-            </select>
-
-
-            <label for="subject">
-                Select Subject
-            </label>
-
-
-            <select
-                id="subject"
-                disabled
-                onchange="showResources()"
-            >
-
-                <option value="">
-                    -- Select Subject --
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <!-- CATEGORY FILTER -->
+        <!-- CATEGORY BUTTONS -->
 
         <div
             id="resourceCategories"
@@ -514,7 +640,7 @@
                 data-category="all"
                 onclick="filterResourceCategory('all')"
             >
-                All
+                🔎 All
             </button>
 
 
@@ -565,112 +691,81 @@
         <div
             id="resourceList"
             class="resource-list"
-        ></div>
+        >
 
-    </section>
+            <div class="empty-resource-state">
 
+                <div class="empty-icon">
+                    📚
+                </div>
 
+                <h3>
+                    Select your semester and subject
+                </h3>
 
-    <!-- =================================================
-         ABOUT
-         ================================================= -->
+                <p>
+                    Your resources will appear here.
+                </p>
 
-    <section
-        id="about"
-        class="about"
-    >
-
-        <div class="about-content">
-
-            <div class="section-badge">
-                💡 About The Project
             </div>
-
-
-            <h2>
-                Built By Students, For Students
-            </h2>
-
-
-            <p>
-                College Notes Hub is a student-focused
-                platform created to make academic
-                resources easier to find, access
-                and download.
-            </p>
-
-
-            <p>
-                The goal is to bring notes,
-                laboratory programs, question papers
-                and other useful learning materials
-                together in one convenient platform.
-            </p>
 
         </div>
 
-    </section>
-    <!-- =================================================
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
      ABOUT DEVELOPER
-     ================================================= -->
+     ===================================================== -->
 
 <section
-    id="developer"
+    id="about"
     class="developer-section"
 >
 
-    <div class="developer-container">
-
-        <div class="developer-badge">
-            👨‍💻 About the Developer
-        </div>
-
-
-        <h2>
-            Meet the Developer
-        </h2>
-
-
-        <p class="developer-intro">
-            Hello! I am
-            <strong>Narendra Reddy</strong>,
-            a BCA student and the creator of
-            College Notes Hub.
-        </p>
+    <div class="section-container">
 
 
         <div class="developer-card">
 
 
-            <!-- AVATAR -->
-
             <div class="developer-avatar">
-                NR
+                👨‍💻
             </div>
 
 
-            <!-- DETAILS -->
+            <div class="developer-content">
 
-            <div class="developer-details">
+                <span class="section-badge">
+                    👨‍💻 About the Developer
+                </span>
+
+
+                <h2>
+                    Built with passion for students.
+                </h2>
+
+
+                <p>
+                    College Notes Hub is a student-focused
+                    platform created to organize notes,
+                    lab programs, question papers and
+                    study materials in one convenient place.
+                </p>
+
 
                 <h3>
                     Narendra Reddy
                 </h3>
 
 
-                <p class="developer-role">
-                    🎓 BCA Student
-                </p>
+                <span class="developer-role">
+                    BCA Student & Developer
+                </span>
 
-
-                <p>
-                    I created College Notes Hub to make
-                    college study resources easier to
-                    organize, find and access.
-                </p>
-
-
-                <!-- SKILLS -->
 
                 <div class="developer-skills">
 
@@ -699,35 +794,22 @@
                     </span>
 
                 </div>
-                <!-- PORTFOLIO BUTTON -->
-
-<div class="developer-portfolio">
-
-    <a
-        href="https://nrreddy714-web.github.io/bca-student-portfolio/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="portfolio-button"
-    >
-        🌐 View My BCA Portfolio
-    </a>
-
-</div>
-
-</div>
 
 
-                <!-- PROJECT -->
+                <!-- PORTFOLIO -->
 
-                <div class="developer-project">
+                <div class="developer-portfolio">
 
-                    <strong>
-                        🚀 Project
-                    </strong>
+                    <a
+                        href="https://nrreddy714-web.github.io/bca-student-portfolio/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="portfolio-button"
+                    >
 
-                    <p>
-                        College Notes Hub
-                    </p>
+                        🌐 View My BCA Portfolio
+
+                    </a>
 
                 </div>
 
@@ -741,42 +823,114 @@
 
 
 
-    <!-- =================================================
-         FOOTER
-         ================================================= -->
+<!-- =====================================================
+     CALL TO ACTION
+     ===================================================== -->
 
-   <footer>
+<section class="cta-section">
 
-    <div class="footer-content">
+    <div class="cta-card">
 
-        <h3>
-            📚 College Notes Hub
-        </h3>
+        <span>
+            🚀
+        </span>
+
+        <h2>
+            Ready to study smarter?
+        </h2>
 
         <p>
-            Making college resources easier to access.
+            Explore your semester resources
+            and start preparing today.
         </p>
 
-        <p>
-            Created & Developed by
-            <strong>Narendra Reddy</strong>
-        </p>
 
-        <p class="copyright">
-            © 2026 Narendra Reddy |
-            College Notes Hub
-        </p>
+        <a
+            href="#resources"
+            class="cta-button"
+        >
+            📚 Explore Resources
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="main-footer">
+
+    <div class="footer-container">
+
+
+        <div class="footer-brand">
+
+            <div class="footer-logo">
+                📚 College Notes Hub
+            </div>
+
+            <p>
+                Built for college students.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#resources">
+                Resources
+            </a>
+
+            <a href="#features">
+                Features
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+        </div>
+
+
+        <div class="footer-developer">
+
+            <p>
+                Created & Developed by
+            </p>
+
+            <strong>
+                Narendra Reddy
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 College Notes Hub
 
     </div>
 
 </footer>
 
 
-    <!-- =================================================
-         SCRIPT
-         ================================================= -->
 
-    <script src="script.js"></script>
+<!-- =====================================================
+     MAIN SCRIPT
+     ===================================================== -->
+
+<script src="script.js"></script>
 
 
 </body>
