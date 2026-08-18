@@ -1531,6 +1531,158 @@ function showResources() {
         );
 
     }
+    // ---------------------------------------------
+// AI STUDY MATERIAL - UNIT 1
+// ---------------------------------------------
+
+const aiUnit1Materials = {
+
+    id:
+        "ai_unit_1_materials",
+
+    name:
+        "AI Study Materials - Unit 1",
+
+    semester:
+        "3",
+
+    subject:
+        "Artificial Intelligence",
+
+    type:
+        "materials",
+
+    description:
+        "Artificial Intelligence study materials for Unit 1.",
+
+    fileName:
+        "ai-unit-1-materials.pdf",
+
+    path:
+        "resources/3rd-semester/ai/ai-unit-1-materials.pdf"
+
+};
+
+
+// ---------------------------------------------
+// AI STUDY MATERIAL - UNIT 2
+// ---------------------------------------------
+
+const aiUnit2Materials = {
+
+    id:
+        "ai_unit_2_materials",
+
+    name:
+        "AI Study Materials - Unit 2",
+
+    semester:
+        "3",
+
+    subject:
+        "Artificial Intelligence",
+
+    type:
+        "materials",
+
+    description:
+        "Artificial Intelligence study materials for Unit 2.",
+
+    fileName:
+        "ai-unit-2-materials.pdf",
+
+    path:
+        "resources/3rd-semester/ai/ai-unit-2-materials.pdf"
+
+};
+
+
+// ---------------------------------------------
+// AI STUDY MATERIAL - UNIT 3
+// ---------------------------------------------
+
+const aiUnit3Materials = {
+
+    id:
+        "ai_unit_3_materials",
+
+    name:
+        "AI Study Materials - Unit 3",
+
+    semester:
+        "3",
+
+    subject:
+        "Artificial Intelligence",
+
+    type:
+        "materials",
+
+    description:
+        "Artificial Intelligence study materials for Unit 3.",
+
+    fileName:
+        "ai-unit-3-materials.pdf",
+
+    path:
+        "resources/3rd-semester/ai/ai-unit-3-materials.pdf"
+
+};
+
+
+// ---------------------------------------------
+// AI STUDY MATERIAL - UNIT 4
+// ---------------------------------------------
+
+const aiUnit4Materials = {
+
+    id:
+        "ai_unit_4_materials",
+
+    name:
+        "AI Study Materials - Unit 4",
+
+    semester:
+        "3",
+
+    subject:
+        "Artificial Intelligence",
+
+    type:
+        "materials",
+
+    description:
+        "Artificial Intelligence study materials for Unit 4.",
+
+    fileName:
+        "ai-unit-4-materials.pdf",
+
+    path:
+        "resources/3rd-semester/ai/ai-unit-4-materials.pdf"
+};
+resourceList.appendChild(
+    createResourceCard(
+        aiUnit1Materials
+    )
+);
+
+resourceList.appendChild(
+    createResourceCard(
+        aiUnit2Materials
+    )
+);
+
+resourceList.appendChild(
+    createResourceCard(
+        aiUnit3Materials
+    )
+);
+
+resourceList.appendChild(
+    createResourceCard(
+        aiUnit4Materials
+    )
+);
 
 
     // =================================================
