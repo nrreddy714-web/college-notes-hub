@@ -787,3 +787,642 @@ body.dark-theme .welcome-developer {
     }
 
 }
+/* =====================================================
+   LOGIN INTRO PERSON ANIMATION
+   ===================================================== */
+
+.login-container {
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+/* =====================================================
+   PERSON INTRO
+   ===================================================== */
+
+.login-intro-animation {
+
+    position: absolute;
+
+    left: -180px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    width: 190px;
+
+    height: 260px;
+
+    z-index: 20;
+
+    pointer-events: none;
+
+    animation:
+        personEntrance
+        1.2s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        )
+        forwards;
+
+}
+
+
+/* =====================================================
+   PERSON
+   ===================================================== */
+
+.intro-person {
+
+    position: absolute;
+
+    left: 20px;
+
+    bottom: 0;
+
+    font-size: 92px;
+
+    line-height: 1;
+
+    animation:
+        personWave
+        1.2s
+        ease-in-out
+        1.2s
+        forwards;
+
+}
+
+
+/* =====================================================
+   SPEECH BUBBLE
+   ===================================================== */
+
+.intro-speech {
+
+    position: absolute;
+
+    left: 0;
+
+    top: 5px;
+
+    padding:
+        12px 18px;
+
+    background:
+        #ffffff;
+
+    color:
+        #1d4ed8;
+
+    font-size:
+        18px;
+
+    font-weight:
+        800;
+
+    border-radius:
+        18px;
+
+    box-shadow:
+        0 12px 30px
+        rgba(
+            0,
+            0,
+            0,
+            0.18
+        );
+
+    opacity: 0;
+
+    transform:
+        translateY(12px)
+        scale(0.8);
+
+    animation:
+        speechAppear
+        0.55s
+        ease
+        0.8s
+        forwards;
+
+}
+
+
+.intro-speech::after {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: -9px;
+
+    left: 32px;
+
+    border-left:
+        9px solid
+        transparent;
+
+    border-right:
+        9px solid
+        transparent;
+
+    border-top:
+        10px solid
+        #ffffff;
+
+}
+
+
+/* =====================================================
+   WAVING HAND
+   ===================================================== */
+
+.intro-hand {
+
+    position: absolute;
+
+    right: 4px;
+
+    bottom: 70px;
+
+    font-size: 36px;
+
+    opacity: 0;
+
+    animation:
+        handWave
+        0.7s
+        ease-in-out
+        1.35s
+        3;
+
+}
+
+
+/* =====================================================
+   LOGIN CARD ENTRANCE
+   ===================================================== */
+
+.login-container > .login-card:first-of-type {
+
+    animation:
+        loginCardEnter
+        0.9s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        )
+        1.55s
+        both;
+
+}
+
+
+/* =====================================================
+   PERSON ENTER
+   ===================================================== */
+
+@keyframes personEntrance {
+
+    0% {
+
+        left:
+            -180px;
+
+        opacity:
+            0;
+
+    }
+
+    40% {
+
+        opacity:
+            1;
+
+    }
+
+    100% {
+
+        left:
+            calc(
+                50% - 320px
+            );
+
+        opacity:
+            1;
+
+    }
+
+}
+
+
+/* =====================================================
+   PERSON MOVEMENT
+   ===================================================== */
+
+@keyframes personWave {
+
+    0% {
+
+        transform:
+            translateX(-80px)
+            rotate(-8deg);
+
+    }
+
+    45% {
+
+        transform:
+            translateX(5px)
+            rotate(4deg);
+
+    }
+
+    70% {
+
+        transform:
+            translateX(0)
+            rotate(-2deg);
+
+    }
+
+    100% {
+
+        transform:
+            translateX(0)
+            rotate(0);
+
+    }
+
+}
+
+
+/* =====================================================
+   SPEECH
+   ===================================================== */
+
+@keyframes speechAppear {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(12px)
+            scale(0.75);
+
+    }
+
+    70% {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(-3px)
+            scale(1.05);
+
+    }
+
+    100% {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =====================================================
+   HAND
+   ===================================================== */
+
+@keyframes handWave {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            rotate(0);
+
+    }
+
+    20% {
+
+        opacity: 1;
+
+    }
+
+    40% {
+
+        transform:
+            rotate(18deg);
+
+    }
+
+    60% {
+
+        transform:
+            rotate(-18deg);
+
+    }
+
+    80% {
+
+        transform:
+            rotate(14deg);
+
+    }
+
+    100% {
+
+        opacity: 0.9;
+
+        transform:
+            rotate(0);
+
+    }
+
+}
+
+
+/* =====================================================
+   LOGIN CARD
+   ===================================================== */
+
+@keyframes loginCardEnter {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateX(90px)
+            scale(0.96);
+
+    }
+
+    60% {
+
+        opacity: 1;
+
+        transform:
+            translateX(-8px)
+            scale(1.01);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translateX(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =====================================================
+   PHONE VERSION
+   ===================================================== */
+
+@media (
+    max-width: 700px
+) {
+
+    .login-container {
+
+        min-height:
+            100vh;
+
+        padding:
+            25px 16px 35px;
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+    }
+
+
+    .login-intro-animation {
+
+        position:
+            relative;
+
+        left:
+            auto;
+
+        top:
+            auto;
+
+        transform:
+            none;
+
+        width:
+            100%;
+
+        height:
+            155px;
+
+        margin-bottom:
+            8px;
+
+        display:
+            block;
+
+        animation:
+            mobilePersonEntrance
+            1s
+            ease
+            forwards;
+
+    }
+
+
+    .intro-person {
+
+        left:
+            calc(
+                50% - 45px
+            );
+
+        bottom:
+            0;
+
+        font-size:
+            70px;
+
+    }
+
+
+    .intro-speech {
+
+        left:
+            calc(
+                50% - 105px
+            );
+
+        top:
+            4px;
+
+        font-size:
+            15px;
+
+        padding:
+            9px 14px;
+
+        border-radius:
+            15px;
+
+    }
+
+
+    .intro-hand {
+
+        right:
+            calc(
+                50% - 70px
+            );
+
+        bottom:
+            42px;
+
+        font-size:
+            28px;
+
+    }
+
+
+    .login-container > .login-card:first-of-type {
+
+        width:
+            min(
+                100%,
+                420px
+            );
+
+        margin:
+            0 auto;
+
+        animation:
+            mobileLoginCardEnter
+            0.8s
+            ease
+            1.25s
+            both;
+
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE PERSON ENTRANCE
+   ===================================================== */
+
+@keyframes mobilePersonEntrance {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-120px);
+
+    }
+
+    70% {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(10px);
+
+    }
+
+    100% {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE LOGIN CARD
+   ===================================================== */
+
+@keyframes mobileLoginCardEnter {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(50px)
+            scale(0.96);
+
+    }
+
+    70% {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(-5px)
+            scale(1.01);
+
+    }
+
+    100% {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
