@@ -506,6 +506,31 @@ const resources = [
         path:
             "resources/3rd-semester/probability-statistics/probability-statistics-assignment.pdf"
     },
+    {
+    id:
+        "probability_statistics_model_question_papers",
+
+    name:
+        "Probability and Statistics Model Question Papers",
+
+    semester:
+        "3",
+
+    subject:
+        "Probability and Statistics",
+
+    type:
+        "papers",
+
+    description:
+        "Probability and Statistics model question papers for exam preparation.",
+
+    fileName:
+        "probability-statistics-model-question-papers.pdf",
+
+    path:
+        "resources/3rd-semester/question%20papers/probability-statistics/probability-statistics-model-question-papers.pdf"
+},
 
 
     // =================================================
