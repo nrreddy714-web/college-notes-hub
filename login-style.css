@@ -1426,3 +1426,564 @@ body.dark-theme .welcome-developer {
     }
 
 }
+/* =====================================================
+   SAFE LOGIN INTRO ANIMATION
+   ===================================================== */
+
+.login-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px 60px;
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   INTRO AREA
+   ===================================================== */
+
+.login-intro-animation {
+    position: relative;
+
+    width: min(500px, 100%);
+
+    height: 150px;
+
+    margin-bottom: 5px;
+
+    pointer-events: none;
+
+    z-index: 5;
+
+    overflow: visible;
+
+    animation:
+        introContainerIn
+        0.9s
+        ease
+        both;
+}
+
+
+/* =====================================================
+   PERSON
+   ===================================================== */
+
+.intro-person {
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 0;
+
+    transform:
+        translateX(-50%)
+        translateY(70px);
+
+    font-size: 82px;
+
+    line-height: 1;
+
+    animation:
+        personArrive
+        1s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        )
+        0.15s
+        forwards;
+}
+
+
+/* =====================================================
+   SPEECH
+   ===================================================== */
+
+.intro-speech {
+    position: absolute;
+
+    left: 50%;
+
+    top: 0;
+
+    transform:
+        translateX(-50%)
+        scale(0.7);
+
+    padding:
+        10px 17px;
+
+    border-radius:
+        16px;
+
+    background:
+        #ffffff;
+
+    color:
+        #2563eb;
+
+    font-size:
+        16px;
+
+    font-weight:
+        800;
+
+    white-space:
+        nowrap;
+
+    opacity: 0;
+
+    box-shadow:
+        0 12px 30px
+        rgba(
+            0,
+            0,
+            0,
+            0.16
+        );
+
+    animation:
+        speechAppear
+        0.55s
+        ease
+        0.7s
+        forwards;
+}
+
+
+.intro-speech::after {
+    content: "";
+
+    position: absolute;
+
+    bottom:
+        -8px;
+
+    left:
+        50%;
+
+    transform:
+        translateX(-50%);
+
+    border-left:
+        8px solid transparent;
+
+    border-right:
+        8px solid transparent;
+
+    border-top:
+        9px solid #ffffff;
+}
+
+
+/* =====================================================
+   HAND
+   ===================================================== */
+
+.intro-hand {
+    position: absolute;
+
+    left:
+        calc(50% + 42px);
+
+    bottom:
+        40px;
+
+    font-size:
+        30px;
+
+    opacity:
+        0;
+
+    animation:
+        handWave
+        0.65s
+        ease-in-out
+        1.25s
+        3;
+}
+
+
+/* =====================================================
+   LOGIN CARD
+   ===================================================== */
+
+.login-container > .login-card:first-of-type {
+    position:
+        relative;
+
+    z-index:
+        10;
+
+    width:
+        min(
+            480px,
+            100%
+        );
+
+    animation:
+        loginCardEnter
+        0.8s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        )
+        1.35s
+        both;
+}
+
+
+/* =====================================================
+   ANIMATIONS
+   ===================================================== */
+
+@keyframes introContainerIn {
+
+    from {
+        opacity:
+            0;
+    }
+
+    to {
+        opacity:
+            1;
+    }
+
+}
+
+
+@keyframes personArrive {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(
+                calc(-50% - 140px)
+            )
+            translateY(70px);
+
+    }
+
+    60% {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(
+                calc(-50% + 10px)
+            )
+            translateY(-3px);
+
+    }
+
+    100% {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(-50%)
+            translateY(0);
+
+    }
+
+}
+
+
+@keyframes speechAppear {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-50%)
+            translateY(12px)
+            scale(0.7);
+
+    }
+
+    70% {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(-50%)
+            translateY(-4px)
+            scale(1.05);
+
+    }
+
+    100% {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(-50%)
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+@keyframes handWave {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            rotate(0deg);
+
+    }
+
+    20% {
+
+        opacity:
+            1;
+
+    }
+
+    40% {
+
+        transform:
+            rotate(18deg);
+
+    }
+
+    60% {
+
+        transform:
+            rotate(-18deg);
+
+    }
+
+    80% {
+
+        transform:
+            rotate(14deg);
+
+    }
+
+    100% {
+
+        opacity:
+            0.9;
+
+        transform:
+            rotate(0deg);
+
+    }
+
+}
+
+
+@keyframes loginCardEnter {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(45px)
+            scale(0.97);
+
+    }
+
+    65% {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(-5px)
+            scale(1.01);
+
+    }
+
+    100% {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =====================================================
+   LAPTOPS
+   ===================================================== */
+
+@media (
+    min-width: 701px
+) and (
+    max-width: 1100px
+) {
+
+    .login-container {
+        padding:
+            35px 18px 50px;
+    }
+
+    .login-intro-animation {
+        height:
+            135px;
+    }
+
+    .intro-person {
+        font-size:
+            72px;
+    }
+
+}
+
+
+/* =====================================================
+   PHONES
+   ===================================================== */
+
+@media (
+    max-width: 700px
+) {
+
+    .login-container {
+
+        min-height:
+            100svh;
+
+        padding:
+            25px 14px 35px;
+
+        justify-content:
+            center;
+
+    }
+
+
+    .login-intro-animation {
+
+        width:
+            100%;
+
+        max-width:
+            360px;
+
+        height:
+            125px;
+
+        margin-bottom:
+            5px;
+
+    }
+
+
+    .intro-person {
+
+        font-size:
+            64px;
+
+    }
+
+
+    .intro-speech {
+
+        padding:
+            8px 14px;
+
+        font-size:
+            14px;
+
+    }
+
+
+    .intro-hand {
+
+        left:
+            calc(50% + 34px);
+
+        bottom:
+            31px;
+
+        font-size:
+            25px;
+
+    }
+
+
+    .login-container > .login-card:first-of-type {
+
+        width:
+            min(
+                100%,
+                430px
+            );
+
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+   ===================================================== */
+
+@media (
+    max-width: 380px
+) {
+
+    .login-container {
+        padding:
+            20px 10px 30px;
+    }
+
+
+    .login-intro-animation {
+        height:
+            110px;
+    }
+
+
+    .intro-person {
+        font-size:
+            56px;
+    }
+
+
+    .intro-speech {
+        font-size:
+            13px;
+
+        padding:
+            7px 12px;
+    }
+
+}
