@@ -618,7 +618,32 @@ const resources = [
 
         path:
             "resources/3rd-semester/question%20papers/indian-constitution-value-1/indian-constitution-value-1-question-paper.pdf"
-    }
+    },
+    {
+    id:
+        "indian_constitution_value_1_unit_1_2_notes",
+
+    name:
+        "Indian Constitution Value 1 - Unit 1 & Unit 2 Notes",
+
+    semester:
+        "3",
+
+    subject:
+        "Indian Constitution Value 1",
+
+    type:
+        "notes",
+
+    description:
+        "Indian Constitution Value 1 study notes covering Unit 1 and Unit 2.",
+
+    fileName:
+        "indian-constitution-value-1-unit-1-and-2-notes.pdf",
+
+    path:
+        "resources/3rd-semester/indian-constitution-value-1/indian-constitution-value-1-unit-1-and-2-notes.pdf"
+}
 
 ];
 
