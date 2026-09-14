@@ -1,5 +1,6 @@
 // =====================================================
-// COLLEGE NOTES HUB - MAIN SCRIPT
+// COLLEGE NOTES HUB
+// MAIN JAVASCRIPT
 // =====================================================
 
 
@@ -39,7 +40,7 @@ let currentResourceCategory = "all";
 
 
 // =====================================================
-// STATIC RESOURCES
+// RESOURCE DATA
 // =====================================================
 
 const resources = [
@@ -50,177 +51,90 @@ const resources = [
 
     {
         id: "dbms_notes",
-
         name: "DBMS Notes",
-
         semester: "3",
-
         subject: "DBMS",
-
         type: "notes",
-
-        description:
-            "Study notes for DBMS.",
-
-        fileName:
-            "dbms-unit-1.pdf",
-
-        path:
-            "resources/3rd-semester/dbms/dbms-unit-1.pdf"
+        description: "Study notes for DBMS.",
+        fileName: "dbms-unit-1.pdf",
+        path: "resources/3rd-semester/dbms/dbms-unit-1.pdf"
     },
-
 
     {
         id: "dbms_unit_1_materials",
-
         name: "DBMS Study Materials - Unit 1",
-
         semester: "3",
-
         subject: "DBMS",
-
         type: "materials",
-
-        description:
-            "DBMS study materials for Unit 1.",
-
-        fileName:
-            "dbms-unit-1-materials.pdf",
-
-        path:
-            "resources/3rd-semester/dbms/dbms-unit-1-materials.pdf"
+        description: "DBMS study materials for Unit 1.",
+        fileName: "dbms-unit-1-materials.pdf",
+        path: "resources/3rd-semester/dbms/dbms-unit-1-materials.pdf"
     },
-
 
     {
         id: "dbms_unit_2_materials",
-
         name: "DBMS Study Materials - Unit 2",
-
         semester: "3",
-
         subject: "DBMS",
-
         type: "materials",
-
-        description:
-            "DBMS study materials for Unit 2.",
-
-        fileName:
-            "dbms-unit-2-materials.pdf",
-
-        path:
-            "resources/3rd-semester/dbms/dbms-unit-2-materials.pdf"
+        description: "DBMS study materials for Unit 2.",
+        fileName: "dbms-unit-2-materials.pdf",
+        path: "resources/3rd-semester/dbms/dbms-unit-2-materials.pdf"
     },
-
 
     {
         id: "dbms_unit_3_materials",
-
         name: "DBMS Study Materials - Unit 3",
-
         semester: "3",
-
         subject: "DBMS",
-
         type: "materials",
-
-        description:
-            "DBMS study materials for Unit 3.",
-
-        fileName:
-            "dbms-unit-3-materials.pdf",
-
-        path:
-            "resources/3rd-semester/dbms/dbms-unit-3-materials.pdf"
+        description: "DBMS study materials for Unit 3.",
+        fileName: "dbms-unit-3-materials.pdf",
+        path: "resources/3rd-semester/dbms/dbms-unit-3-materials.pdf"
     },
-
 
     {
         id: "dbms_unit_4_materials",
-
         name: "DBMS Study Materials - Unit 4",
-
         semester: "3",
-
         subject: "DBMS",
-
         type: "materials",
-
-        description:
-            "DBMS study materials for Unit 4.",
-
-        fileName:
-            "dbms-unit-4-materials.pdf",
-
-        path:
-            "resources/3rd-semester/dbms/dbms-unit-4-materials.pdf"
+        description: "DBMS study materials for Unit 4.",
+        fileName: "dbms-unit-4-materials.pdf",
+        path: "resources/3rd-semester/dbms/dbms-unit-4-materials.pdf"
     },
-
 
     {
         id: "dbms_lab_programs",
-
         name: "DBMS Lab Programs",
-
         semester: "3",
-
         subject: "DBMS",
-
         type: "lab",
-
-        description:
-            "Complete DBMS laboratory programs.",
-
-        fileName:
-            "dbms-lab-programs.pdf",
-
-        path:
-            "resources/3rd-semester/lab%20programs/dbms/dbms-lab-programs.pdf"
+        description: "Complete DBMS laboratory programs.",
+        fileName: "dbms-lab-programs.pdf",
+        path: "resources/3rd-semester/lab%20programs/dbms/dbms-lab-programs.pdf"
     },
-
 
     {
         id: "dbms_question_papers",
-
         name: "DBMS Question Papers",
-
         semester: "3",
-
         subject: "DBMS",
-
         type: "papers",
-
-        description:
-            "Previous DBMS examination papers.",
-
-        fileName:
-            "dbms-question-papers.pdf",
-
-        path:
-            "resources/3rd-semester/question%20papers/dbms/dbms-question-papers.pdf"
+        description: "Previous DBMS examination papers.",
+        fileName: "dbms-question-papers.pdf",
+        path: "resources/3rd-semester/question%20papers/dbms/dbms-question-papers.pdf"
     },
-
 
     {
         id: "dbms_model_question_papers",
-
         name: "DBMS Model Question Papers",
-
         semester: "3",
-
         subject: "DBMS",
-
         type: "papers",
-
-        description:
-            "DBMS model question papers for exam preparation.",
-
-        fileName:
-            "dbms-model-question-papers.pdf",
-
-        path:
-            "resources/3rd-semester/question%20papers/dbms/dbms-model-question-papers.pdf"
+        description: "DBMS model question papers for exam preparation.",
+        fileName: "dbms-model-question-papers.pdf",
+        path: "resources/3rd-semester/question%20papers/dbms/dbms-model-question-papers.pdf"
     },
 
 
@@ -230,255 +144,123 @@ const resources = [
 
     {
         id: "ai_notes_unit_1",
-
         name: "Artificial Intelligence Notes",
-
         semester: "3",
-
         subject: "Artificial Intelligence",
-
         type: "notes",
-
-        description:
-            "Study notes for Artificial Intelligence.",
-
-        fileName:
-            "ai-unit-1.pdf",
-
-        path:
-            "resources/3rd-semester/ai/ai-unit-1.pdf"
+        description: "Study notes for Artificial Intelligence.",
+        fileName: "ai-unit-1.pdf",
+        path: "resources/3rd-semester/ai/ai-unit-1.pdf"
     },
-
 
     {
         id: "ai_chapter_3_4_notes",
-
         name: "AI Chapter 3 and 4 Notes",
-
         semester: "3",
-
         subject: "Artificial Intelligence",
-
         type: "notes",
-
-        description:
-            "Artificial Intelligence notes covering Chapter 3 and Chapter 4.",
-
-        fileName:
-            "ai-chapter-3-and-4-notes.pdf",
-
-        path:
-            "resources/3rd-semester/ai/ai-chapter-3-and-4-notes.pdf"
+        description: "Artificial Intelligence notes covering Chapter 3 and Chapter 4.",
+        fileName: "ai-chapter-3-and-4-notes.pdf",
+        path: "resources/3rd-semester/ai/ai-chapter-3-and-4-notes.pdf"
     },
-
 
     {
         id: "ai_syllabus_contents",
-
         name: "AI Syllabus and Contents",
-
         semester: "3",
-
         subject: "Artificial Intelligence",
-
         type: "notes",
-
-        description:
-            "Artificial Intelligence syllabus and course contents.",
-
-        fileName:
-            "ai-syllabus-and-contents.pdf",
-
-        path:
-            "resources/3rd-semester/ai/ai-syllabus-and-contents.pdf"
+        description: "Artificial Intelligence syllabus and course contents.",
+        fileName: "ai-syllabus-and-contents.pdf",
+        path: "resources/3rd-semester/ai/ai-syllabus-and-contents.pdf"
     },
-
 
     {
         id: "ai_unit_1_questions",
-
         name: "AI Unit 1 Questions",
-
         semester: "3",
-
         subject: "Artificial Intelligence",
-
         type: "notes",
-
-        description:
-            "Artificial Intelligence Unit 1 important questions.",
-
-        fileName:
-            "ai-unit-1-questions.pdf",
-
-        path:
-            "resources/3rd-semester/ai/ai-unit-1-questions.pdf"
+        description: "Artificial Intelligence Unit 1 important questions.",
+        fileName: "ai-unit-1-questions.pdf",
+        path: "resources/3rd-semester/ai/ai-unit-1-questions.pdf"
     },
-
-
-    // -------------------------------------------------
-    // AI STUDY MATERIALS
-    // -------------------------------------------------
 
     {
         id: "ai_unit_1_materials",
-
         name: "AI Study Materials - Unit 1",
-
         semester: "3",
-
         subject: "Artificial Intelligence",
-
         type: "materials",
-
-        description:
-            "Artificial Intelligence study materials for Unit 1.",
-
-        fileName:
-            "ai-unit-1-materials.pdf",
-
-        path:
-            "resources/3rd-semester/ai/ai-unit-1-materials.pdf"
+        description: "Artificial Intelligence study materials for Unit 1.",
+        fileName: "ai-unit-1-materials.pdf",
+        path: "resources/3rd-semester/ai/ai-unit-1-materials.pdf"
     },
-
 
     {
         id: "ai_unit_2_materials",
-
         name: "AI Study Materials - Unit 2",
-
         semester: "3",
-
         subject: "Artificial Intelligence",
-
         type: "materials",
-
-        description:
-            "Artificial Intelligence study materials for Unit 2.",
-
-        fileName:
-            "ai-unit-2-materials.pdf",
-
-        path:
-            "resources/3rd-semester/ai/ai-unit-2-materials.pdf"
+        description: "Artificial Intelligence study materials for Unit 2.",
+        fileName: "ai-unit-2-materials.pdf",
+        path: "resources/3rd-semester/ai/ai-unit-2-materials.pdf"
     },
-
 
     {
         id: "ai_unit_3_materials",
-
         name: "AI Study Materials - Unit 3",
-
         semester: "3",
-
         subject: "Artificial Intelligence",
-
         type: "materials",
-
-        description:
-            "Artificial Intelligence study materials for Unit 3.",
-
-        fileName:
-            "ai-unit-3-materials.pdf",
-
-        path:
-            "resources/3rd-semester/ai/ai-unit-3-materials.pdf"
+        description: "Artificial Intelligence study materials for Unit 3.",
+        fileName: "ai-unit-3-materials.pdf",
+        path: "resources/3rd-semester/ai/ai-unit-3-materials.pdf"
     },
-
 
     {
         id: "ai_unit_4_materials",
-
         name: "AI Study Materials - Unit 4",
-
         semester: "3",
-
         subject: "Artificial Intelligence",
-
         type: "materials",
-
-        description:
-            "Artificial Intelligence study materials for Unit 4.",
-
-        fileName:
-            "ai-unit-4-materials.pdf",
-
-        path:
-            "resources/3rd-semester/ai/ai-unit-4-materials.pdf"
+        description: "Artificial Intelligence study materials for Unit 4.",
+        fileName: "ai-unit-4-materials.pdf",
+        path: "resources/3rd-semester/ai/ai-unit-4-materials.pdf"
     },
-
-
-    // -------------------------------------------------
-    // AI LAB PROGRAMS
-    // -------------------------------------------------
 
     {
         id: "ai_programs",
-
         name: "Artificial Intelligence Programs",
-
         semester: "3",
-
         subject: "Artificial Intelligence",
-
         type: "lab",
-
-        description:
-            "Artificial Intelligence laboratory programs.",
-
-        fileName:
-            "ai-programs.pdf",
-
-        path:
-            "resources/3rd-semester/ai%20programs/ai/ai-programs.pdf"
+        description: "Artificial Intelligence laboratory programs.",
+        fileName: "ai-programs.pdf",
+        path: "resources/3rd-semester/ai%20programs/ai/ai-programs.pdf"
     },
-
-
-    // -------------------------------------------------
-    // AI QUESTION PAPERS
-    // -------------------------------------------------
 
     {
         id: "ai_question_papers",
-
         name: "Artificial Intelligence Question Papers",
-
         semester: "3",
-
         subject: "Artificial Intelligence",
-
         type: "papers",
-
-        description:
-            "Previous Artificial Intelligence examination papers.",
-
-        fileName:
-            "ai-question-papers.pdf",
-
-        path:
-            "resources/3rd-semester/question%20paper/ai/ai-question-papers.pdf"
+        description: "Previous Artificial Intelligence examination papers.",
+        fileName: "ai-question-papers.pdf",
+        path: "resources/3rd-semester/question%20paper/ai/ai-question-papers.pdf"
     },
-
 
     {
         id: "ai_model_question_papers",
-
         name: "AI Model Question Papers",
-
         semester: "3",
-
         subject: "Artificial Intelligence",
-
         type: "papers",
-
-        description:
-            "Artificial Intelligence model question papers.",
-
-        fileName:
-            "ai-model-question-papers.pdf",
-
-        path:
-            "resources/3rd-semester/question%20papers/ai/ai-model-question-papers.pdf"
+        description: "Artificial Intelligence model question papers.",
+        fileName: "ai-model-question-papers.pdf",
+        path: "resources/3rd-semester/question%20papers/ai/ai-model-question-papers.pdf"
     },
 
 
@@ -488,159 +270,69 @@ const resources = [
 
     {
         id: "probability_assignment",
-
         name: "Probability and Statistics Assignment",
-
         semester: "3",
-
         subject: "Probability and Statistics",
-
         type: "notes",
-
-        description:
-            "3rd Semester Probability and Statistics Assignment.",
-
-        fileName:
-            "probability-statistics-assignment.pdf",
-
-        path:
-            "resources/3rd-semester/probability-statistics/probability-statistics-assignment.pdf"
+        description: "3rd Semester Probability and Statistics Assignment.",
+        fileName: "probability-statistics-assignment.pdf",
+        path: "resources/3rd-semester/probability-statistics/probability-statistics-assignment.pdf"
     },
+
     {
-    id:
-        "probability_statistics_model_question_papers",
+        id: "probability_statistics_model_question_papers",
+        name: "Probability and Statistics Model Question Papers",
+        semester: "3",
+        subject: "Probability and Statistics",
+        type: "papers",
+        description: "Probability and Statistics model question papers for exam preparation.",
+        fileName: "probability-statistics-model-question-papers.pdf",
+        path: "resources/3rd-semester/question%20papers/probability-statistics/probability-statistics-model-question-papers.pdf"
+    },
 
-    name:
-        "Probability and Statistics Model Question Papers",
+    {
+        id: "probability_statistics_unit_1_materials",
+        name: "Probability and Statistics Study Materials - Unit 1",
+        semester: "3",
+        subject: "Probability and Statistics",
+        type: "materials",
+        description: "Probability and Statistics study materials for Unit 1.",
+        fileName: "probability-statistics-unit-1-materials.pdf",
+        path: "resources/3rd-semester/probability-statistics/probability-statistics-unit-1-materials.pdf"
+    },
 
-    semester:
-        "3",
+    {
+        id: "probability_statistics_unit_2_materials",
+        name: "Probability and Statistics Study Materials - Unit 2",
+        semester: "3",
+        subject: "Probability and Statistics",
+        type: "materials",
+        description: "Probability and Statistics study materials for Unit 2.",
+        fileName: "probability-statistics-unit-2-materials.pdf",
+        path: "resources/3rd-semester/probability-statistics/probability-statistics-unit-2-materials.pdf"
+    },
 
-    subject:
-        "Probability and Statistics",
+    {
+        id: "probability_statistics_unit_3_materials",
+        name: "Probability and Statistics Study Materials - Unit 3",
+        semester: "3",
+        subject: "Probability and Statistics",
+        type: "materials",
+        description: "Probability and Statistics study materials for Unit 3.",
+        fileName: "probability-statistics-unit-3-materials.pdf",
+        path: "resources/3rd-semester/probability-statistics/probability-statistics-unit-3-materials.pdf"
+    },
 
-    type:
-        "papers",
-
-    description:
-        "Probability and Statistics model question papers for exam preparation.",
-
-    fileName:
-        "probability-statistics-model-question-papers.pdf",
-
-    path:
-        "resources/3rd-semester/question%20papers/probability-statistics/probability-statistics-model-question-papers.pdf"
-},
-// =================================================
-// PROBABILITY AND STATISTICS STUDY MATERIALS
-// =================================================
-
-{
-    id:
-        "probability_statistics_unit_1_materials",
-
-    name:
-        "Probability and Statistics Study Materials - Unit 1",
-
-    semester:
-        "3",
-
-    subject:
-        "Probability and Statistics",
-
-    type:
-        "materials",
-
-    description:
-        "Probability and Statistics study materials for Unit 1.",
-
-    fileName:
-        "probability-statistics-unit-1-materials.pdf",
-
-    path:
-        "resources/3rd-semester/probability-statistics/probability-statistics-unit-1-materials.pdf"
-},
-
-
-{
-    id:
-        "probability_statistics_unit_2_materials",
-
-    name:
-        "Probability and Statistics Study Materials - Unit 2",
-
-    semester:
-        "3",
-
-    subject:
-        "Probability and Statistics",
-
-    type:
-        "materials",
-
-    description:
-        "Probability and Statistics study materials for Unit 2.",
-
-    fileName:
-        "probability-statistics-unit-2-materials.pdf",
-
-    path:
-        "resources/3rd-semester/probability-statistics/probability-statistics-unit-2-materials.pdf"
-},
-
-
-{
-    id:
-        "probability_statistics_unit_3_materials",
-
-    name:
-        "Probability and Statistics Study Materials - Unit 3",
-
-    semester:
-        "3",
-
-    subject:
-        "Probability and Statistics",
-
-    type:
-        "materials",
-
-    description:
-        "Probability and Statistics study materials for Unit 3.",
-
-    fileName:
-        "probability-statistics-unit-3-materials.pdf",
-
-    path:
-        "resources/3rd-semester/probability-statistics/probability-statistics-unit-3-materials.pdf"
-},
-
-
-{
-    id:
-        "probability_statistics_unit_4_materials",
-
-    name:
-        "Probability and Statistics Study Materials - Unit 4",
-
-    semester:
-        "3",
-
-    subject:
-        "Probability and Statistics",
-
-    type:
-        "materials",
-
-    description:
-        "Probability and Statistics study materials for Unit 4.",
-
-    fileName:
-        "probability-statistics-unit-4-materials.pdf",
-
-    path:
-        "resources/3rd-semester/probability-statistics/probability-statistics-unit-4-materials.pdf"
-},    
+    {
+        id: "probability_statistics_unit_4_materials",
+        name: "Probability and Statistics Study Materials - Unit 4",
+        semester: "3",
+        subject: "Probability and Statistics",
+        type: "materials",
+        description: "Probability and Statistics study materials for Unit 4.",
+        fileName: "probability-statistics-unit-4-materials.pdf",
+        path: "resources/3rd-semester/probability-statistics/probability-statistics-unit-4-materials.pdf"
+    },
 
 
     // =================================================
@@ -649,23 +341,13 @@ const resources = [
 
     {
         id: "english_notes",
-
         name: "English Notes",
-
         semester: "3",
-
         subject: "English",
-
         type: "notes",
-
-        description:
-            "3rd Semester English Study Notes.",
-
-        fileName:
-            "english-notes.pdf",
-
-        path:
-            "resources/3rd-semester/english/english-notes.pdf"
+        description: "3rd Semester English Study Notes.",
+        fileName: "english-notes.pdf",
+        path: "resources/3rd-semester/english/english-notes.pdf"
     },
 
 
@@ -674,29 +356,14 @@ const resources = [
     // =================================================
 
     {
-        id:
-            "feature_engineering_model_question_paper",
-
-        name:
-            "Feature Engineering Model Question Paper",
-
-        semester:
-            "3",
-
-        subject:
-            "Feature Engineering",
-
-        type:
-            "papers",
-
-        description:
-            "3rd Semester Feature Engineering model question paper.",
-
-        fileName:
-            "feature-engineering-model-question-paper.pdf",
-
-        path:
-            "resources/3rd-semester/question%20papers/feature-engineering/feature-engineering-model-question-paper.pdf"
+        id: "feature_engineering_model_question_paper",
+        name: "Feature Engineering Model Question Paper",
+        semester: "3",
+        subject: "Feature Engineering",
+        type: "papers",
+        description: "3rd Semester Feature Engineering model question paper.",
+        fileName: "feature-engineering-model-question-paper.pdf",
+        path: "resources/3rd-semester/question%20papers/feature-engineering/feature-engineering-model-question-paper.pdf"
     },
 
 
@@ -705,61 +372,32 @@ const resources = [
     // =================================================
 
     {
-        id:
-            "indian_constitution_value_1_question_paper",
-
-        name:
-            "Indian Constitution Value 1 Question Paper",
-
-        semester:
-            "3",
-
-        subject:
-            "Indian Constitution Value 1",
-
-        type:
-            "papers",
-
-        description:
-            "3rd Semester Indian Constitution Value 1 question paper.",
-
-        fileName:
-            "indian-constitution-value-1-question-paper.pdf",
-
-        path:
-            "resources/3rd-semester/question%20papers/indian-constitution-value-1/indian-constitution-value-1-question-paper.pdf"
+        id: "indian_constitution_value_1_question_paper",
+        name: "Indian Constitution Value 1 Question Paper",
+        semester: "3",
+        subject: "Indian Constitution Value 1",
+        type: "papers",
+        description: "3rd Semester Indian Constitution Value 1 question paper.",
+        fileName: "indian-constitution-value-1-question-paper.pdf",
+        path: "resources/3rd-semester/question%20papers/indian-constitution-value-1/indian-constitution-value-1-question-paper.pdf"
     },
+
     {
-    id:
-        "indian_constitution_value_1_unit_1_2_notes",
-
-    name:
-        "Indian Constitution Value 1 - Unit 1 & Unit 2 Notes",
-
-    semester:
-        "3",
-
-    subject:
-        "Indian Constitution Value 1",
-
-    type:
-        "notes",
-
-    description:
-        "Indian Constitution Value 1 study notes covering Unit 1 and Unit 2.",
-
-    fileName:
-        "indian-constitution-value-1-unit-1-and-2-notes.pdf",
-
-    path:
-        "resources/3rd-semester/indian-constitution-value-1/indian-constitution-value-1-unit-1-and-2-notes.pdf"
-}
+        id: "indian_constitution_value_1_unit_1_2_notes",
+        name: "Indian Constitution Value 1 - Unit 1 & Unit 2 Notes",
+        semester: "3",
+        subject: "Indian Constitution Value 1",
+        type: "notes",
+        description: "Indian Constitution Value 1 study notes covering Unit 1 and Unit 2.",
+        fileName: "indian-constitution-value-1-unit-1-and-2-notes.pdf",
+        path: "resources/3rd-semester/indian-constitution-value-1/indian-constitution-value-1-unit-1-and-2-notes.pdf"
+    }
 
 ];
 
 
 // =====================================================
-// GET LOGGED-IN USER
+// LOGGED-IN USER
 // =====================================================
 
 function getLoggedInUser() {
@@ -778,9 +416,7 @@ function getLoggedInUser() {
         !sessionUser ||
         !storedUsers
     ) {
-
         return null;
-
     }
 
     try {
@@ -793,19 +429,12 @@ function getLoggedInUser() {
         return (
             users.find(
                 function(user) {
-
-                    return (
-                        user.name ===
-                        sessionUser
-                    );
-
+                    return user.name === sessionUser;
                 }
             ) || null
         );
 
-    }
-
-    catch (error) {
+    } catch (error) {
 
         return null;
 
@@ -824,9 +453,7 @@ function getFavoritesKey() {
         getLoggedInUser();
 
     if (!user) {
-
         return null;
-
     }
 
     return (
@@ -843,31 +470,16 @@ function getFavorites() {
         getFavoritesKey();
 
     if (!key) {
-
         return [];
-
-    }
-
-    const stored =
-        localStorage.getItem(
-            key
-        );
-
-    if (!stored) {
-
-        return [];
-
     }
 
     try {
 
         return JSON.parse(
-            stored
+            localStorage.getItem(key) || "[]"
         );
 
-    }
-
-    catch (error) {
+    } catch (error) {
 
         return [];
 
@@ -884,16 +496,12 @@ function saveFavorites(
         getFavoritesKey();
 
     if (!key) {
-
         return;
-
     }
 
     localStorage.setItem(
         key,
-        JSON.stringify(
-            favorites
-        )
+        JSON.stringify(favorites)
     );
 
 }
@@ -903,14 +511,11 @@ function isFavorite(
     resourceId
 ) {
 
-    const favorites =
-        getFavorites();
-
-    return favorites.some(
-        function(resource) {
+    return getFavorites().some(
+        function(item) {
 
             return (
-                String(resource.id) ===
+                String(item.id) ===
                 String(resourceId)
             );
 
@@ -956,32 +561,25 @@ function toggleFavorite(
         );
 
 
-    if (
-        index !== -1
-    ) {
+    if (index >= 0) {
 
         favorites.splice(
             index,
             1
         );
 
-        saveFavorites(
-            favorites
-        );
-
-    }
-
-    else {
+    } else {
 
         favorites.push(
             resource
         );
 
-        saveFavorites(
-            favorites
-        );
-
     }
+
+
+    saveFavorites(
+        favorites
+    );
 
     showResources();
 
@@ -989,124 +587,121 @@ function toggleFavorite(
 
 
 // =====================================================
-// GET ALL SUBJECTS
+// ADMIN RESOURCES
+// =====================================================
+
+function getAdminResources() {
+
+    const stored =
+        localStorage.getItem(
+            "college_resources"
+        );
+
+    if (!stored) {
+        return [];
+    }
+
+    try {
+
+        const data =
+            JSON.parse(
+                stored
+            );
+
+        return Array.isArray(data)
+            ? data
+            : [];
+
+    } catch (error) {
+
+        return [];
+
+    }
+
+}
+
+
+// =====================================================
+// SUBJECT LIST
 // =====================================================
 
 function getAllSubjects(
     semester
 ) {
 
-    let result = [
+    const result = [
         ...(subjects[semester] || [])
     ];
 
 
     // Custom subjects
-    const storedCustomSubjects =
-        localStorage.getItem(
-            "college_custom_subjects"
+
+    try {
+
+        const customSubjects =
+            JSON.parse(
+                localStorage.getItem(
+                    "college_custom_subjects"
+                ) || "{}"
+            );
+
+
+        const customList =
+            customSubjects[semester] || [];
+
+
+        customList.forEach(
+            function(subject) {
+
+                if (
+                    !result.includes(
+                        subject
+                    )
+                ) {
+
+                    result.push(
+                        subject
+                    );
+
+                }
+
+            }
         );
 
+    } catch (error) {
+        // Ignore invalid custom subject data
+    }
 
-    if (storedCustomSubjects) {
 
-        try {
+    // Admin resource subjects
 
-            const customSubjects =
-                JSON.parse(
-                    storedCustomSubjects
-                );
+    getAdminResources().forEach(
+        function(resource) {
 
-            const customList =
-                customSubjects[
+            if (
+
+                String(
+                    resource.semester
+                ) === String(
                     semester
-                ] || [];
+                ) &&
 
+                resource.subject &&
 
-            customList.forEach(
-                function(subject) {
+                !result.includes(
+                    resource.subject
+                )
 
-                    if (
-                        !result.includes(
-                            subject
-                        )
-                    ) {
+            ) {
 
-                        result.push(
-                            subject
-                        );
-
-                    }
-
-                }
-            );
-
-        }
-
-        catch (error) {
-
-            console.log(
-                "Unable to load custom subjects."
-            );
-
-        }
-
-    }
-
-
-    // Subjects from admin resources
-    const storedResources =
-        localStorage.getItem(
-            "college_resources"
-        );
-
-
-    if (storedResources) {
-
-        try {
-
-            const adminResources =
-                JSON.parse(
-                    storedResources
+                result.push(
+                    resource.subject
                 );
 
-
-            adminResources.forEach(
-                function(resource) {
-
-                    if (
-
-                        resource.semester ===
-                        semester &&
-
-                        resource.subject &&
-
-                        !result.includes(
-                            resource.subject
-                        )
-
-                    ) {
-
-                        result.push(
-                            resource.subject
-                        );
-
-                    }
-
-                }
-            );
+            }
 
         }
-
-        catch (error) {
-
-            console.log(
-                "Unable to load admin subjects."
-            );
-
-        }
-
-    }
+    );
 
 
     return result;
@@ -1142,15 +737,11 @@ function loadSubjects() {
 
 
     if (
-
         !semesterElement ||
         !subjectElement ||
         !resourceList
-
     ) {
-
         return;
-
     }
 
 
@@ -1160,6 +751,10 @@ function loadSubjects() {
 
     subjectElement.innerHTML =
         '<option value="">-- Select Subject --</option>';
+
+
+    subjectElement.disabled =
+        true;
 
 
     resourceList.innerHTML =
@@ -1181,15 +776,8 @@ function loadSubjects() {
     }
 
 
-    if (
-        semester === ""
-    ) {
-
-        subjectElement.disabled =
-            true;
-
+    if (!semester) {
         return;
-
     }
 
 
@@ -1197,19 +785,6 @@ function loadSubjects() {
         getAllSubjects(
             semester
         );
-
-
-    if (
-        semesterSubjects.length ===
-        0
-    ) {
-
-        subjectElement.disabled =
-            true;
-
-        return;
-
-    }
 
 
     semesterSubjects.forEach(
@@ -1258,8 +833,10 @@ function createResourceCard(
         "resource-item";
 
 
-    // IMPORTANT
-    // Store subject and semester on every card
+    // VERY IMPORTANT:
+    // Store these values on the card
+    // for subject-specific filtering.
+
     item.dataset.category =
         resource.type ||
         "materials";
@@ -1271,9 +848,15 @@ function createResourceCard(
 
 
     item.dataset.semester =
-        resource.semester ||
-        "";
+        String(
+            resource.semester ||
+            ""
+        );
 
+
+    // =================================================
+    // ICON
+    // =================================================
 
     let icon = "📚";
 
@@ -1283,38 +866,21 @@ function createResourceCard(
         "notes"
     ) {
 
-        icon =
-            "📖";
+        icon = "📖";
 
-    }
-
-    else if (
+    } else if (
         resource.type ===
         "lab"
     ) {
 
-        icon =
-            "💻";
+        icon = "💻";
 
-    }
-
-    else if (
+    } else if (
         resource.type ===
         "papers"
     ) {
 
-        icon =
-            "📄";
-
-    }
-
-    else if (
-        resource.type ===
-        "materials"
-    ) {
-
-        icon =
-            "📚";
+        icon = "📄";
 
     }
 
@@ -1327,7 +893,6 @@ function createResourceCard(
         document.createElement(
             "h3"
         );
-
 
     title.textContent =
         icon +
@@ -1351,7 +916,6 @@ function createResourceCard(
         document.createElement(
             "p"
         );
-
 
     description.textContent =
         resource.description ||
@@ -1410,7 +974,7 @@ function createResourceCard(
 
 
     // =================================================
-    // BUTTON CONTAINER
+    // BUTTONS
     // =================================================
 
     const buttonContainer =
@@ -1419,35 +983,28 @@ function createResourceCard(
         );
 
 
-    // =================================================
-    // VIEW
-    // =================================================
-
     if (
         resource.path
     ) {
+
+        // VIEW
 
         const viewButton =
             document.createElement(
                 "a"
             );
 
-
         viewButton.href =
             resource.path;
-
 
         viewButton.target =
             "_blank";
 
-
         viewButton.rel =
             "noopener noreferrer";
 
-
         viewButton.className =
             "resource-button";
-
 
         viewButton.textContent =
             "📖 View";
@@ -1458,27 +1015,21 @@ function createResourceCard(
         );
 
 
-        // =================================================
         // DOWNLOAD
-        // =================================================
 
         const downloadButton =
             document.createElement(
                 "a"
             );
 
-
         downloadButton.href =
             resource.path;
-
 
         downloadButton.download =
             "";
 
-
         downloadButton.className =
             "resource-button";
-
 
         downloadButton.textContent =
             "⬇ Download";
@@ -1491,19 +1042,15 @@ function createResourceCard(
     }
 
 
-    // =================================================
     // SAVE
-    // =================================================
 
     const favoriteButton =
         document.createElement(
             "button"
         );
 
-
     favoriteButton.type =
         "button";
-
 
     favoriteButton.className =
         "favorite-button";
@@ -1545,48 +1092,6 @@ function createResourceCard(
 
 
 // =====================================================
-// GET ADMIN RESOURCES
-// =====================================================
-
-function getAdminResources() {
-
-    const storedResources =
-        localStorage.getItem(
-            "college_resources"
-        );
-
-
-    if (!storedResources) {
-
-        return [];
-
-    }
-
-
-    try {
-
-        const data =
-            JSON.parse(
-                storedResources
-            );
-
-
-        return Array.isArray(data)
-            ? data
-            : [];
-
-    }
-
-    catch (error) {
-
-        return [];
-
-    }
-
-}
-
-
-// =====================================================
 // SHOW RESOURCES
 // =====================================================
 
@@ -1614,15 +1119,11 @@ function showResources() {
 
 
     if (
-
         !semesterElement ||
         !subjectElement ||
         !resourceList
-
     ) {
-
         return;
-
     }
 
 
@@ -1638,11 +1139,14 @@ function showResources() {
         "";
 
 
-    if (
+    currentResourceCategory =
+        currentResourceCategory ||
+        "all";
 
+
+    if (
         !selectedSemester ||
         !selectedSubject
-
     ) {
 
         if (categoryBox) {
@@ -1651,9 +1155,6 @@ function showResources() {
                 "none";
 
         }
-
-        currentResourceCategory =
-            "all";
 
         resetCategoryButtons();
 
@@ -1670,17 +1171,11 @@ function showResources() {
     }
 
 
-    currentResourceCategory =
-        "all";
-
-    resetCategoryButtons();
-
-
     // =================================================
     // STATIC RESOURCES
     // =================================================
 
-    const matchingStaticResources =
+    const staticResources =
         resources.filter(
             function(resource) {
 
@@ -1706,7 +1201,7 @@ function showResources() {
     // ADMIN RESOURCES
     // =================================================
 
-    const matchingAdminResources =
+    const adminResources =
         getAdminResources().filter(
             function(resource) {
 
@@ -1729,10 +1224,10 @@ function showResources() {
 
 
     // =================================================
-    // ADD STATIC
+    // DISPLAY STATIC RESOURCES
     // =================================================
 
-    matchingStaticResources.forEach(
+    staticResources.forEach(
         function(resource) {
 
             resourceList.appendChild(
@@ -1746,24 +1241,25 @@ function showResources() {
 
 
     // =================================================
-    // ADD ADMIN
+    // DISPLAY ADMIN RESOURCES
     // =================================================
 
-    matchingAdminResources.forEach(
+    adminResources.forEach(
         function(resource) {
 
+            const copy = {
+                ...resource,
+
+                id:
+                    "admin_" +
+                    resource.id
+            };
+
+
             resourceList.appendChild(
-
                 createResourceCard(
-                    {
-                        ...resource,
-
-                        id:
-                            "admin_" +
-                            resource.id
-                    }
+                    copy
                 )
-
             );
 
         }
@@ -1771,56 +1267,7 @@ function showResources() {
 
 
     // =================================================
-    // SAFETY CHECK
-    // =================================================
-    // This prevents DBMS resources from appearing
-    // when Artificial Intelligence is selected
-    // and vice versa.
-    // =================================================
-
-    const cards =
-        resourceList.querySelectorAll(
-            ".resource-item"
-        );
-
-
-    cards.forEach(
-        function(card) {
-
-            const cardSemester =
-                String(
-                    card.dataset.semester ||
-                    ""
-                );
-
-
-            const cardSubject =
-                card.dataset.subject ||
-                "";
-
-
-            if (
-
-                cardSemester !==
-                String(
-                    selectedSemester
-                ) ||
-
-                cardSubject !==
-                selectedSubject
-
-            ) {
-
-                card.remove();
-
-            }
-
-        }
-    );
-
-
-    // =================================================
-    // APPLY CATEGORY
+    // APPLY CATEGORY FILTER
     // =================================================
 
     applyCategoryFilter();
@@ -1864,12 +1311,9 @@ function resetCategoryButtons() {
         function(button) {
 
             button.classList.toggle(
-
                 "active",
-
                 button.dataset.category ===
                 currentResourceCategory
-
             );
 
         }
@@ -1895,25 +1339,29 @@ function applyCategoryFilter() {
         );
 
 
+    if (
+        !semesterElement ||
+        !subjectElement
+    ) {
+        return;
+    }
+
+
     const selectedSemester =
-        semesterElement
-        ? semesterElement.value
-        : "";
+        semesterElement.value;
 
 
     const selectedSubject =
-        subjectElement
-        ? subjectElement.value
-        : "";
+        subjectElement.value;
 
 
-    const resourceCards =
+    const cards =
         document.querySelectorAll(
             "#resourceList .resource-item"
         );
 
 
-    resourceCards.forEach(
+    cards.forEach(
         function(card) {
 
             const cardSemester =
@@ -1935,7 +1383,6 @@ function applyCategoryFilter() {
 
             const subjectMatches =
                 (
-
                     cardSemester ===
                     String(
                         selectedSemester
@@ -1943,35 +1390,28 @@ function applyCategoryFilter() {
 
                     cardSubject ===
                     selectedSubject
-
                 );
 
 
             const categoryMatches =
                 (
-
                     currentResourceCategory ===
                     "all" ||
 
                     cardCategory ===
                     currentResourceCategory
-
                 );
 
 
             if (
-
                 subjectMatches &&
                 categoryMatches
-
             ) {
 
                 card.style.display =
                     "";
 
-            }
-
-            else {
+            } else {
 
                 card.style.display =
                     "none";
@@ -1995,12 +1435,10 @@ function searchResources() {
             "resourceSearch"
         );
 
-
     const semesterElement =
         document.getElementById(
             "semester"
         );
-
 
     const subjectElement =
         document.getElementById(
@@ -2009,9 +1447,7 @@ function searchResources() {
 
 
     if (!searchInput) {
-
         return;
-
     }
 
 
@@ -2042,7 +1478,7 @@ function searchResources() {
     cards.forEach(
         function(card) {
 
-            const text =
+            const cardText =
                 card.textContent
                 .toLowerCase();
 
@@ -2066,7 +1502,6 @@ function searchResources() {
 
             const subjectMatches =
                 (
-
                     cardSemester ===
                     String(
                         selectedSemester
@@ -2074,48 +1509,39 @@ function searchResources() {
 
                     cardSubject ===
                     selectedSubject
-
                 );
 
 
             const categoryMatches =
                 (
-
                     currentResourceCategory ===
                     "all" ||
 
                     cardCategory ===
                     currentResourceCategory
-
                 );
 
 
             const searchMatches =
                 (
-
                     searchText === "" ||
 
-                    text.includes(
+                    cardText.includes(
                         searchText
                     )
-
                 );
 
 
             if (
-
                 subjectMatches &&
                 categoryMatches &&
                 searchMatches
-
             ) {
 
                 card.style.display =
                     "";
 
-            }
-
-            else {
+            } else {
 
                 card.style.display =
                     "none";
@@ -2134,16 +1560,16 @@ function searchResources() {
 
 function applyTheme() {
 
-    const savedTheme =
-        localStorage.getItem(
-            "college_theme"
-        ) || "light";
-
-
     const button =
         document.getElementById(
             "themeToggle"
         );
+
+
+    const savedTheme =
+        localStorage.getItem(
+            "college_theme"
+        ) || "light";
 
 
     if (
@@ -2167,9 +1593,7 @@ function applyTheme() {
 
         }
 
-    }
-
-    else {
+    } else {
 
         document.body.classList.remove(
             "dark-theme"
@@ -2194,7 +1618,7 @@ function applyTheme() {
 
 function toggleTheme() {
 
-    const dark =
+    const isDark =
         document.body.classList.contains(
             "dark-theme"
         );
@@ -2202,10 +1626,9 @@ function toggleTheme() {
 
     localStorage.setItem(
         "college_theme",
-
-        dark
-        ? "light"
-        : "dark"
+        isDark
+            ? "light"
+            : "dark"
     );
 
 
@@ -2225,36 +1648,30 @@ function updateLoginStatus() {
             "loginLink"
         );
 
-
     const studentProfile =
         document.getElementById(
             "studentProfile"
         );
-
 
     const logoutButton =
         document.getElementById(
             "mainLogoutBtn"
         );
 
-
     const adminPanelLink =
         document.getElementById(
             "adminPanelLink"
         );
-
 
     const navStudentName =
         document.getElementById(
             "navStudentName"
         );
 
-
     const profileDisplayName =
         document.getElementById(
             "profileDisplayName"
         );
-
 
     const profileDisplayUsername =
         document.getElementById(
@@ -2268,163 +1685,133 @@ function updateLoginStatus() {
         );
 
 
-    if (
-        sessionUser
-    ) {
+    if (!sessionUser) {
 
         if (loginLink) {
-
             loginLink.style.display =
-                "none";
-
+                "inline-block";
         }
-
 
         if (studentProfile) {
-
             studentProfile.style.display =
-                "inline-block";
-
+                "none";
         }
-
 
         if (logoutButton) {
-
             logoutButton.style.display =
-                "inline-block";
-
+                "none";
         }
-
 
         if (adminPanelLink) {
-
             adminPanelLink.style.display =
                 "none";
-
         }
 
-
-        const storedUsers =
-            localStorage.getItem(
-                "login_auth_users"
-            );
-
-
-        if (storedUsers) {
-
-            try {
-
-                const users =
-                    JSON.parse(
-                        storedUsers
-                    );
-
-
-                const loggedUser =
-                    users.find(
-                        function(user) {
-
-                            return (
-                                user.name ===
-                                sessionUser
-                            );
-
-                        }
-                    );
-
-
-                if (loggedUser) {
-
-                    if (navStudentName) {
-
-                        navStudentName.textContent =
-                            loggedUser.name;
-
-                    }
-
-
-                    if (profileDisplayName) {
-
-                        profileDisplayName.textContent =
-                            loggedUser.name;
-
-                    }
-
-
-                    if (profileDisplayUsername) {
-
-                        profileDisplayUsername.textContent =
-                            loggedUser.username;
-
-                    }
-
-
-                    if (
-
-                        loggedUser.username &&
-                        loggedUser.username
-                        .toLowerCase() ===
-                        "admin"
-
-                    ) {
-
-                        if (adminPanelLink) {
-
-                            adminPanelLink.style.display =
-                                "inline-block";
-
-                        }
-
-                    }
-
-                }
-
-            }
-
-            catch (error) {
-
-                console.log(
-                    "Unable to load user."
-                );
-
-            }
-
-        }
+        return;
 
     }
 
-    else {
 
-        if (loginLink) {
+    if (loginLink) {
+        loginLink.style.display =
+            "none";
+    }
 
-            loginLink.style.display =
+    if (studentProfile) {
+        studentProfile.style.display =
+            "inline-block";
+    }
+
+    if (logoutButton) {
+        logoutButton.style.display =
+            "inline-block";
+    }
+
+
+    const storedUsers =
+        localStorage.getItem(
+            "login_auth_users"
+        );
+
+
+    if (!storedUsers) {
+        return;
+    }
+
+
+    try {
+
+        const users =
+            JSON.parse(
+                storedUsers
+            );
+
+
+        const loggedUser =
+            users.find(
+                function(user) {
+
+                    return (
+                        user.name ===
+                        sessionUser
+                    );
+
+                }
+            );
+
+
+        if (!loggedUser) {
+            return;
+        }
+
+
+        if (navStudentName) {
+
+            navStudentName.textContent =
+                loggedUser.name;
+
+        }
+
+
+        if (profileDisplayName) {
+
+            profileDisplayName.textContent =
+                loggedUser.name;
+
+        }
+
+
+        if (profileDisplayUsername) {
+
+            profileDisplayUsername.textContent =
+                loggedUser.username;
+
+        }
+
+
+        if (
+            adminPanelLink &&
+            loggedUser.username &&
+            loggedUser.username
+            .toLowerCase() ===
+            "admin"
+        ) {
+
+            adminPanelLink.style.display =
                 "inline-block";
 
-        }
-
-
-        if (studentProfile) {
-
-            studentProfile.style.display =
-                "none";
-
-        }
-
-
-        if (logoutButton) {
-
-            logoutButton.style.display =
-                "none";
-
-        }
-
-
-        if (adminPanelLink) {
+        } else if (adminPanelLink) {
 
             adminPanelLink.style.display =
                 "none";
 
         }
+
+    } catch (error) {
+
+        console.log(
+            "Unable to load user."
+        );
 
     }
 
@@ -2441,11 +1828,9 @@ function mainLogout() {
         "login_auth_session"
     );
 
-
     localStorage.removeItem(
         "remembered_user"
     );
-
 
     window.location.href =
         "login.html";
@@ -2559,9 +1944,7 @@ function setupScrollHero() {
             );
 
 
-        // ---------------------------------------------
         // TEXT
-        // ---------------------------------------------
 
         if (
             progress < 0.18
@@ -2586,9 +1969,7 @@ function setupScrollHero() {
                 )
                 `;
 
-        }
-
-        else {
+        } else {
 
             content.style.opacity =
                 "0";
@@ -2596,9 +1977,7 @@ function setupScrollHero() {
         }
 
 
-        // ---------------------------------------------
         // PERSON
-        // ---------------------------------------------
 
         const personProgress =
             Math.min(
@@ -2609,28 +1988,29 @@ function setupScrollHero() {
 
 
         person.style.left =
-            `${-200 + (personProgress * 420)}px`;
+            `${-200 + (
+                personProgress *
+                420
+            )}px`;
 
 
         person.style.transform =
             `
             translateY(
-                ${Math.sin(
-                    personProgress *
-                    Math.PI *
-                    4
-                ) * -8}px
+                ${
+                    Math.sin(
+                        personProgress *
+                        Math.PI *
+                        4
+                    ) * -8
+                }px
             )
             `;
 
 
-        // ---------------------------------------------
         // NOTES
-        // ---------------------------------------------
 
-        if (
-            notes
-        ) {
+        if (notes) {
 
             if (
                 progress > 0.25
@@ -2654,16 +2034,26 @@ function setupScrollHero() {
                 notes.style.transform =
                     `
                     translateX(
-                        ${-120 + (120 * p)}px
+                        ${
+                            -120 +
+                            (
+                                120 *
+                                p
+                            )
+                        }px
                     )
                     rotate(
-                        ${-8 + (8 * p)}deg
+                        ${
+                            -8 +
+                            (
+                                8 *
+                                p
+                            )
+                        }deg
                     )
                     `;
 
-            }
-
-            else {
+            } else {
 
                 notes.style.opacity =
                     "0";
@@ -2673,13 +2063,9 @@ function setupScrollHero() {
         }
 
 
-        // ---------------------------------------------
         // LAB
-        // ---------------------------------------------
 
-        if (
-            labs
-        ) {
+        if (labs) {
 
             if (
                 progress > 0.38
@@ -2703,16 +2089,26 @@ function setupScrollHero() {
                 labs.style.transform =
                     `
                     translateX(
-                        ${120 - (120 * p)}px
+                        ${
+                            120 -
+                            (
+                                120 *
+                                p
+                            )
+                        }px
                     )
                     rotate(
-                        ${8 - (8 * p)}deg
+                        ${
+                            8 -
+                            (
+                                8 *
+                                p
+                            )
+                        }deg
                     )
                     `;
 
-            }
-
-            else {
+            } else {
 
                 labs.style.opacity =
                     "0";
@@ -2722,13 +2118,9 @@ function setupScrollHero() {
         }
 
 
-        // ---------------------------------------------
         // PAPERS
-        // ---------------------------------------------
 
-        if (
-            papers
-        ) {
+        if (papers) {
 
             if (
                 progress > 0.52
@@ -2752,16 +2144,26 @@ function setupScrollHero() {
                 papers.style.transform =
                     `
                     translateX(
-                        ${-120 + (120 * p)}px
+                        ${
+                            -120 +
+                            (
+                                120 *
+                                p
+                            )
+                        }px
                     )
                     translateY(
-                        ${50 - (50 * p)}px
+                        ${
+                            50 -
+                            (
+                                50 *
+                                p
+                            )
+                        }px
                     )
                     `;
 
-            }
-
-            else {
+            } else {
 
                 papers.style.opacity =
                     "0";
@@ -2771,13 +2173,9 @@ function setupScrollHero() {
         }
 
 
-        // ---------------------------------------------
         // MATERIALS
-        // ---------------------------------------------
 
-        if (
-            materials
-        ) {
+        if (materials) {
 
             if (
                 progress > 0.65
@@ -2801,16 +2199,26 @@ function setupScrollHero() {
                 materials.style.transform =
                     `
                     translateX(
-                        ${120 - (120 * p)}px
+                        ${
+                            120 -
+                            (
+                                120 *
+                                p
+                            )
+                        }px
                     )
                     translateY(
-                        ${50 - (50 * p)}px
+                        ${
+                            50 -
+                            (
+                                50 *
+                                p
+                            )
+                        }px
                     )
                     `;
 
-            }
-
-            else {
+            } else {
 
                 materials.style.opacity =
                     "0";
@@ -2820,13 +2228,9 @@ function setupScrollHero() {
         }
 
 
-        // ---------------------------------------------
         // FINAL
-        // ---------------------------------------------
 
-        if (
-            finalSection
-        ) {
+        if (finalSection) {
 
             if (
                 progress > 0.80
@@ -2850,13 +2254,17 @@ function setupScrollHero() {
                 finalSection.style.transform =
                     `
                     translateY(
-                        ${60 - (60 * p)}px
+                        ${
+                            60 -
+                            (
+                                60 *
+                                p
+                            )
+                        }px
                     )
                     `;
 
-            }
-
-            else {
+            } else {
 
                 finalSection.style.opacity =
                     "0";
@@ -2866,19 +2274,14 @@ function setupScrollHero() {
         }
 
 
-        // ---------------------------------------------
         // INDICATOR
-        // ---------------------------------------------
 
-        if (
-            indicator
-        ) {
+        if (indicator) {
 
             indicator.style.opacity =
-                progress >
-                0.10
-                ? "0"
-                : "1";
+                progress > 0.10
+                    ? "0"
+                    : "1";
 
         }
 
@@ -2900,24 +2303,19 @@ function setupScrollHero() {
 
 
 // =====================================================
-// PAGE INITIALIZATION
+// INITIALIZATION
 // =====================================================
 
 document.addEventListener(
     "DOMContentLoaded",
     function() {
 
-
-        // ---------------------------------------------
-        // LOGIN STATUS
-        // ---------------------------------------------
+        // Login status
 
         updateLoginStatus();
 
 
-        // ---------------------------------------------
-        // LOGOUT
-        // ---------------------------------------------
+        // Logout
 
         const logoutButton =
             document.getElementById(
@@ -2925,9 +2323,7 @@ document.addEventListener(
             );
 
 
-        if (
-            logoutButton
-        ) {
+        if (logoutButton) {
 
             logoutButton.addEventListener(
                 "click",
@@ -2937,9 +2333,7 @@ document.addEventListener(
         }
 
 
-        // ---------------------------------------------
-        // PROFILE DROPDOWN
-        // ---------------------------------------------
+        // Profile dropdown
 
         const profileButton =
             document.getElementById(
@@ -2954,10 +2348,8 @@ document.addEventListener(
 
 
         if (
-
             profileButton &&
             profileDropdown
-
         ) {
 
             profileButton.addEventListener(
@@ -2965,7 +2357,6 @@ document.addEventListener(
                 function(event) {
 
                     event.stopPropagation();
-
 
                     profileDropdown.classList.toggle(
                         "show"
@@ -2980,15 +2371,12 @@ document.addEventListener(
                 function(event) {
 
                     if (
-
                         !profileButton.contains(
                             event.target
                         ) &&
-
                         !profileDropdown.contains(
                             event.target
                         )
-
                     ) {
 
                         profileDropdown.classList.remove(
@@ -3003,9 +2391,7 @@ document.addEventListener(
         }
 
 
-        // ---------------------------------------------
-        // THEME
-        // ---------------------------------------------
+        // Theme
 
         applyTheme();
 
@@ -3016,9 +2402,7 @@ document.addEventListener(
             );
 
 
-        if (
-            themeButton
-        ) {
+        if (themeButton) {
 
             themeButton.addEventListener(
                 "click",
@@ -3028,9 +2412,7 @@ document.addEventListener(
         }
 
 
-        // ---------------------------------------------
-        // SCROLL HERO
-        // ---------------------------------------------
+        // Scroll hero
 
         setupScrollHero();
 
