@@ -531,6 +531,116 @@ const resources = [
     path:
         "resources/3rd-semester/question%20papers/probability-statistics/probability-statistics-model-question-papers.pdf"
 },
+// =================================================
+// PROBABILITY AND STATISTICS STUDY MATERIALS
+// =================================================
+
+{
+    id:
+        "probability_statistics_unit_1_materials",
+
+    name:
+        "Probability and Statistics Study Materials - Unit 1",
+
+    semester:
+        "3",
+
+    subject:
+        "Probability and Statistics",
+
+    type:
+        "materials",
+
+    description:
+        "Probability and Statistics study materials for Unit 1.",
+
+    fileName:
+        "probability-statistics-unit-1-materials.pdf",
+
+    path:
+        "resources/3rd-semester/probability-statistics/probability-statistics-unit-1-materials.pdf"
+},
+
+
+{
+    id:
+        "probability_statistics_unit_2_materials",
+
+    name:
+        "Probability and Statistics Study Materials - Unit 2",
+
+    semester:
+        "3",
+
+    subject:
+        "Probability and Statistics",
+
+    type:
+        "materials",
+
+    description:
+        "Probability and Statistics study materials for Unit 2.",
+
+    fileName:
+        "probability-statistics-unit-2-materials.pdf",
+
+    path:
+        "resources/3rd-semester/probability-statistics/probability-statistics-unit-2-materials.pdf"
+},
+
+
+{
+    id:
+        "probability_statistics_unit_3_materials",
+
+    name:
+        "Probability and Statistics Study Materials - Unit 3",
+
+    semester:
+        "3",
+
+    subject:
+        "Probability and Statistics",
+
+    type:
+        "materials",
+
+    description:
+        "Probability and Statistics study materials for Unit 3.",
+
+    fileName:
+        "probability-statistics-unit-3-materials.pdf",
+
+    path:
+        "resources/3rd-semester/probability-statistics/probability-statistics-unit-3-materials.pdf"
+},
+
+
+{
+    id:
+        "probability_statistics_unit_4_materials",
+
+    name:
+        "Probability and Statistics Study Materials - Unit 4",
+
+    semester:
+        "3",
+
+    subject:
+        "Probability and Statistics",
+
+    type:
+        "materials",
+
+    description:
+        "Probability and Statistics study materials for Unit 4.",
+
+    fileName:
+        "probability-statistics-unit-4-materials.pdf",
+
+    path:
+        "resources/3rd-semester/probability-statistics/probability-statistics-unit-4-materials.pdf"
+},    
 
 
     // =================================================
